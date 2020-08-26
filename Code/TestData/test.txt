@@ -1,0 +1,7 @@
+[Tawalbeh, Muhammad] Univ Sharjah, Sustainable & Renewable Energy Engn Dept, POB 27272, Sharjah, U Arab Emirates; [Al Mojjly, Abdullah; Hilal, Nidal] Swansea Univ, Coll Engn, CWATER, Fabian Way, Swansea SA1 8EN, W Glam, Wales; [Al-Othman, Amani] Amer Univ
+
+[Tawalbeh, Muhammad] Univ Sharjah, Sustainable & Renewable Energy Engn Dept, POB 27272, Sharjah, U Arab Emirates; [Al Mojjly, Abdullah; Hilal, Nidal] Swansea Univ, Coll Engn, CWATER, Fabian Way, Swansea SA1 8EN, W Glam, Wales; [Al-Othman, Amani] Amer Univ Sharjah, Dept Chem Engn, POB 26666, Sharjah, U Arab Emirates
+
+Debug.Print sAddrs
+Asian Growth Res Inst, Kitakyushu, Fukuoka, Japan; Osaka Univ, Inst Social & Econ Res, Osaka, Japan; Natl Bur Econ Res, Cambridge, MA 02138 USA; Amer Univ Sharjah, Sharjah, U Arab Emirates; Deakin Univ, Geelong, Vic, Australia; Deakin Univ, Geelong, Vic, Australia
+

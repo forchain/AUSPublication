@@ -1,0 +1,1 @@
+INSERT INTO College (ID, [Name]) VALUES (0, 'Unknown')

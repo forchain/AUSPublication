@@ -1,0 +1,1 @@
+INSERT INTO Department (ID, [Name], CollegeID) VALUES (0, 'Unknown', 0)

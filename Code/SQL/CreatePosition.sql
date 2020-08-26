@@ -1,0 +1,5 @@
+CREATE TABLE Position (
+    ID COUNTER PRIMARY KEY,
+    NAME VARCHAR,
+    [Order] BYTE
+);
