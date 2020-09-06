@@ -1,4 +1,9 @@
 Option Compare Database
+Option Explicit
+
+
+
+
 
 Sub DeleteMFileV3()
 
@@ -7,7 +12,7 @@ Sub DeleteMFileV3()
     Set fso = New Scripting.FileSystemObject
     
     Dim p As String
-    p = CurrentProject.Path
+    p = CurrentProject.path
     
     fso.MoveFile p & ".\unimported.txt", p & ".\imported.txt"
     Debug.Print "Renamed to imported.txt"
@@ -16,14 +21,7 @@ End Sub
 
 Sub ExportPaperErrorV3()
     Dim filepath As String
-    filepath = CurrentProject.Path & ".\PaperError.xlsx"
-    DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "ErrorPaperISSN", filepath, True, ""
-    DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "ErrorPaperYear", filepath, True, ""
-End Sub
-
-Sub Test()
-    Dim filepath As String
-    filepath = CurrentProject.Path & ".\AuthorError.xlsx"
+    filepath = CurrentProject.path & ".\PaperError.xlsx"
     DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "ErrorPaperISSN", filepath, True, ""
     DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "ErrorPaperYear", filepath, True, ""
 End Sub
@@ -42,40 +40,26 @@ Public Function TestImportPaper()
     ImportJournalV3
     
     Set fso = New Scripting.FileSystemObject
-    Dim paperfile As String
-    paperfile = CurrentProject.Path & "\paper.xlsx"
+    Dim paperFile As String
+    paperFile = CurrentProject.path & "\paper.xlsx"
     
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawPaper", paperfile, True, "2018!"
-    'DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawPaper", paperfile, True, "2019!"
+    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawPaper", paperFile, True, "2018!"
+    'DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawPaper", paperFile, True, "2019!"
 
-    'DoCmd.TransferSpreadsheet acImport, acSpreadsheetTypeExcel12Xml, "Sheet1", paperfile, True, "Sheet1!A:B"
-    'DoCmd.TransferSpreadsheet acImport, acSpreadsheetTypeExcel12Xml, "Sheet1", paperfile, True, "Sheet1!C:D"
-
-    
-
+    'DoCmd.TransferSpreadsheet acImport, acSpreadsheetTypeExcel12Xml, "Sheet1", paperFile, True, "Sheet1!A:B"
+    'DoCmd.TransferSpreadsheet acImport, acSpreadsheetTypeExcel12Xml, "Sheet1", paperFile, True, "Sheet1!C:D"
 End Function
 
 Public Sub TestUnknownJournal()
     CloseAllTablesV3
 
     Set fso = New Scripting.FileSystemObject
-    Dim paperfile As String
-    paperfile = CurrentProject.Path & "\paper.xlsx"
+    Dim paperFile As String
+    paperFile = CurrentProject.path & "\paper.xlsx"
     
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawPaper", paperfile, True, "2019!"
+    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawPaper", paperFile, True, "2019!"
 
 End Sub
-
-Public Function TestImportPaper2()
-    CloseAllTablesV3
-
-    Set fso = New Scripting.FileSystemObject
-    Dim paperfile As String
-    paperfile = CurrentProject.Path & "\paper.xlsx"
-    
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawPaper", paperfile, True, "2019!"
-
-End Function
 
 Public Sub FillWeightV3()
 
@@ -97,7 +81,7 @@ Public Sub FillWeightV3()
         authors = ExtractAUSAuthors(rsPaper!Address)
         If (Not Not authors) <> 0 Then
             For Each an In authors
-                qd.Parameters("PaperID").Value = rsPaper!ID
+                qd.Parameters("PaperID").Value = rsPaper!Id
                 qd.Parameters("PaperTitle").Value = rsPaper!Title
                 qd.Parameters("AuthorName").Value = an
                 qd.Execute dbFailOnError
@@ -131,18 +115,15 @@ End Sub
 Sub ImportSheetV3()
     Set fso = New Scripting.FileSystemObject
     Dim imported As String
-    imported = CurrentProject.Path & "\imported.txt"
+    imported = CurrentProject.path & "\imported.txt"
     
     If Not fso.FileExists(imported) Then
         CloseAllTablesV3
         DeleteAllRelationsV3
         DeleteAllTablesV3
         
-        
         ImportJournalV3
         ImportBookV3
-        
-        
         
         ImportPaperV3
         
@@ -150,16 +131,10 @@ Sub ImportSheetV3()
         ExportUnknownBookV3
         
         ImportAuthorV3
-   
-        
-        
 
-        
         DeleteMFileV3
         
         OpenTablesV3
-        
-        
     Else
         Debug.Print "No Import"
     End If
@@ -168,14 +143,14 @@ End Sub
 
 Sub ExportUnknownJournalV3()
     Dim filepath As String
-    filepath = CurrentProject.Path & ".\UnknownJournal.xlsx"
+    filepath = CurrentProject.path & ".\UnknownJournal.xlsx"
     
     DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "SelectUnknownJournal", filepath, True, "NotFoundInPaper"
 End Sub
 
 Sub ExportUnknownBookV3()
     Dim filepath As String
-    filepath = CurrentProject.Path & ".\UnknownBook.xlsx"
+    filepath = CurrentProject.path & ".\UnknownBook.xlsx"
     
     DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "SelectUnknownBook", filepath, True, "NotFoundInPaper"
 
@@ -183,7 +158,7 @@ End Sub
 
 Sub ExportUnknownAuthorV3()
     Dim filepath As String
-    filepath = CurrentProject.Path & ".\UnknownAuthor.xlsx"
+    filepath = CurrentProject.path & ".\UnknownAuthor.xlsx"
     
     DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "SelectUnknownAuthor", filepath, True, "NotFoundInPaper"
 
@@ -196,7 +171,7 @@ End Sub
 
 Sub ImportJournalV3()
     Dim filepath As String
-    filepath = CurrentProject.Path & ".\Journal.xlsx"
+    filepath = CurrentProject.path & ".\Journal.xlsx"
     
     
     'Table names without spaces must NOT use single quotes
@@ -210,7 +185,7 @@ End Sub
 
 Sub ImportBookV3()
     Dim filepath As String
-    filepath = CurrentProject.Path & ".\Book.xlsx"
+    filepath = CurrentProject.path & ".\Book.xlsx"
     
 
     DoCmd.TransferSpreadsheet acImport, acSpreadsheetTypeExcel12Xml, "RawBKCI-S", filepath, True, "BKCI-S!"
@@ -222,7 +197,7 @@ Sub ImportAuthorV3()
 
     FillWeightV3
     Dim filepath As String
-    filepath = CurrentProject.Path & ".\Author.xlsx"
+    filepath = CurrentProject.path & ".\Author.xlsx"
     
     
     'Table names without spaces must NOT use single quotes
@@ -264,7 +239,7 @@ End Sub
 
 Sub ImportPaperV3()
     Dim filepath As String
-    filepath = CurrentProject.Path & "\Paper.xlsx"
+    filepath = CurrentProject.path & "\Paper.xlsx"
     'Table names without spaces must NOT use single quotes
     ' Take care of the trailing "!"
     
