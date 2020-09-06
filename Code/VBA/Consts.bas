@@ -22,9 +22,11 @@ Public Const KEY_FACULTY_DEPARTING As String = "FacultyDeparting"
 
 Public Const SECTION_INDEX As String = "Index"
 
+Public Const SHEET_PAPER As String = "savedrecs"
+
 
 Property Get INDICES() As Variant
-    INDICES = Array(AHCI, ESCI, SSCI, SCIE, BSCI, BSCI)
+    INDICES = Array(AHCI, BHCI, BSCI, ESCI, SCIE, SSCI)
 End Property
 
 
