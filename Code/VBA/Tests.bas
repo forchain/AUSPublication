@@ -74,7 +74,24 @@ Public Sub TestImportPaper()
         Next i
     Next y
 
+    CurrentDb.Execute "CreateAbbr", dbFailOnError
+    Debug.Print "CreateAbbr", CurrentDb.RecordsAffected
+    
+    CurrentDb.Execute "InsertAbbr", dbFailOnError
+    Debug.Print "InsertAbbr", CurrentDb.RecordsAffected
+    
+
+    Dim t As String
+    For i = 1 To 9
+        t = "UpdateKnownAuthor" & CStr(i)
+        CurrentDb.Execute t, dbFailOnError
+        Debug.Print t, CurrentDb.RecordsAffected
+    
+    Next i
+
 End Sub
+
+
 
 Public Sub TestYear()
     Dim myDate As Date

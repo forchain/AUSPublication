@@ -125,6 +125,19 @@ Public Function FixName(FullName As String) As String
     'Debug.Print FixName
 End Function
 
+Public Function GetAbbrName(FullName As Variant) As String
+
+    If IsNull(FullName) Then
+        GetAbbrName = ""
+        Exit Function
+    End If
+    Dim sFirstName, sLastName As String
+    sFirstName = Left(FullName, 1) + "."
+    sLastName = Split(FullName, " ")(1)
+
+    GetAbbrName = sFirstName & " " & sLastName
+End Function
+
 Public Function FixNameWithIDs(Abbr As String, IDs As String) As String
 
 '    If Abbr = "W. Abuzaid" Then
