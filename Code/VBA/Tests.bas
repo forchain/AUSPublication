@@ -25,7 +25,7 @@ Public Sub TestWordApplication()
     Dim Index As String
     
     Index = ws.PrivateProfileString(path, "Index", "AHCI-2018")
-    Debug.Print Index
+    Debug.Print Indexp
     'Application.CurrentProject(    CurrentProject.Path "settings.ini"
     
     Index = ws.PrivateProfileString(path, "Staff", "FacultyDeparting")
@@ -34,7 +34,9 @@ Public Sub TestWordApplication()
     
 End Sub
 
-Public Sub TestImportPapers()
+Public Sub TestImportPaper()
+
+    App.ClearTables
 
     Dim currYear As Integer
     currYear = Year(Date)
@@ -44,7 +46,12 @@ Public Sub TestImportPapers()
     Dim key As String
     Dim path As String
     
+    CurrentDb.Execute "CreatePaper", dbFailOnError
+    Debug.Print "CreatePaper", CurrentDb.RecordsAffected
 
+    Dim qd As DAO.QueryDef
+    Set qd = CurrentDb.QueryDefs("InsertPaper")
+    
     For y = Consts.BEIGN_YEAR To currYear
         For i = 0 To UBound(Consts.INDICES) - 1
             
@@ -54,7 +61,16 @@ Public Sub TestImportPapers()
             
             Debug.Print path
 
-            DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel9, key, path, True, "savedrecs!"
+            DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel9, "RawPaper", path, True, Consts.SHEET_PAPER & "!"
+            
+            qd.Parameters("Year").Value = y
+            qd.Parameters("Index").Value = i + 1
+
+            qd.Execute dbFailOnError
+            Debug.Print "InsertPaper", CurrentDb.RecordsAffected
+        
+            DoCmd.DeleteObject acTable, "RawPaper"
+            Debug.Print "Delete RawPaper", CurrentDb.RecordsAffected
         Next i
     Next y
 

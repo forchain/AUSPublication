@@ -2,9 +2,6 @@ Option Compare Database
 Option Explicit
 
 
-
-
-
 Sub DeleteMFileV3()
 
     Dim fso    As Scripting.FileSystemObject
@@ -32,7 +29,7 @@ Public Function DebugDB()
     'ImportAuthorV3
 End Function
 
-Public Function TestImportPaper()
+Public Function TestImportPaperV3()
     CloseAllTablesV3
     DeleteAllRelationsV3
     DeleteAllTablesV3
@@ -274,19 +271,20 @@ Sub ImportPaperV3()
 End Sub
 
 Sub CloseAllTablesV3()
+
     For Each obj In CurrentData.AllTables
-        If Left(obj.Name, 4) <> "MSys" Then
-            Debug.Print "Closing " & obj.Name
-            DoCmd.Close acTable, obj.Name, acSaveNo
+        If Left(obj.name, 4) <> "MSys" Then
+            Debug.Print "Closing " & obj.name
+            DoCmd.Close acTable, obj.name, acSaveNo
         End If
     Next
 End Sub
 
 Sub DeleteAllTablesV3()
     For Each obj In CurrentData.AllTables
-        If Left(obj.Name, 4) <> "MSys" Then
-            Debug.Print "Deleting " & obj.Name
-            DoCmd.DeleteObject acTable, obj.Name
+        If Left(obj.name, 4) <> "MSys" Then
+            Debug.Print "Deleting " & obj.name
+            DoCmd.DeleteObject acTable, obj.name
         End If
     Next
 End Sub
@@ -294,9 +292,9 @@ End Sub
 Sub DeleteAllRelationsV3()
     Dim obj    As Relation
     For Each obj In CurrentDb.Relations
-        If Left(obj.Name, 4) <> "MSys" Then
-            Debug.Print "Deleting " & obj.Name
-            CurrentDb.Relations.Delete obj.Name
+        If Left(obj.name, 4) <> "MSys" Then
+            Debug.Print "Deleting " & obj.name
+            CurrentDb.Relations.Delete obj.name
         End If
     Next
 End Sub

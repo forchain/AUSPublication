@@ -1,0 +1,200 @@
+[Warn]FixNameWithIDs unfixed; Abbr:J. Abdalla, IDs:Naser, Mohannad Z./0000-0003-1350-3654
+[Warn]FixNameWithIDs empty; Abbr:A. Al-Ali
+[Warn]FixNameWithIDs empty; Abbr:A. Al-Ali
+[Warn]FixNameWithIDs unfixed; Abbr:W. Abuzaid, IDs:Wu, Yan/AAO-2960-2020
+[Warn]FixNameWithIDs empty; Abbr:M. Abdelgawad
+[Warn]FixNameWithIDs unfixed; Abbr:M. Abdelgawad, IDs:Esmaeel, Abdelhady/0000-0002-4031-5467
+[Warn]FixNameWithIDs unfixed; Abbr:R. Hawileh, IDs:Naser, Mohannad Z./C-6635-2016
+[Warn]FixNameWithIDs unfixed; Abbr:J. Abdalla, IDs:Naser, Mohannad Z./C-6635-2016
+[Warn]FixNameWithIDs unfixed; Abbr:J. Abdalla, IDs:Naser, Mohannad Z./0000-0003-1350-3654; Hawileh, Rami/0000-0002-0184-6732
+[Warn]FixNameWithIDs empty; Abbr:W. Nawaz
+[Warn]FixNameWithIDs unfixed; Abbr:W. Nawaz, IDs:Abuzayed, Ismail/0000-0002-3659-9356
+[Warn]FixNameWithIDs empty; Abbr:J. Abdalla
+[Warn]FixNameWithIDs unfixed; Abbr:J. Abdalla, IDs:Abuzayed, Ismail/0000-0002-3659-9356
+[Warn]FixNameWithIDs empty; Abbr:R. Hawileh
+[Warn]FixNameWithIDs unfixed; Abbr:R. Hawileh, IDs:Abuzayed, Ismail/0000-0002-3659-9356
+[Warn]FixNameWithIDs empty; Abbr:H. Alajmani
+[Warn]FixNameWithIDs unfixed; Abbr:H. Alajmani, IDs:Abuzayed, Ismail/0000-0002-3659-9356
+[Warn]FixNameWithIDs empty; Abbr:I. Abuzayed
+[Warn]FixNameWithIDs empty; Abbr:H. Ataya
+[Warn]FixNameWithIDs unfixed; Abbr:H. Ataya, IDs:Abuzayed, Ismail/0000-0002-3659-9356
+[Warn]FixNameWithIDs empty; Abbr:H. Mohamed
+[Warn]FixNameWithIDs unfixed; Abbr:H. Mohamed, IDs:Abuzayed, Ismail/0000-0002-3659-9356
+[Warn]FixNameWithIDs unfixed; Abbr:G. Boltaev, IDs:Ganeev, Rashid/J-5619-2013; Kim, Vyacheslav/AAX-7307-2020; ALNASER, ALI S/H-3071-2013
+[Warn]FixNameWithIDs unfixed; Abbr:M. Iqbal, IDs:Ganeev, Rashid/J-5619-2013; Kim, Vyacheslav/AAX-7307-2020; ALNASER, ALI S/H-3071-2013
+[Warn]FixNameWithIDs unfixed; Abbr:M. Iqbal, IDs:ALNASER, ALI/0000-0003-4822-9747; Kim, Vyacheslav/0000-0001-5996-2296; Boltaev, Ganjaboy/0000-0003-0354-1251; Ganeev, Rashid/0000-0001-5522-1802
+[Warn]FixNameWithIDs unfixed; Abbr:R. Hawileh, IDs:; Naser, Mohannad Z./C-6635-2016
+[Warn]FixNameWithIDs empty; Abbr:S. Khuri
+[Warn]FixNameWithIDs empty; Abbr:S. Khuri
+[Warn]FixNameWithIDs empty; Abbr:A. Sayfy
+[Warn]FixNameWithIDs empty; Abbr:A. Sayfy
+[Warn]FixNameWithIDs empty; Abbr:J. Sanchez
+[Warn]FixNameWithIDs empty; Abbr:J. Sanchez
+[Warn]FixNameWithIDs empty; Abbr:R. Hawileh
+[Warn]FixNameWithIDs empty; Abbr:J. Abdalla
+[Warn]FixNameWithIDs unfixed; Abbr:J. Abdalla, IDs:Hawileh, Rami/0000-0002-0184-6732
+[Warn]FixNameWithIDs empty; Abbr:M. Ghommem
+[Warn]FixNameWithIDs empty; Abbr:M. Ghommem
+[Error]ExtractAuthors No authors;Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]CountAuthors Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 1, Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 2, Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 3, Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 4, Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 5, Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 6, Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 7, Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 8, Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 9, Addrs:Auburn Univ, Auburn, AL 36849 USA; Univ Houston, Houston, TX USA; Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, New Delhi, India; Univ Sci & Technol, Beijing, Peoples R China; Amer Univ Sharjah, Sharjah, U Arab Emirates; Ohio State Univ, Columbus, OH 43210 USA; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthors No authors;Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]CountAuthors Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 1, Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 2, Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 3, Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 4, Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 5, Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 6, Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 7, Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 8, Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]ExtractAuthorsFromAddrs No authors;Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Error]SelectAuthor No Authors; Order: 9, Addrs:Amer Museum Nat Hist, New York, NY 10024 USA; Natl Museum Nat Hist, Washington, DC 20560 USA; King Abdullah Univ Sci & Technol, Thuwal, Saudi Arabia; Amer Univ Sharjah, Sharjah, U Arab Emirates; Univ Ryukyus, Nishihara, Okinawa, Japan; Nat Hist Museum & Inst, Chiba, Japan
+[Warn]FixNameWithIDs empty; Abbr:M. Ahmed
+[Warn]FixNameWithIDs empty; Abbr:M. Ahmed
+[Warn]FixNameWithIDs empty; Abbr:M. Ghommem
+[Warn]FixNameWithIDs empty; Abbr:M. Ghommem
+[Warn]FixNameWithIDs empty; Abbr:R. Sabouni
+[Warn]FixNameWithIDs empty; Abbr:R. Sabouni
+[Warn]FixNameWithIDs empty; Abbr:A. Aidan
+[Warn]FixNameWithIDs empty; Abbr:A. Aidan
+[Warn]FixNameWithIDs empty; Abbr:A. AlObeidli
+[Warn]FixNameWithIDs empty; Abbr:A. AlObeidli
+[Warn]FixNameWithIDs empty; Abbr:F. Lahib
+[Warn]FixNameWithIDs empty; Abbr:F. Lahib
+[Warn]FixNameWithIDs empty; Abbr:H. Bacha
+[Warn]FixNameWithIDs empty; Abbr:H. Bacha
+[Warn]FixNameWithIDs empty; Abbr:R. Kassermally
+[Warn]FixNameWithIDs empty; Abbr:R. Kassermally
+[Warn]FixNameWithIDs empty; Abbr:S. Jarmakani
+[Warn]FixNameWithIDs empty; Abbr:S. Jarmakani
+InsertPaper    0 
+Delete RawPaper              0 
+\\Mac\Home\github.com\forchain\AUSPublication/Spreadsheets/AHCI-2020.xls
+[Warn]FixNameWithIDs empty; Abbr:P. Bull
+[Warn]FixNameWithIDs empty; Abbr:P. Bull
+InsertPaper    0 
+Delete RawPaper              0 
+\\Mac\Home\github.com\forchain\AUSPublication/Spreadsheets/BHCI-2020.xls
+InsertPaper    0 
+Delete RawPaper              0 
+\\Mac\Home\github.com\forchain\AUSPublication/Spreadsheets/BSCI-2020.xls
+InsertPaper    0 
+Delete RawPaper              0 
+\\Mac\Home\github.com\forchain\AUSPublication/Spreadsheets/ESCI-2020.xls
+[Warn]FixNameWithIDs empty; Abbr:W. Abuzaid
+[Warn]FixNameWithIDs unfixed; Abbr:W. Abuzaid, IDs:Vollmer, Malte/0000-0002-8098-8498
+[Warn]FixNameWithIDs unfixed; Abbr:F. Brenne, IDs:Wu, Yan/AAO-2960-2020
+[Warn]FixNameWithIDs unfixed; Abbr:F. Brenne, IDs:Wu, Yan/0000-0001-6619-5144; Abuzaid, Wael/0000-0002-1306-9766
+[Warn]FixNameWithIDs unfixed; Abbr:W. Abuzaid, IDs:Wu, Yan/AAO-2960-2020
+[Warn]FixNameWithIDs empty; Abbr:S. Khuri
+[Warn]FixNameWithIDs unfixed; Abbr:S. Khuri, IDs:Abukhaled, Marwan/0000-0001-8208-5025
+InsertPaper    0 
+Delete RawPaper              0 
+\\Mac\Home\github.com\forchain\AUSPublication/Spreadsheets/SCIE-2020.xls
+[Warn]FixNameWithIDs empty; Abbr:W. Abuzaid
+[Warn]FixNameWithIDs unfixed; Abbr:G. Boltaev, IDs:ALNASER, ALI S/H-3071-2013; Ganeev, Rashid/J-5619-2013; Kim, Vyacheslav/AAX-7307-2020
+[Warn]FixNameWithIDs empty; Abbr:S. Khuri
+[Warn]FixNameWithIDs empty; Abbr:S. Khuri
+[Warn]FixNameWithIDs empty; Abbr:A. Sayfy
+[Warn]FixNameWithIDs empty; Abbr:A. Sayfy
+[Warn]FixNameWithIDs empty; Abbr:R. Siddiqui
+[Warn]FixNameWithIDs unfixed; Abbr:R. Siddiqui, IDs:Khan, Naveed/0000-0001-7667-8553
+[Warn]FixNameWithIDs empty; Abbr:N. Akbar
+[Warn]FixNameWithIDs unfixed; Abbr:N. Akbar, IDs:Khan, Naveed/0000-0001-7667-8553
+[Warn]FixNameWithIDs empty; Abbr:N. Khan
+[Warn]FixNameWithIDs empty; Abbr:G. Boltaev
+[Warn]FixNameWithIDs empty; Abbr:R. Ganeev
+[Warn]FixNameWithIDs unfixed; Abbr:R. Ganeev, IDs:Tong, Xiao-Min/0000-0003-4898-3491; ALNASER, ALI/0000-0003-4822-9747; Boltaev, Ganjaboy/0000-0003-0354-1251
+[Warn]FixNameWithIDs empty; Abbr:N. Abbasi
+[Warn]FixNameWithIDs unfixed; Abbr:N. Abbasi, IDs:Tong, Xiao-Min/0000-0003-4898-3491; ALNASER, ALI/0000-0003-4822-9747; Boltaev, Ganjaboy/0000-0003-0354-1251
+[Warn]FixNameWithIDs empty; Abbr:M. Iqbal
+[Warn]FixNameWithIDs unfixed; Abbr:M. Iqbal, IDs:Tong, Xiao-Min/0000-0003-4898-3491; ALNASER, ALI/0000-0003-4822-9747; Boltaev, Ganjaboy/0000-0003-0354-1251
+[Warn]FixNameWithIDs empty; Abbr:V. Kim
+[Warn]FixNameWithIDs unfixed; Abbr:V. Kim, IDs:Tong, Xiao-Min/0000-0003-4898-3491; ALNASER, ALI/0000-0003-4822-9747; Boltaev, Ganjaboy/0000-0003-0354-1251
+[Warn]FixNameWithIDs empty; Abbr:H. Al-Harmi
+[Warn]FixNameWithIDs unfixed; Abbr:H. Al-Harmi, IDs:Tong, Xiao-Min/0000-0003-4898-3491; ALNASER, ALI/0000-0003-4822-9747; Boltaev, Ganjaboy/0000-0003-0354-1251
+[Warn]FixNameWithIDs empty; Abbr:A. Alnaser
+[Warn]FixNameWithIDs unfixed; Abbr:E. Campos, IDs:Meinen, Christopher/G-1902-2012; Dong, Shenfu/I-4435-2013
+[Warn]FixNameWithIDs unfixed; Abbr:E. Campos, IDs:Meinen, Christopher/0000-0002-8846-6002; Valla, Daniel/0000-0003-3303-9641; Dong, Shenfu/0000-0001-8247-8072
+[Warn]FixNameWithIDs unfixed; Abbr:M. Alghabra, IDs:ALNASER, ALI S/H-3071-2013; Liu, Qingcao/AAJ-7460-2020; Kim, Vyacheslav/AAX-7307-2020
+[Warn]FixNameWithIDs unfixed; Abbr:M. Alghabra, IDs:Liu, Qingcao/0000-0002-3691-7369; 
+[Warn]FixNameWithIDs empty; Abbr:M. Ghommem
+[Warn]FixNameWithIDs empty; Abbr:M. Ghommem
+[Warn]FixNameWithIDs empty; Abbr:A. Al-Ali
+[Warn]FixNameWithIDs empty; Abbr:A. Al-Ali
+[Warn]FixNameWithIDs empty; Abbr:D. Alkathiri
+[Warn]FixNameWithIDs empty; Abbr:D. Alkathiri
+[Warn]FixNameWithIDs empty; Abbr:M. Sabri
+[Warn]FixNameWithIDs empty; Abbr:M. Sabri
+[Warn]FixNameWithIDs empty; Abbr:T. Ibrahim
+[Warn]FixNameWithIDs empty; Abbr:T. Ibrahim
+[Warn]FixNameWithIDs unfixed; Abbr:S. Emam, IDs:Shaat, Mohamed/R-1212-2019
+[Warn]FixNameWithIDs unfixed; Abbr:S. Emam, IDs:Shaat, Mohamed/0000-0002-7594-1652
+[Warn]FixNameWithIDs empty; Abbr:S. Emam
+[Warn]FixNameWithIDs empty; Abbr:S. Emam
+[Warn]FixNameWithIDs unfixed; Abbr:H. Orabi, IDs:Elwakil, Ahmed/D-2175-2014
+[Warn]FixNameWithIDs unfixed; Abbr:H. Orabi, IDs:Elwakil, Ahmed/0000-0002-3972-5434; radwan, ahmed/0000-0001-6079-4138
+[Warn]FixNameWithIDs unfixed; Abbr:M. Elnawawy, IDs:Elwakil, Ahmed/D-2175-2014
+[Warn]FixNameWithIDs unfixed; Abbr:M. Elnawawy, IDs:Elwakil, Ahmed/0000-0002-3972-5434; radwan, ahmed/0000-0001-6079-4138
+[Warn]FixNameWithIDs unfixed; Abbr:F. Aloul, IDs:Elwakil, Ahmed/D-2175-2014
+[Warn]FixNameWithIDs unfixed; Abbr:F. Aloul, IDs:Elwakil, Ahmed/0000-0002-3972-5434; radwan, ahmed/0000-0001-6079-4138
+[Warn]FixNameWithIDs unfixed; Abbr:A. Sagahyroon, IDs:Elwakil, Ahmed/D-2175-2014
+[Warn]FixNameWithIDs unfixed; Abbr:A. Sagahyroon, IDs:Elwakil, Ahmed/0000-0002-3972-5434; radwan, ahmed/0000-0001-6079-4138
+[Warn]FixNameWithIDs unfixed; Abbr:G. Boltaev, IDs:ALNASER, ALI S/H-3071-2013; Kim, Vyacheslav/AAX-7307-2020; Ganeev, Rashid/J-5619-2013; Smirnov, Mikhail S/O-7362-2014
+[Warn]FixNameWithIDs unfixed; Abbr:N. Abbasi, IDs:ALNASER, ALI S/H-3071-2013; Kim, Vyacheslav/AAX-7307-2020; Ganeev, Rashid/J-5619-2013; Smirnov, Mikhail S/O-7362-2014
+[Warn]FixNameWithIDs unfixed; Abbr:N. Abbasi, IDs:Smirnov, Mikhail S/0000-0001-8765-0986; ALNASER, ALI/0000-0003-4822-9747; Boltaev, Ganjaboy/0000-0003-0354-1251; Kim, Vyacheslav/0000-0001-5996-2296; Khan, Sharjeel Ahmed/0000-0003-0908-1065
+[Warn]FixNameWithIDs unfixed; Abbr:M. Iqbal, IDs:ALNASER, ALI S/H-3071-2013; Kim, Vyacheslav/AAX-7307-2020; Ganeev, Rashid/J-5619-2013; Smirnov, Mikhail S/O-7362-2014
+[Warn]FixNameWithIDs unfixed; Abbr:M. Iqbal, IDs:Smirnov, Mikhail S/0000-0001-8765-0986; ALNASER, ALI/0000-0003-4822-9747; Boltaev, Ganjaboy/0000-0003-0354-1251; Kim, Vyacheslav/0000-0001-5996-2296; Khan, Sharjeel Ahmed/0000-0003-0908-1065
+[Warn]FixNameWithIDs unfixed; Abbr:S. Khan, IDs:ALNASER, ALI S/H-3071-2013; Kim, Vyacheslav/AAX-7307-2020; Ganeev, Rashid/J-5619-2013; Smirnov, Mikhail S/O-7362-2014
+[Warn]FixNameWithIDs empty; Abbr:R. Alchikh
+[Warn]FixNameWithIDs empty; Abbr:R. Alchikh
+[Warn]FixNameWithIDs empty; Abbr:S. Khuri
+[Warn]FixNameWithIDs empty; Abbr:S. Khuri
+[Warn]FixNameWithIDs empty; Abbr:S. El-Sayegh
+[Warn]FixNameWithIDs empty; Abbr:S. Manjikian
+[Warn]FixNameWithIDs unfixed; Abbr:S. Manjikian, IDs:El-Sayegh, Sameh/0000-0002-9127-0318
+[Warn]FixNameWithIDs empty; Abbr:M. Ghommem
+[Warn]FixNameWithIDs empty; Abbr:M. Ghommem
+[Warn]FixNameWithIDs unfixed; Abbr:G. Boltaev, IDs:ALNASER, ALI S/H-3071-2013; Ganeev, Rashid/J-5619-2013
+[Warn]FixNameWithIDs unfixed; Abbr:V. Kim, IDs:ALNASER, ALI S/H-3071-2013; Ganeev, Rashid/J-5619-2013
+[Warn]FixNameWithIDs unfixed; Abbr:V. Kim, IDs:ALNASER, ALI/0000-0003-4822-9747; Ganeev, Rashid/0000-0001-5522-1802; Khan, Sharjeel Ahmed/0000-0003-0908-1065; Boltaev, Ganjaboy/0000-0003-0354-1251
+[Warn]FixNameWithIDs unfixed; Abbr:M. Iqbal, IDs:ALNASER, ALI S/H-3071-2013; Ganeev, Rashid/J-5619-2013
+[Warn]FixNameWithIDs unfixed; Abbr:M. Iqbal, IDs:ALNASER, ALI/0000-0003-4822-9747; Ganeev, Rashid/0000-0001-5522-1802; Khan, Sharjeel Ahmed/0000-0003-0908-1065; Boltaev, Ganjaboy/0000-0003-0354-1251
+[Warn]FixNameWithIDs unfixed; Abbr:S. Khan, IDs:ALNASER, ALI S/H-3071-2013; Ganeev, Rashid/J-5619-2013
+[Warn]FixNameWithIDs empty; Abbr:W. Abuzaid
+[Warn]FixNameWithIDs unfixed; Abbr:G. Boltaev, IDs:ALNASER, ALI S/H-3071-2013; Kim, Vyacheslav/AAX-7307-2020; Ganeev, Rashid/J-5619-2013
+[Warn]FixNameWithIDs unfixed; Abbr:G. Boltaev, IDs:ALNASER, ALI S/H-3071-2013; Kim, Vyacheslav/AAX-7307-2020; Ganeev, Rashid/J-5619-2013
+[Warn]FixNameWithIDs unfixed; Abbr:S. Khan, IDs:ALNASER, ALI S/H-3071-2013; Kim, Vyacheslav/AAX-7307-2020; Ganeev, Rashid/J-5619-2013
+[Warn]FixNameWithIDs unfixed; Abbr:M. Iqbal, IDs:ALNASER, ALI S/H-3071-2013; Kim, Vyacheslav/AAX-7307-2020; Ganeev, Rashid/J-5619-2013
+[Warn]FixNameWithIDs unfixed; Abbr:M. Iqbal, IDs:Boltaev, Ganjaboy/0000-0003-0354-1251; Khan, Sharjeel Ahmed/0000-0003-0908-1065; Kim, Vyacheslav/0000-0001-5996-2296; ALNASER, ALI/0000-0003-4822-9747
+[Warn]FixNameWithIDs unfixed; Abbr:R. Asa'd, IDs:Asad, Randa/J-4503-2015; Lagioia, Edoardo Prospero/K-5871-2017
+[Warn]FixNameWithIDs unfixed; Abbr:R. Asa'd, IDs:Asad, Randa/0000-0003-4861-6624; Marino, Anna Fabiola/0000-0002-1276-5487; Li, Chengyuan/0000-0002-3084-5157; Massari, Davide/0000-0001-8892-4301; Lagioia, Edoardo Prospero/0000-0003-1713-0082; Da Costa, Gary/0000-0001-7019-649X
+InsertPaper    0 
+Delete RawPaper              0 
+

@@ -1,6 +1,6 @@
 INSERT INTO
        Paper (
-              WOSID,
+              WoSID,
               Title,
               [Year],
               [Index],
@@ -21,14 +21,14 @@ SELECT
        [Year],
        [Index],
        CountAuthors(RawPaper.Addresses),
-       SelectAuthor(RawPaper.Addresses, 1),
-       SelectAuthor(RawPaper.Addresses, 2),
-       SelectAuthor(RawPaper.Addresses, 3),
-       SelectAuthor(RawPaper.Addresses, 4),
-       SelectAuthor(RawPaper.Addresses, 5),
-       SelectAuthor(RawPaper.Addresses, 6),
-       SelectAuthor(RawPaper.Addresses, 7),
-       SelectAuthor(RawPaper.Addresses, 8),
-       SelectAuthor(RawPaper.Addresses, 9)
+       SelectAuthor(RawPaper.Addresses, 1, RawPaper.[Researcher Ids], RawPaper.ORCIDs),
+       SelectAuthor(RawPaper.Addresses, 2, RawPaper.[Researcher Ids], RawPaper.ORCIDs),
+       SelectAuthor(RawPaper.Addresses, 3, RawPaper.[Researcher Ids], RawPaper.ORCIDs),
+       SelectAuthor(RawPaper.Addresses, 4, RawPaper.[Researcher Ids], RawPaper.ORCIDs),
+       SelectAuthor(RawPaper.Addresses, 5, RawPaper.[Researcher Ids], RawPaper.ORCIDs),
+       SelectAuthor(RawPaper.Addresses, 6, RawPaper.[Researcher Ids], RawPaper.ORCIDs),
+       SelectAuthor(RawPaper.Addresses, 7, RawPaper.[Researcher Ids], RawPaper.ORCIDs),
+       SelectAuthor(RawPaper.Addresses, 8, RawPaper.[Researcher Ids], RawPaper.ORCIDs),
+       SelectAuthor(RawPaper.Addresses, 9, RawPaper.[Researcher Ids], RawPaper.ORCIDs)
 FROM
        RawPaper;

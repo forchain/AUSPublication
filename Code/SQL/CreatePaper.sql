@@ -1,6 +1,6 @@
 CREATE TABLE Paper (
     ID COUNTER PRIMARY KEY,
-    WOSID VARCHAR,
+    WoSID VARCHAR,
     Title Memo,
     [Year] int,
     [Index] int,
