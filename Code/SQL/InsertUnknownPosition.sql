@@ -1,1 +1,0 @@
-INSERT INTO Position (ID, [Name],[Order]) VALUES (0, 'Unknown', 0)

@@ -1,3 +1,4 @@
+Attribute VB_Name = "Config"
 Option Compare Database
 Option Explicit
 

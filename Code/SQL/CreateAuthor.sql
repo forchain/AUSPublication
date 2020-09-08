@@ -4,6 +4,6 @@ CREATE TABLE Author (
     AuthorName VARCHAR,
     AbbrName VARCHAR,
 
-    Title VARCHAR,
+    JobID VARCHAR,
     DepartmentID int
 );

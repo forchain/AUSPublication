@@ -4,7 +4,7 @@ CREATE TABLE Personnel (
     AuthorName VARCHAR,
     AbbrName VARCHAR,
 
-    Title VARCHAR,
+    JobTitle VARCHAR,
     DepartmentID int,
     DepartmentName VARCHAR,
     CollegeName VARCHAR

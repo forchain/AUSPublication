@@ -1,3 +1,4 @@
+Attribute VB_Name = "Tests"
 Option Compare Database
 Option Explicit
 
@@ -77,39 +78,76 @@ Public Sub TestImportAuthor()
     Dim i As Integer
     Dim sPath As String
     Dim sSheet As String
-    
-    
-
-    CurrentDb.Execute "CreateAuthor", dbFailOnError
-    Debug.Print "CreateAuthor", CurrentDb.RecordsAffected
-    
 
     ' Faculty In
     sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_IN_FILE)
     sSheet = Config.Val(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_IN_SHEET) & "!"
 
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawAuthor", sPath, True, sSheet
-
-    
-    CurrentDb.Execute "InsertFaultyIn2Author", dbFailOnError
-    Debug.Print "InsertFaultyIn2Author", CurrentDb.RecordsAffected
-    
-    DoCmd.DeleteObject acTable, "RawAuthor"
-    Debug.Print "Delete RawAuthor", CurrentDb.RecordsAffected
+    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawFacultyIn", sPath, True, sSheet
     
     ' Faculty Out
     sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_OUT_FILE)
     sSheet = Config.Val(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_OUT_SHEET) & "!"
 
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawAuthor", sPath, True, sSheet
-
-
-    CurrentDb.Execute "InsertFacultyOut2Author", dbFailOnError
-    Debug.Print "InsertFacultyOut2Author", CurrentDb.RecordsAffected
+    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawFacultyOut", sPath, True, sSheet
+    
+    ' College
+    CurrentDb.Execute "CreateCollege", dbFailOnError
+    Debug.Print "CreateCollege", CurrentDb.RecordsAffected
+    
+    CurrentDb.Execute "InsertUnknownCollege", dbFailOnError
+    Debug.Print "InsertUnknownCollege", CurrentDb.RecordsAffected
+    
+    CurrentDb.Execute "InsertCollege", dbFailOnError
+    Debug.Print "InsertCollege", CurrentDb.RecordsAffected
+    
+    ' Department
+    CurrentDb.Execute "CreateDepartment", dbFailOnError
+    Debug.Print "CreateDepartment", CurrentDb.RecordsAffected
+    
+    CurrentDb.Execute "InsertUnknownDepartment", dbFailOnError
+    Debug.Print "InsertUnknownDepartment", CurrentDb.RecordsAffected
+    
+    CurrentDb.Execute "InsertDepartment", dbFailOnError
+    Debug.Print "InsertDepartment", CurrentDb.RecordsAffected
+    
+    ' Job
+    
+    CurrentDb.Execute "CreateJob", dbFailOnError
+    Debug.Print "CreateJob", CurrentDb.RecordsAffected
+    
+    CurrentDb.Execute "InsertUnknownJob", dbFailOnError
+    Debug.Print "InsertUnknownJob", CurrentDb.RecordsAffected
+    
+    CurrentDb.Execute "InsertJob", dbFailOnError
+    Debug.Print "InsertJob", CurrentDb.RecordsAffected
+    
+    Dim path As String
+    sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_JOB_FILE)
+    sSheet = Consts.SHEET_JOB & "!"
+    
+    DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "Job", sPath, True, Consts.SHEET_JOB
+    
+    DoCmd.DeleteObject acTable, "Job"
+    Debug.Print "Delete Job", CurrentDb.RecordsAffected
+    
+    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "Job", sPath, True, sSheet
+    
+    ' Author
+    
+    CurrentDb.Execute "CreateAuthor", dbFailOnError
+    Debug.Print "CreateAuthor", CurrentDb.RecordsAffected
     
     
+    CurrentDb.Execute "InsertAuthor", dbFailOnError
+    Debug.Print "InsertAuthor", CurrentDb.RecordsAffected
 
+     
+    
+    
+     
     DoCmd.OpenTable "Author"
+    'Debug.Print "TestImportAuthor"
 End Sub
 
 Public Sub TestImportPaper()

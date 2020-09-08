@@ -1,1 +1,6 @@
-CREATE TABLE Department (ID COUNTER PRIMARY KEY, NAME VARCHAR, CollegeID int, FOREIGN KEY (CollegeID) REFERENCES College(ID) );
+CREATE TABLE Department (
+    [ID] INT,
+    [NAME] VARCHAR,
+    CollegeID INT,
+    FOREIGN KEY (CollegeID) REFERENCES College(ID)
+);

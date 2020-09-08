@@ -1,3 +1,3 @@
 INSERT INTO College ( Name )
-SELECT  DISTINCT College
-FROM RawAuthor;
+SELECT  DISTINCT CollegeName
+FROM SelectPersonnel;

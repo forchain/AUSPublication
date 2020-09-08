@@ -1,3 +1,4 @@
+Attribute VB_Name = "Init"
 
 Option Compare Database
 Option Explicit

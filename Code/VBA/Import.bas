@@ -1,6 +1,6 @@
+Attribute VB_Name = "Import"
 Option Compare Database
 Option Explicit
-
 
 Sub DeleteMFileV3()
 
@@ -273,18 +273,18 @@ End Sub
 Sub CloseAllTablesV3()
 
     For Each obj In CurrentData.AllTables
-        If Left(obj.name, 4) <> "MSys" Then
-            Debug.Print "Closing " & obj.name
-            DoCmd.Close acTable, obj.name, acSaveNo
+        If Left(obj.Name, 4) <> "MSys" Then
+            Debug.Print "Closing " & obj.Name
+            DoCmd.Close acTable, obj.Name, acSaveNo
         End If
     Next
 End Sub
 
 Sub DeleteAllTablesV3()
     For Each obj In CurrentData.AllTables
-        If Left(obj.name, 4) <> "MSys" Then
-            Debug.Print "Deleting " & obj.name
-            DoCmd.DeleteObject acTable, obj.name
+        If Left(obj.Name, 4) <> "MSys" Then
+            Debug.Print "Deleting " & obj.Name
+            DoCmd.DeleteObject acTable, obj.Name
         End If
     Next
 End Sub
@@ -292,9 +292,9 @@ End Sub
 Sub DeleteAllRelationsV3()
     Dim obj    As Relation
     For Each obj In CurrentDb.Relations
-        If Left(obj.name, 4) <> "MSys" Then
-            Debug.Print "Deleting " & obj.name
-            CurrentDb.Relations.Delete obj.name
+        If Left(obj.Name, 4) <> "MSys" Then
+            Debug.Print "Deleting " & obj.Name
+            CurrentDb.Relations.Delete obj.Name
         End If
     Next
 End Sub

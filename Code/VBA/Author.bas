@@ -9,14 +9,17 @@ Public Function ExtractOutDepID(Dep As String) As Integer
 End Function
 
 Public Function ExtractOutCollName(Dep As String) As String
-    Dim aToken
+'Debug.Print "[Debug]ExtractOutCollName Dep:" & Dep
+    Dim aToken() As String
     aToken = Split(Dep, "-")
     
     ExtractOutCollName = ExtractInCollName(aToken(1))
 End Function
 
 Public Function ExtractOutDepName(Dep As String) As String
-    Dim aToken
+
+'Debug.Print "[Debug]ExtractOutDepName Dep:" & Dep
+    Dim aToken() As String
     aToken = Split(Dep, "-")
     
     ExtractOutDepName = ExtractInDepName(aToken(1))
@@ -56,7 +59,9 @@ Public Function FixTitle(Title As String) As String
     Dim aToken() As String
     Dim sTitle As String
     
-    aToken = Split(Title, "-")
+    sTitle = Replace(Title, "-Prof", " Prof")
+    
+    aToken = Split(sTitle, "-")
     
     sTitle = Trim(aToken(0))
 
