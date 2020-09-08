@@ -11,18 +11,17 @@ Public Property Get IndexKey(ByVal Index As String, Year As Integer) As String
     
 End Property
 
-Public Property Get SheetPath(key As String) As String
+Public Property Get SheetPath(Section As String, Key As String) As String
 
-    SheetPath = CurrentProject.path + Consts.SHEETS_DIR + Val(Consts.SECTION_INDEX, key)
+    SheetPath = CurrentProject.path + Consts.SHEETS_DIR + Val(Section, Key)
     
 End Property
 
-
-Public Property Get Val(Section As String, key As String) As String
-    Val = Word.System.PrivateProfileString(SettingPath, Section, key)
+Public Property Get Val(Section As String, Key As String) As String
+    Val = Word.System.PrivateProfileString(SettingPath, Section, Key)
 End Property
 
-Public Property Let Val(Section As String, key As String, Value As String)
-    Word.System.PrivateProfileString(SettingPath, Section, key) = Value
+Public Property Let Val(Section As String, Key As String, Value As String)
+    Word.System.PrivateProfileString(SettingPath, Section, Key) = Value
 End Property
 

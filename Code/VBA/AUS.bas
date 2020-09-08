@@ -39,12 +39,12 @@ Public Function ExtractAuthorsFromIDs(IDs As String) As String()
     aAuthor = Split(IDs, ";")
     Dim i As Integer
 
-    Dim a, name As String
+    Dim a, Name As String
     For i = 0 To UBound(aAuthor)
         a = aAuthor(i)
         If a <> "" Then
-            name = Split(a, "/")(0)
-            aAuthor(i) = Trim(name)
+            Name = Split(a, "/")(0)
+            aAuthor(i) = Trim(Name)
         End If
     Next i
     
@@ -52,7 +52,7 @@ Public Function ExtractAuthorsFromIDs(IDs As String) As String()
     
 End Function
 
-Public Function ExtractAuthors(Addrs As String) As String()
+Public Function ExtractAuthorsText(Addrs As String) As String
     
     Dim iEndPos As Integer
     Dim iStartPos As Integer
@@ -62,8 +62,8 @@ Public Function ExtractAuthors(Addrs As String) As String()
     
     iEndPos = InStr(Addrs, "] Amer Univ Sharjah")
     If iEndPos = 0 Then
-        Debug.Print "[Error]ExtractAuthors No authors;Addrs:" & Addrs
-        ExtractAuthors = aAuthor
+        Debug.Print "[Error]ExtractAuthorsText No authors;Addrs:" & Addrs
+        ExtractAuthorsText = ""
         
         Exit Function
     End If
@@ -71,6 +71,16 @@ Public Function ExtractAuthors(Addrs As String) As String()
     iStartPos = InStrRev(Addrs, "[", iEndPos)
 
     sAuthors = Mid(Addrs, iStartPos + 1, iEndPos - iStartPos - 1)
+    
+    ExtractAuthorsText = sAuthors
+
+End Function
+
+Public Function ExtractAuthors(Addrs As String) As String()
+    
+    Dim sAuthors, aAuthor() As String
+
+    sAuthors = ExtractAuthorsText(Addrs)
     
     aAuthor = Split(sAuthors, "; ")
   
@@ -80,20 +90,41 @@ End Function
 
 Public Function CountAuthors(Addrs As String) As Integer
 
-    Dim aAuthors() As String
-    aAuthors = ExtractAuthors(Addrs)
-    If (Not Not aAuthors) = 0 Then
+    Dim aAuthor() As String
+    aAuthor = ExtractAuthors(Addrs)
+    If (Not Not aAuthor) = 0 Then
         Debug.Print "[Error]CountAuthors Addrs:" & Addrs
         CountAuthors = 0
         Exit Function
     End If
-    CountAuthors = UBound(aAuthors) + 1
+    CountAuthors = UBound(aAuthor) + 1
     'Debug.Print CountAuthors
+End Function
+
+Public Function SerializeAuthorNames(Addrs As String) As String
+
+    Dim aAuthor() As String
+    aAuthor = ExtractAuthors(Addrs)
+    If UBound(aAuthor) = -1 Then
+        Debug.Print "[Error]SerializeAuthorNames No authors;Addrs:" & Addrs
+        Exit Function
+    End If
+
+    Dim names As String
+    Dim i As Integer
+    names = FixName(aAuthor(0))
+    For i = 1 To UBound(aAuthor)
+        names = names & ";" & FixName(aAuthor(i))
+    Next i
+
+    
+    SerializeAuthorNames = names
+
 End Function
 
 Public Function FixName(FullName As String) As String
     If FullName = "" Then
-            Debug.Print "[Error]FixName No Full name"
+        Debug.Print "[Error]FixName No Full name"
         FixName = FullName
         Exit Function
     End If
@@ -125,24 +156,24 @@ Public Function FixName(FullName As String) As String
     'Debug.Print FixName
 End Function
 
-Public Function GetAbbrName(FullName As Variant) As String
+Public Function GetAbbrName(AuthorName As Variant) As String
 
-    If IsNull(FullName) Then
+    If IsNull(AuthorName) Then
         GetAbbrName = ""
         Exit Function
     End If
     Dim sFirstName, sLastName As String
-    sFirstName = Left(FullName, 1) + "."
-    sLastName = Split(FullName, " ")(1)
+    sFirstName = Left(AuthorName, 1) + "."
+    sLastName = Split(AuthorName, " ")(1)
 
     GetAbbrName = sFirstName & " " & sLastName
 End Function
 
 Public Function FixNameWithIDs(Abbr As String, IDs As String) As String
 
-'    If Abbr = "W. Abuzaid" Then
-'        Debug.Print "[Debug]FixNameWithIDs Abbr:" & Abbr & ", IDs:" & IDs
-'    End If
+    '    If Abbr = "W. Abuzaid" Then
+    '        Debug.Print "[Debug]FixNameWithIDs Abbr:" & Abbr & ", IDs:" & IDs
+    '    End If
     
     If Mid(Abbr, 2, 1) <> "." Then
         FixNameWithIDs = Abbr
@@ -156,12 +187,12 @@ Public Function FixNameWithIDs(Abbr As String, IDs As String) As String
         Exit Function
     End If
     
-    Dim aAuthors() As String
-    aAuthors = ExtractAuthorsFromIDs(IDs)
+    Dim aAuthor() As String
+    aAuthor = ExtractAuthorsFromIDs(IDs)
     Dim a As String
     Dim i As Integer
-    For i = 0 To UBound(aAuthors)
-        a = aAuthors(i)
+    For i = 0 To UBound(aAuthor)
+        a = aAuthor(i)
         If a <> "" Then
             a = FixName(a)
             If (Mid(a, 2, 1) <> ".") And (Left(a, 1) = Left(Abbr, 1)) And (Left(a, 1) <> ",") Then
@@ -191,10 +222,10 @@ Public Function SelectAuthor(Addrs As String, Order As Integer, ResearcherIDs As
 
 
 
-    Dim aAuthors() As String
+    Dim aAuthor() As String
 
-    aAuthors = ExtractAuthorsFromAddrs(Addrs)
-    If (Not Not aAuthors) = 0 Then
+    aAuthor = ExtractAuthorsFromAddrs(Addrs)
+    If (Not Not aAuthor) = 0 Then
         Debug.Print "[Error]SelectAuthor No Authors; Order: " & CStr(Order) & ", Addrs:" & Addrs
 
         SelectAuthor = Null
@@ -203,19 +234,19 @@ Public Function SelectAuthor(Addrs As String, Order As Integer, ResearcherIDs As
     Dim iIndex As Integer
     iIndex = Order - 1
 
-    If UBound(aAuthors) >= 9 Then
-        Debug.Print "SelectAuthor warning, UBound >= " & CStr(UBound(aAuthors))
+    If UBound(aAuthor) >= 9 Then
+        Debug.Print "SelectAuthor warning, UBound >= " & CStr(UBound(aAuthor))
     End If
 
 
-    If iIndex > UBound(aAuthors) Then
-        'Debug.Print "SelectAuthor error, iIndex > " & CStr(UBound(aAuthors))
+    If iIndex > UBound(aAuthor) Then
+        'Debug.Print "SelectAuthor error, iIndex > " & CStr(UBound(aAuthor))
         SelectAuthor = Null
         Exit Function
     End If
 
     Dim fixedName As String
-    fixedName = FixName(aAuthors(iIndex))
+    fixedName = FixName(aAuthor(iIndex))
     
     fixedName = FixNameWithIDs(fixedName, ResearcherIDs)
     fixedName = FixNameWithIDs(fixedName, ORCIDs)

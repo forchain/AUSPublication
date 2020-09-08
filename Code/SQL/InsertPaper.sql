@@ -1,10 +1,13 @@
 INSERT INTO
        Paper (
               WoSID,
+              DOI,
               Title,
               [Year],
               [Index],
-              Authors,
+              Addresses,
+              AuthorNames,
+              AuthorCount,
               Author1,
               Author2,
               Author3,
@@ -17,9 +20,12 @@ INSERT INTO
        )
 SELECT
        RawPaper.[UT (Unique WOS ID)],
+       RawPaper.DOI,
        RawPaper.[Article Title],
        [Year],
        [Index],
+       RawPaper.Addresses,
+       SerializeAuthorNames(RawPaper.Addresses),
        CountAuthors(RawPaper.Addresses),
        SelectAuthor(RawPaper.Addresses, 1, RawPaper.[Researcher Ids], RawPaper.ORCIDs),
        SelectAuthor(RawPaper.Addresses, 2, RawPaper.[Researcher Ids], RawPaper.ORCIDs),
