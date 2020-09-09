@@ -198,7 +198,7 @@ Public Function CountAuthors(Addrs As String) As Integer
     'Debug.Print CountAuthors
 End Function
 
-Public Function SerializeAuthorNames(Addrs As String) As String
+Public Function SerializeAuthorNames(Addrs As String, ResearcherIDs As String, ORCIDs As String) As String
 
     Dim aAuthor() As String
     aAuthor = ExtractAuthors(Addrs)
@@ -209,9 +209,13 @@ Public Function SerializeAuthorNames(Addrs As String) As String
 
     Dim names As String
     Dim i As Integer
+    Dim sFixedName As String
     names = FixName(aAuthor(0))
     For i = 1 To UBound(aAuthor)
-        names = names & ";" & FixName(aAuthor(i))
+        sFixedName = FixName(aAuthor(i))
+        sFixedName = FixNameWithIDs(sFixedName, ResearcherIDs)
+        sFixedName = FixNameWithIDs(sFixedName, ORCIDs)
+        names = names & ";" & sFixedName
     Next i
 
     
@@ -233,7 +237,7 @@ Public Function FixName(FullName As String) As String
     If UBound(aFullName) = 0 Then
         'Debug.Print "FixName warning, " & FullName
         FixName = FullName
-        Debug.Print FixName
+        'Debug.Print FixName
         Exit Function
     End If
     ' WoS naming style: Last Name, First Name
@@ -312,7 +316,7 @@ End Function
 Public Function SelectAuthor(Addrs As String, Order As Integer, ResearcherIDs As String, ORCIDs As String) As Variant
 
     If Order > 9 Or Order < 1 Then
-        Debug.Print "SelectAuthor error, Order: " & CStr(Order)
+        'Debug.Print "SelectAuthor error, Order: " & CStr(Order)
         SelectAuthor = Null
         Exit Function
     End If
@@ -353,20 +357,25 @@ Public Function SelectAuthor(Addrs As String, Order As Integer, ResearcherIDs As
 
 End Function
 
-' LastName, FirstName
+
 Public Function GetFirstName(sFullName) As String
-    aFullName = Split(sFullName, ",")
+Dim aFullName() As String
+
+    aFullName = Split(sFullName, " ")
     If UBound(aFullName) = 0 Then
         Debug.Print "GetFirstName failed, " & sFullName
         GetFirstName = ""
         Exit Function
     End If
-    GetFirstName = Trim(aFullName(1))
+    GetFirstName = Trim(aFullName(0))
 End Function
 
 Public Function GetLastName(sFullName) As String
-    aFullName = Split(sFullName, ",")
-
-    GetLastName = Trim(aFullName(0))
+    Dim aFullName() As String
+    aFullName = Split(sFullName, " ")
+    If UBound(aFullName) > 0 Then
+        GetLastName = Trim(aFullName(1))
+    End If
 End Function
+
 

@@ -19,6 +19,8 @@ Public Const SECTION_AUTHOR As String = "Author"
 Public Const KEY_JOB_FILE As String = "JobFile"
 Public Const SHEET_JOB As String = "Job"
 
+Public Const KEY_UNKNOWN_AUTHOR_FILE As String = "UnknownAuthorFile"
+Public Const SHEET_UNKNOWN_AUTHOR As String = "UnknownAuthor"
 
 Public Const KEY_FACULTY_OUT_FILE As String = "FaultyOutFile"
 Public Const KEY_FACULTY_OUT_SHEET As String = "FacultyOutSheet"
@@ -44,6 +46,9 @@ Public Const SHEET_PAPER As String = "savedrecs"
 Public Const SECTION_PAPER As String = "Paper"
 Public Const KEY_UNKNOWN_PAPER_FILE As String = "UnknownPaperFile"
 Public Const SHEET_UNKNOWN_PAPER As String = "UnknownPaper"
+
+Public Const SECTION_WEIGHT As String = "Weight"
+
 
 Property Get INDICES() As Variant
     INDICES = Array(AHCI, BHCI, BSCI, ESCI, SCIE, SSCI)

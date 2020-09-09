@@ -1,6 +1,6 @@
 SELECT
     PaperID,
-    Count(a.ID) as FacultyCount,
+    Count(AuthorID) as FacultyCount,
     First(AuthorCount) as AllCount
 FROM
     SelectWeight
