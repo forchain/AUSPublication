@@ -21,8 +21,16 @@ Public Sub FillWeight()
 
     Do While Not rsPaper.EOF
         Dim authors() As String
-        authors = Paper.ExtractAuthors(rsPaper!Addresses)
-        If UBound(authors) >= 0 Then
+        '        If rsPaper!Id = 828 Then
+        '            Debug.Print rsPaper!AuthorNames
+        '        End If
+       
+        If IsNull(rsPaper!AuthorNames) Then
+            qd.Parameters("PaperID").Value = rsPaper!Id
+            qd.Parameters("AuthorName").Value = ""
+            qd.Execute dbFailOnError
+        Else
+            authors = Split(rsPaper!AuthorNames, ";")
             Dim iI As Integer
             For iI = 0 To UBound(authors)
                 an = authors(iI)
@@ -30,15 +38,17 @@ Public Sub FillWeight()
                 qd.Parameters("AuthorName").Value = Paper.FixName(an)
                 qd.Execute dbFailOnError
             Next iI
-        Else
-            qd.Parameters("PaperID").Value = rsPaper!Id
-            qd.Parameters("AuthorName").Value = ""
-            qd.Execute dbFailOnError
         End If
+
 
         rsPaper.MoveNext
     Loop
     
+    ' Unknown Author
+    Dim sPath As String
+    sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_UNKNOWN_AUTHOR_FILE)
+    
+    DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "SelectUnknownAuthor", sPath, True, Consts.SHEET_UNKNOWN_AUTHOR
 End Sub
 
 
@@ -49,6 +59,12 @@ End Sub
 
 Public Function CalcScore(iID As Variant, iPapInd As Integer, iCurrInd As Integer, iFacC As Integer, iAuthC As Integer) As Double
 
+    If iAuthC = 0 Then
+        'Debug.Print "[Error]CalcScore zero"
+        Exit Function
+    End If
+
+
     Dim bIsFac As Byte
 
     If IsNull(iID) Then
@@ -56,6 +72,8 @@ Public Function CalcScore(iID As Variant, iPapInd As Integer, iCurrInd As Intege
     Else
         bIsFac = True
     End If
+    
+    
     
     Dim dScore As Double
     dScore = 0#
@@ -72,12 +90,13 @@ Public Function CalcScore(iID As Variant, iPapInd As Integer, iCurrInd As Intege
     End If
     
     If iCurrInd = 0 Or iPapInd = iCurrInd Then
-        CalcScore = dScore
+        CalcScore = FormatNumber(dScore, 2)
     Else
         CalcScore = 0#
     End If
 
 End Function
+
 
 
 

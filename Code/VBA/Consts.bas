@@ -48,6 +48,8 @@ Public Const KEY_UNKNOWN_PAPER_FILE As String = "UnknownPaperFile"
 Public Const SHEET_UNKNOWN_PAPER As String = "UnknownPaper"
 
 Public Const SECTION_WEIGHT As String = "Weight"
+Public Const KEY_REPORT_FILE As String = "ReportFile"
+Public Const SHEET_REPORT As String = "Department"
 
 
 Property Get INDICES() As Variant

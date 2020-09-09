@@ -24,4 +24,5 @@ SELECT  DISTINCT AuthorID
        ,COUNT(IIf([ESCI] > 0,1,Null))     AS AbsESCI
 FROM SelectScore AS s
 WHERE (DepartmentID) = [Forms]![DepForm]![Dep_Combo] 
+AND [Year] = [Forms]![DepForm]![Year_Combo] 
 GROUP BY  AuthorID;

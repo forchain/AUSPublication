@@ -25,7 +25,7 @@ FROM
 	       , "Senior"
 	       ,Department  As DepartmentID
 	       ,ExtractInDepName([Department Description]) As DepartmentName
-	       ,ExtractInCollName([Department Description]) As CollegeName
+	       ,"Others" As CollegeName
 	FROM  LinkSenior
 	union
 	SELECT  DISTINCT GetAuthorName([Name]) AS AuthorName
@@ -34,6 +34,6 @@ FROM
 	       , "Staff"
 	       ,ExtractOutDepID(Department) As DepartmentID
 	       ,ExtractOutDepName(Department) As DepartmentName
-	       ,ExtractOutCollName(Department) As CollegeName
+	       ,"Others" As CollegeName
 	FROM  LinkStaff
 ) As Personnel
