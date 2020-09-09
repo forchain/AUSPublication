@@ -23,15 +23,18 @@ Public Const SHEET_JOB As String = "Job"
 Public Const KEY_FACULTY_OUT_FILE As String = "FaultyOutFile"
 Public Const KEY_FACULTY_OUT_SHEET As String = "FacultyOutSheet"
 
-Public Const KEY_STAFF_OUT As String = "StaffOut"
-
-Public Const KEY_STAFF_SENIOR As String = "StaffSenior"
 
 Public Const KEY_FACULTY_IN_FILE As String = "FacultyInFile"
 Public Const KEY_FACULTY_IN_SHEET As String = "FacultyInSheet"
 
 
 Public Const KEY_FACULTY_DEPARTING As String = "FacultyDeparting"
+
+Public Const KEY_SENIOR_FILE As String = "SeniorFile"
+Public Const KEY_SENIOR_SHEET As String = "SeniorSheet"
+
+Public Const KEY_STAFF_FILE As String = "StaffFile"
+Public Const KEY_STAFF_SHEET As String = "StaffSheet"
 
 Public Const SECTION_INDEX As String = "Index"
 

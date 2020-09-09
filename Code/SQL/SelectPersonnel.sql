@@ -8,7 +8,7 @@ FROM
 	       ,Department  As DepartmentID
 	       ,ExtractInDepName([Department Description]) As DepartmentName
 	       ,ExtractInCollName([Department Description]) As CollegeName
-	FROM RawFacultyIn union
+	FROM LinkFacultyIn union
 	SELECT  DISTINCT GetAuthorName([Name]) AS AuthorName
 	       ,[Name] As FullName
 	       ,GetAbbrName(AuthorName)        AS AbbrName
@@ -16,5 +16,24 @@ FROM
 	       ,ExtractOutDepID(Department) As DepartmentID
 	       ,ExtractOutDepName(Department) As DepartmentName
 	       ,ExtractOutCollName(Department) As CollegeName
-	FROM  RawFacultyOut
+	FROM  LinkFacultyOut
+	union
+
+	SELECT  DISTINCT GetAuthorName([Full Name]) AS AuthorName
+	       ,[Full Name] As FullName
+	       ,GetAbbrName(AuthorName)             AS AbbrName 
+	       , "Senior"
+	       ,Department  As DepartmentID
+	       ,ExtractInDepName([Department Description]) As DepartmentName
+	       ,ExtractInCollName([Department Description]) As CollegeName
+	FROM  LinkSenior
+	union
+	SELECT  DISTINCT GetAuthorName([Name]) AS AuthorName
+	       ,[Name] As FullName
+	       ,GetAbbrName(AuthorName)        AS AbbrName
+	       , "Staff"
+	       ,ExtractOutDepID(Department) As DepartmentID
+	       ,ExtractOutDepName(Department) As DepartmentName
+	       ,ExtractOutCollName(Department) As CollegeName
+	FROM  LinkStaff
 ) As Personnel

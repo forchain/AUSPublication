@@ -13,13 +13,25 @@ Public Sub ImportAuthor()
     sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_IN_FILE)
     sSheet = Config.Val(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_IN_SHEET) & "!"
 
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawFacultyIn", sPath, True, sSheet
+    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "LinkFacultyIn", sPath, True, sSheet
     
     ' Faculty Out
     sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_OUT_FILE)
     sSheet = Config.Val(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_OUT_SHEET) & "!"
 
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawFacultyOut", sPath, True, sSheet
+    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "LinkFacultyOut", sPath, True, sSheet
+    
+    ' Senior
+    sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_SENIOR_FILE)
+    sSheet = Config.Val(Consts.SECTION_AUTHOR, Consts.KEY_SENIOR_SHEET) & "!"
+
+    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "LinkSenior", sPath, True, sSheet
+        
+    '  Staff
+    sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_STAFF_FILE)
+    sSheet = Config.Val(Consts.SECTION_AUTHOR, Consts.KEY_STAFF_SHEET) & "!"
+
+    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "LinkStaff", sPath, True, sSheet
     
     ' College
     CurrentDb.Execute "CreateCollege", dbFailOnError
