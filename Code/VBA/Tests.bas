@@ -34,166 +34,67 @@ Public Sub TestWordApplication()
     
 End Sub
 
+Public Sub TestImportWeight()
+
+    App.ClearTables
+
+    Author.ImportAuthor
+    DoCmd.OpenTable "Author"
+
+    Paper.ImportPaper
+    DoCmd.OpenTable "Paper"
+
+End Sub
+
 Public Sub TestImportAuthor()
 
     App.ClearTables
 
-    '    Dim currYear As Integer
-    '    currYear = Year(Date)
-    '
-    '    Dim y As Integer
-    '    Dim i As Integer
-    '    Dim key As String
-    '    Dim path As String
-    '
-    '    CurrentDb.Execute "CreateAuthor", dbFailOnError
-    '    Debug.Print "CreatePaper", CurrentDb.RecordsAffected
-    '
-    '    Dim qd As DAO.QueryDef
-    '    Set qd = CurrentDb.QueryDefs("InsertPaper")
-    '
-    '    For y = Consts.BEIGN_YEAR To currYear
-    '        For i = 0 To UBound(Consts.INDICES) - 1
-    '
-    '            key = Config.IndexKey(Consts.INDICES(i), y)
-    '
-    '            path = Config.SheetPath(key)
-    '
-    '            Debug.Print path
-    '
-    '            DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel9, "RawPaper", path, True, Consts.SHEET_PAPER & "!"
-    '
-    '            qd.Parameters("Year").Value = y
-    '            qd.Parameters("Index").Value = i + 1
-    '
-    '            qd.Execute dbFailOnError
-    '            Debug.Print "InsertPaper", CurrentDb.RecordsAffected
-    '
-    '            DoCmd.DeleteObject acTable, "RawPaper"
-    '            Debug.Print "Delete RawPaper", CurrentDb.RecordsAffected
-    '        Next i
-    '    Next y
-
-    Dim y As Integer
-    Dim i As Integer
-    Dim sPath As String
-    Dim sSheet As String
-
-    ' Faculty In
-    sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_IN_FILE)
-    sSheet = Config.Val(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_IN_SHEET) & "!"
-
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawFacultyIn", sPath, True, sSheet
+    Author.ImportAuthor
     
-    ' Faculty Out
-    sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_OUT_FILE)
-    sSheet = Config.Val(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_OUT_SHEET) & "!"
-
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "RawFacultyOut", sPath, True, sSheet
-    
-    ' College
-    CurrentDb.Execute "CreateCollege", dbFailOnError
-    Debug.Print "CreateCollege", CurrentDb.RecordsAffected
-    
-    CurrentDb.Execute "InsertUnknownCollege", dbFailOnError
-    Debug.Print "InsertUnknownCollege", CurrentDb.RecordsAffected
-    
-    CurrentDb.Execute "InsertCollege", dbFailOnError
-    Debug.Print "InsertCollege", CurrentDb.RecordsAffected
-    
-    ' Department
-    CurrentDb.Execute "CreateDepartment", dbFailOnError
-    Debug.Print "CreateDepartment", CurrentDb.RecordsAffected
-    
-    CurrentDb.Execute "InsertUnknownDepartment", dbFailOnError
-    Debug.Print "InsertUnknownDepartment", CurrentDb.RecordsAffected
-    
-    CurrentDb.Execute "InsertDepartment", dbFailOnError
-    Debug.Print "InsertDepartment", CurrentDb.RecordsAffected
-    
-    ' Job
-    
-    CurrentDb.Execute "CreateJob", dbFailOnError
-    Debug.Print "CreateJob", CurrentDb.RecordsAffected
-    
-    CurrentDb.Execute "InsertUnknownJob", dbFailOnError
-    Debug.Print "InsertUnknownJob", CurrentDb.RecordsAffected
-    
-    CurrentDb.Execute "InsertJob", dbFailOnError
-    Debug.Print "InsertJob", CurrentDb.RecordsAffected
-    
-    Dim path As String
-    sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_JOB_FILE)
-    sSheet = Consts.SHEET_JOB & "!"
-    
-    DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "Job", sPath, True, Consts.SHEET_JOB
-    
-    DoCmd.DeleteObject acTable, "Job"
-    Debug.Print "Delete Job", CurrentDb.RecordsAffected
-    
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "Job", sPath, True, sSheet
-    
-    ' Author
-    
-    CurrentDb.Execute "CreateAuthor", dbFailOnError
-    Debug.Print "CreateAuthor", CurrentDb.RecordsAffected
-    
-    
-    CurrentDb.Execute "InsertAuthor", dbFailOnError
-    Debug.Print "InsertAuthor", CurrentDb.RecordsAffected
-
-     
-    
-    
-     
     DoCmd.OpenTable "Author"
-    'Debug.Print "TestImportAuthor"
+
 End Sub
 
 Public Sub TestImportPaper()
 
     App.ClearTables
 
-    Dim currYear As Integer
-    currYear = Year(Date)
-
-    Dim y As Integer
-    Dim i As Integer
-    Dim Key As String
-    Dim path As String
-    
-    CurrentDb.Execute "CreatePaper", dbFailOnError
-    Debug.Print "CreatePaper", CurrentDb.RecordsAffected
-
-    Dim qd As DAO.QueryDef
-    Set qd = CurrentDb.QueryDefs("InsertPaper")
-    
-    For y = Consts.BEIGN_YEAR To currYear
-        For i = 0 To UBound(Consts.INDICES) - 1
-            
-            Key = Config.IndexKey(Consts.INDICES(i), y)
-
-            path = Config.SheetPath(Consts.SECTION_INDEX, Key)
-            
-            Debug.Print path
-
-            DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel9, "RawPaper", path, True, Consts.SHEET_PAPER & "!"
-            
-            qd.Parameters("Year").Value = y
-            qd.Parameters("Index").Value = i + 1
-
-            qd.Execute dbFailOnError
-            Debug.Print "InsertPaper", CurrentDb.RecordsAffected
-        
-            DoCmd.DeleteObject acTable, "RawPaper"
-            Debug.Print "Delete RawPaper", CurrentDb.RecordsAffected
-        Next i
-    Next y
-
-
-    
+    Paper.ImportPaper
+    DoCmd.OpenTable "Paper"
 
 End Sub
+
+Public Sub TestViewPaper()
+
+    App.ClearTables
+
+    Paper.ViewPaper
+    
+End Sub
+
+
+Public Sub TestFillWeight()
+
+    App.ClearTables
+
+    Paper.ImportPaper
+    
+    Author.ImportAuthor
+    
+    Weight.FillWeight
+    
+End Sub
+
+
+Public Sub TestViewAuthor()
+
+    App.ClearTables
+
+    Paper.ViewPaper
+    
+End Sub
+
 
 Public Sub TestFixAbbr()
     CurrentDb.Execute "CreateAbbr", dbFailOnError

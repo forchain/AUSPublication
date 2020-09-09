@@ -22,8 +22,6 @@ Sub CloseQueries()
     Next
 End Sub
 
-
-
 Sub DeleteTables()
     Dim obj As AccessObject
     For Each obj In CurrentData.AllTables
