@@ -1,9 +1,9 @@
 CREATE TABLE Author (
     ID COUNTER PRIMARY KEY,
+    Code VARCHAR,
     FullName VARCHAR,
     AuthorName VARCHAR,
     AbbrName VARCHAR,
-
-    JobID VARCHAR,
+    JobID int,
     DepartmentID int
 );

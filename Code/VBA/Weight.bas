@@ -2,54 +2,6 @@ Attribute VB_Name = "Weight"
 Option Compare Database
 Option Explicit
 
-Public Sub FillWeight()
-    
-    Dim db     As DAO.Database
-    Set db = CurrentDb
-  
-    db.Execute "CreateWeight", dbFailOnError
-    Debug.Print "CreateWeight", db.RecordsAffected
-    
-
-    Dim rsPaper As Recordset
-    'Set rsPaper = db.OpenRecordset("Paper", dbOpenTable)
-    Set rsPaper = db.OpenRecordset("ViewPaper", dbOpenDynaset)
-
-    Dim qd As DAO.QueryDef
-    Dim an As String
-    Set qd = db.QueryDefs("InsertWeight")
-
-    Do While Not rsPaper.EOF
-        Dim authors() As String
-        '        If rsPaper!Id = 828 Then
-        '            Debug.Print rsPaper!AuthorNames
-        '        End If
-       
-        If IsNull(rsPaper!AuthorNames) Then
-            qd.Parameters("PaperID").Value = rsPaper!Id
-            qd.Parameters("AuthorName").Value = ""
-            qd.Execute dbFailOnError
-        Else
-            authors = Split(rsPaper!AuthorNames, ";")
-            Dim iI As Integer
-            For iI = 0 To UBound(authors)
-                an = authors(iI)
-                qd.Parameters("PaperID").Value = rsPaper!Id
-                qd.Parameters("AuthorName").Value = Paper.FixName(an)
-                qd.Execute dbFailOnError
-            Next iI
-        End If
-
-
-        rsPaper.MoveNext
-    Loop
-    
-    ' Unknown Author
-    Dim sPath As String
-    sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_UNKNOWN_AUTHOR_FILE)
-    
-    DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "SelectUnknownAuthor", sPath, True, Consts.SHEET_UNKNOWN_AUTHOR
-End Sub
 
 
 'iFalcC:  faculty Count
@@ -96,7 +48,6 @@ Public Function CalcScore(iID As Variant, iPapInd As Integer, iCurrInd As Intege
     End If
 
 End Function
-
 
 
 

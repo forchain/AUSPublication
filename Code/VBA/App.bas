@@ -50,3 +50,12 @@ Sub ClearTables()
     DeleteTables
 End Sub
 
+Public Function CheckTable(tblName As String) As Boolean
+
+    If DCount("[Name]", "MSysObjects", "[Name] = '" & tblName & "' And Type In (1,4,6)") = 1 Then
+
+        CheckTable = True
+
+    End If
+
+End Function

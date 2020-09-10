@@ -1,5 +1,4 @@
-[Tolba, M. F.] Khalifa Univ Sci & Technol, SoCC, Abu Dhabi 127788, U Arab Emirates; [Tolba, M. F.; Elwakil, A. S.; Radwan, A. G.] Nile Univ, Nanoelect Integrated Syst Ctr NISC Res Ctr, Cairo, Egypt; [Elwakil, A. S.] Univ Sharjah, Dept Elect & Comp Engn, S
-
-[Tolba, M. F.] Khalifa Univ Sci & Technol, SoCC, Abu Dhabi 127788, U Arab Emirates; [Tolba, M. F.; Elwakil, A. S.; Radwan, A. G.] Nile Univ, Nanoelect Integrated Syst Ctr NISC Res Ctr, Cairo, Egypt; [Elwakil, A. S.] Univ Sharjah, Dept Elect & Comp Engn, S
-
-[Tolba, M. F.] Khalifa Univ Sci & Technol, SoCC, Abu Dhabi 127788, U Arab Emirates; [Tolba, M. F.; Elwakil, A. S.; Radwan, A. G.] Nile Univ, Nanoelect Integrated Syst Ctr NISC Res Ctr, Cairo, Egypt; [Elwakil, A. S.] Univ Sharjah, Dept Elect & Comp Engn, Sharjah 27272, U Arab Emirates; [Elwakil, A. S.] Univ Calgary, Dept Elect & Comp Engn, Edmonton, AB, Canada; [Orabi, H.; Elnawawy, M.; Aloul, F.; Sagahyroon, A.] Amer Univ Sharjah, Dept Comp Sci & Engn, Sharjah, U Arab Emirates; [Radwan, A. G.] Cairo Univ, Dept Math & Phys, Fac Engn, Cairo, Egypt
+AuthorName
+Ahmed Mohamed
+Jason Ward
+Mohammad Khan

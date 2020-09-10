@@ -2,53 +2,7 @@ Attribute VB_Name = "Paper"
 Option Compare Database
 Option Explicit
 
-Public Sub ImportPaper()
 
-    Dim currYear As Integer
-    currYear = Year(Date)
-
-    Dim y As Integer
-    Dim i As Integer
-    Dim sKey As String
-    Dim sPath As String
-    
-    CurrentDb.Execute "CreatePaper", dbFailOnError
-    Debug.Print "CreatePaper", CurrentDb.RecordsAffected
-
-    Dim qd As DAO.QueryDef
-    Set qd = CurrentDb.QueryDefs("InsertPaper")
-    
-    For y = Consts.BEIGN_YEAR To currYear
-        For i = 0 To UBound(Consts.INDICES)
-            
-            sKey = Config.IndexKey(Consts.INDICES(i), y)
-
-            sPath = Config.SheetPath(Consts.SECTION_INDEX, sKey)
-            
-            'Debug.Print path
-
-            DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel9, "LinkPaper", sPath, True, Consts.SHEET_PAPER & "!"
-            
-            qd.Parameters("Year").Value = y
-            qd.Parameters("Index").Value = i + 1
-
-            qd.Execute dbFailOnError
-            Debug.Print "InsertPaper", CurrentDb.RecordsAffected
-        
-            DoCmd.DeleteObject acTable, "LinkPaper"
-            Debug.Print "Delete LinkPaper", CurrentDb.RecordsAffected
-        Next i
-    Next y
-    ' UnknownPaper
-    
-    sPath = Config.SheetPath(Consts.SECTION_PAPER, Consts.KEY_UNKNOWN_PAPER_FILE)
-    
-    DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "SelectUnknownPaper", sPath, True, Consts.SHEET_UNKNOWN_PAPER
-    
-    
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "UnknownPaper", sPath, True, Consts.SHEET_UNKNOWN_PAPER & "!"
-    
-End Sub
 
 Public Sub ViewPaper()
     Dim iCurrYear As Integer
@@ -357,9 +311,8 @@ Public Function SelectAuthor(Addrs As String, Order As Integer, ResearcherIDs As
 
 End Function
 
-
 Public Function GetFirstName(sFullName) As String
-Dim aFullName() As String
+    Dim aFullName() As String
 
     aFullName = Split(sFullName, " ")
     If UBound(aFullName) = 0 Then
@@ -377,5 +330,4 @@ Public Function GetLastName(sFullName) As String
         GetLastName = Trim(aFullName(1))
     End If
 End Function
-
 

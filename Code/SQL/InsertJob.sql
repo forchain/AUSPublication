@@ -6,3 +6,4 @@ SELECT
        1
 FROM
        SelectPersonnel
+WHERE JobTitle not IN ( SELECT DISTINCT Title FROM Job )  

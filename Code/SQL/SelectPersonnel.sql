@@ -2,6 +2,7 @@ SELECT  *
 FROM 
 (
 	SELECT  DISTINCT GetAuthorName([Full Name]) AS AuthorName 
+		   ,ID as Code
 	       ,[Full Name] As FullName
 	       ,GetAbbrName(AuthorName)             AS AbbrName 
 	       ,FixTitle([Job Title]) As JobTitle
@@ -10,6 +11,7 @@ FROM
 	       ,ExtractInCollName([Department Description]) As CollegeName
 	FROM LinkFacultyIn union
 	SELECT  DISTINCT GetAuthorName([Name]) AS AuthorName
+		   ,ID as Code
 	       ,[Name] As FullName
 	       ,GetAbbrName(AuthorName)        AS AbbrName
 	       ,FixTitle(Title) As JobTitle
@@ -20,6 +22,7 @@ FROM
 	union
 
 	SELECT  DISTINCT GetAuthorName([Full Name]) AS AuthorName
+		   ,ID as Code
 	       ,[Full Name] As FullName
 	       ,GetAbbrName(AuthorName)             AS AbbrName 
 	       , "Senior"
@@ -29,6 +32,7 @@ FROM
 	FROM  LinkSenior
 	union
 	SELECT  DISTINCT GetAuthorName([Name]) AS AuthorName
+		   ,ID as Code
 	       ,[Name] As FullName
 	       ,GetAbbrName(AuthorName)        AS AbbrName
 	       , "Staff"
