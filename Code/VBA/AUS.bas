@@ -14,3 +14,7 @@ Public Function NameOrDef(vVal As Variant) As String
 
 End Function
 
+Public Function GetIndexName(ByVal iInd As Integer) As String
+    GetIndexName = Consts.INDICES(iInd - 1)
+End Function
+

@@ -2,148 +2,161 @@ Attribute VB_Name = "Main"
 Option Compare Database
 Option Explicit
 
-Public Sub ImportAuthor()
+Public Sub CreateTables()
+    Dim dicUnknown As New Scripting.Dictionary
+    Dim dicOther As New Scripting.Dictionary
+    
+    dicUnknown.Add "Author", False
+    dicUnknown.Add "College", True
+    dicUnknown.Add "Department", True
+    dicUnknown.Add "Job", True
+    dicUnknown.Add "Paper", False
+    dicUnknown.Add "Weight", False
+    
+    dicOther.Add "College", True
 
-    Dim y As Integer
-    Dim i As Integer
-    Dim sPath As String
-    Dim sSheet As String
+    Dim bUnknown, bOthers As Boolean
+    Dim sKey, sQuery As String
 
-    ' Faculty In
-    sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_IN_FILE)
-    sSheet = Config.Val(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_IN_SHEET) & "!"
+    For Each sKey In dicUnknown.Keys
+        If Not CheckTable(sKey) Then
+            sQuery = "Create" + sKey
+            App.Execute sQuery
+            bUnknown = dicUnknown.Item(sKey)
+            If bUnknown Then
+                sQuery = "InsertUnknown" + sKey
+                App.Execute sQuery
+            End If
+            If dicOther.Exists(sKey) Then
+                sQuery = "InsertOther" + sKey
+                App.Execute sQuery
+            End If
+        End If
+    Next sKey
 
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "LinkFacultyIn", sPath, True, sSheet
-    
-    ' Faculty Out
-    sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_OUT_FILE)
-    sSheet = Config.Val(Consts.SECTION_AUTHOR, Consts.KEY_FACULTY_OUT_SHEET) & "!"
-
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "LinkFacultyOut", sPath, True, sSheet
-    
-    ' Senior
-    sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_SENIOR_FILE)
-    sSheet = Config.Val(Consts.SECTION_AUTHOR, Consts.KEY_SENIOR_SHEET) & "!"
-
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "LinkSenior", sPath, True, sSheet
-        
-    '  Staff
-    sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_STAFF_FILE)
-    sSheet = Config.Val(Consts.SECTION_AUTHOR, Consts.KEY_STAFF_SHEET) & "!"
-
-    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "LinkStaff", sPath, True, sSheet
-    
-    ' College
-    If Not CheckTable("College") Then
-        CurrentDb.Execute "CreateCollege", dbFailOnError
-        Debug.Print "CreateCollege", CurrentDb.RecordsAffected
-    
-        CurrentDb.Execute "InsertUnknownCollege", dbFailOnError
-        Debug.Print "InsertUnknownCollege", CurrentDb.RecordsAffected
-    End If
-
-    CurrentDb.Execute "InsertCollege", dbFailOnError
-    Debug.Print "InsertCollege", CurrentDb.RecordsAffected
-    
-    ' Department
-    If Not CheckTable("Department") Then
-        CurrentDb.Execute "CreateDepartment", dbFailOnError
-        Debug.Print "CreateDepartment", CurrentDb.RecordsAffected
-    
-        CurrentDb.Execute "InsertUnknownDepartment", dbFailOnError
-        Debug.Print "InsertUnknownDepartment", CurrentDb.RecordsAffected
-    End If
-    CurrentDb.Execute "InsertDepartment", dbFailOnError
-    Debug.Print "InsertDepartment", CurrentDb.RecordsAffected
-    
-    ' Job
-    If Not CheckTable("Job") Then
-        CurrentDb.Execute "CreateJob", dbFailOnError
-        Debug.Print "CreateJob", CurrentDb.RecordsAffected
-    
-        CurrentDb.Execute "InsertUnknownJob", dbFailOnError
-        Debug.Print "InsertUnknownJob", CurrentDb.RecordsAffected
-    End If
-    CurrentDb.Execute "InsertJob", dbFailOnError
-    Debug.Print "InsertJob", CurrentDb.RecordsAffected
-    
-    ' Author
-    
-    If Not CheckTable("Author") Then
-        CurrentDb.Execute "CreateAuthor", dbFailOnError
-        Debug.Print "CreateAuthor", CurrentDb.RecordsAffected
-        
-        CurrentDb.Execute "IndexAuthor", dbFailOnError
-        Debug.Print "IndexAuthor", CurrentDb.RecordsAffected
-    End If
-    
-    
-    CurrentDb.Execute "InsertAuthor", dbFailOnError
-    Debug.Print "InsertAuthor", CurrentDb.RecordsAffected
-    
-    DoCmd.DeleteObject acTable, "LinkFacultyIn"
-    Debug.Print "Delete LinkFacultyIn", CurrentDb.RecordsAffected
-    DoCmd.DeleteObject acTable, "LinkFacultyOut"
-    Debug.Print "Delete LinkFacultyOut", CurrentDb.RecordsAffected
-    DoCmd.DeleteObject acTable, "LinkSenior"
-    Debug.Print "Delete LinkSenior", CurrentDb.RecordsAffected
-    DoCmd.DeleteObject acTable, "LinkStaff"
-    Debug.Print "Delete LinkStaff", CurrentDb.RecordsAffected
-   
-    'DoCmd.OpenTable "Author"
-    'Debug.Print "TestImportAuthor"
 End Sub
 
-Public Sub ImportPaper()
-
-    Dim currYear As Integer
-    currYear = Year(Date)
-
-    Dim y As Integer
-    Dim i As Integer
-    Dim sKey As String
-    Dim sPath As String
+Public Function ImportAuthor(EmplType As Byte, ByVal Path As String) As Integer
+    Dim sFunc As String
+    sFunc = "ImportAuthor"
     
-    If Not CheckTable("Paper") Then
-        CurrentDb.Execute "CreatePaper", dbFailOnError
-        Debug.Print "CreatePaper", CurrentDb.RecordsAffected
-    End If
-
-
-    Dim qd As DAO.QueryDef
-    Set qd = CurrentDb.QueryDefs("InsertPaper")
-    
-    For y = Consts.BEIGN_YEAR To currYear
-        For i = 0 To UBound(Consts.INDICES)
-            
-            sKey = Config.IndexKey(Consts.INDICES(i), y)
-
-            sPath = Config.SheetPath(Consts.SECTION_INDEX, sKey)
-            
-            'Debug.Print path
-
-            DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel9, "LinkPaper", sPath, True, Consts.SHEET_PAPER & "!"
-            
-            qd.Parameters("Year").Value = y
-            qd.Parameters("Index").Value = i + 1
-
-            qd.Execute dbFailOnError
-            Debug.Print "InsertPaper", CurrentDb.RecordsAffected
+    App.DeleteTable "LinkAuthor"
+    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "LinkAuthor", Path, True
         
-            DoCmd.DeleteObject acTable, "LinkPaper"
-            Debug.Print "Delete LinkPaper", CurrentDb.RecordsAffected
-        Next i
-    Next y
-    ' UnknownPaper
-'
-'    sPath = Config.SheetPath(Consts.SECTION_PAPER, Consts.KEY_UNKNOWN_PAPER_FILE)
-'
-'    DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "SelectUnknownPaper", sPath, True, Consts.SHEET_UNKNOWN_PAPER
-'
-'
-'    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "UnknownPaper", sPath, True, Consts.SHEET_UNKNOWN_PAPER & "!"
-'
-End Sub
+    Dim i As Integer
+    Dim sQuery As String
+    
+    Dim sInFields, sOutFields As String
+    sInFields = "Type;Full Name;ID;Current Hire Date;Job Title;Department;Department Description"
+    sOutFields = "Empl Type;Department;Name;ID;Current Hire Date;Termination Date;Title"
+    
+    If App.CheckFields("LinkAuthor", sInFields) Then
+        sQuery = "MakeImportAuthorIn"
+    ElseIf App.CheckFields("LinkAuthor", sOutFields) Then
+        sQuery = "MakeImportAuthorOut"
+    Else
+        Log.E sFunc, "Invalid fields", "Path", Path
+        Exit Function
+    End If
+    
+    App.DeleteTable "ImportAuthor"
+    
+    Dim iRows As Integer
+    iRows = App.Execute(sQuery)
+
+    If iRows = 0 Then
+        MsgBox "No new records imported", Title:="Import"
+        ImportAuthor = iRows
+        Exit Function
+    End If
+    
+    '1 Faculty; 2 Staff
+    If EmplType = 1 Then
+        sQuery = "InsertCollege"
+        App.Execute (sQuery)
+        sQuery = "InsertDepartment"
+        App.Execute (sQuery)
+    Else
+        sQuery = "InsertOtherDepartment"
+        App.Execute (sQuery)
+    End If
+    
+    sQuery = "InsertJob"
+    App.Execute (sQuery)
+    
+    sQuery = "InsertAuthor"
+    App.Execute (sQuery)
+    
+    'Log.i sFunc, "Imported", "iRows", iRows
+    MsgBox iRows & " records imported", Title:="Import"
+
+    
+    ImportAuthor = iRows
+End Function
+
+Public Function ImportPaper(ByVal Index As Integer, ByVal Path As String) As Integer
+    Dim sFunc As String
+    sFunc = "ImportAuthor"
+    
+    Dim sLinkTable As String
+    sLinkTable = "LinkPaper"
+
+    App.DeleteTable sLinkTable
+
+    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel9, sLinkTable, Path, True
+        
+    Dim sFields, sOutFields As String
+    sFields = "Publication Type;Authors;Book Authors;Book Editors;Book Group Authors;Author Full Names;Book Author Full Names;Group Authors;Article Title;Source Title;Book Series Title;Book Series Subtitle;Language;Document Type;Conference Title;Conference Date;Conference Location;Conference Sponsor;Conference Host;Author Keywords;Keywords Plus;Abstract;Addresses;Reprint Addresses;Email Addresses;Researcher Ids;ORCIDs;Funding Orgs;Funding Text;Cited References;Cited Reference Count;Times Cited, WoS Core;Times Cited, All Databases;180 Day Usage Count;Since 2013 Usage Count;Publisher;Publisher City;Publisher Address;ISSN;eISSN;ISBN;Journal Abbreviation;Journal ISO Abbreviation;Publication Date;Publication Year;Volume;Issue;Part Number;Supplement;Special Issue;Meeting Abstract;Start Page;End Page;Article Number;DOI;Book DOI;Early Access Date;Number of Pages;WoS Categories;Research Areas;IDS Number;UT (Unique WOS ID);Pubmed Id;Open Access Designations;Highly Cited Status;Hot Paper Status;Date of Export"
+    
+    If Not App.CheckFields(sLinkTable, sFields) Then
+        Log.E "ImportPaper", "Invalid fields", "Index", Index, "Path", Path, "sFields", sFields
+        Exit Function
+    End If
+    
+    App.DeleteTable "ImportPaper"
+    
+    Dim sQuery As String
+    Dim iRows As Integer
+    
+    sQuery = "MakeImportPaper"
+    iRows = App.Execute(sQuery, sLinkTable & ".Index", Index)
+
+    If iRows = 0 Then
+        MsgBox "No new records imported", Title:="Import"
+        ImportPaper = iRows
+        Exit Function
+    End If
+    
+    sQuery = "InsertPaper"
+    App.Execute sQuery
+    
+    Dim rsPaper As Recordset
+    Set rsPaper = CurrentDb.OpenRecordset("SelectImportPaper", dbOpenSnapshot)
+
+    sQuery = "InsertWeight"
+    Do While Not rsPaper.EOF
+        If IsNull(rsPaper!AuthorNames) Then
+            App.Execute sQuery, "PaperID", rsPaper!Id, "AuthorName", ""
+        Else
+            Dim sName As String
+            Dim vAuthors As Variant
+            vAuthors = Split(rsPaper!AuthorNames, ";")
+            
+            Dim i As Integer
+            For i = 0 To UBound(vAuthors)
+                sName = Paper.FixName(vAuthors(i))
+                App.Execute sQuery, "PaperID", rsPaper!Id, "AuthorName", sName
+            Next i
+        End If
+
+        rsPaper.MoveNext
+    Loop
+    
+    'Log.i sFunc, "Imported", "iRows", iRows
+    
+    ImportPaper = iRows
+
+End Function
 
 Public Sub FillWeight()
     
@@ -156,14 +169,14 @@ Public Sub FillWeight()
 
     Dim rsPaper As Recordset
     Set rsPaper = db.OpenRecordset("Paper", dbOpenTable)
-'    Set rsPaper = db.OpenRecordset("ViewPaper", dbOpenDynaset)
+    '    Set rsPaper = db.OpenRecordset("ViewPaper", dbOpenDynaset)
 
     Dim qd As DAO.QueryDef
     Dim an As String
     Set qd = db.QueryDefs("InsertWeight")
 
     Do While Not rsPaper.EOF
-        Dim authors() As String
+        Dim Authors() As String
         '        If rsPaper!Id = 828 Then
         '            Debug.Print rsPaper!AuthorNames
         '        End If
@@ -173,14 +186,14 @@ Public Sub FillWeight()
             qd.Parameters("AuthorName").Value = ""
             qd.Execute dbFailOnError
         Else
-            authors = Split(rsPaper!AuthorNames, ";")
-            Dim iI As Integer
-            For iI = 0 To UBound(authors)
-                an = authors(iI)
+            Authors = Split(rsPaper!AuthorNames, ";")
+            Dim ii As Integer
+            For ii = 0 To UBound(Authors)
+                an = Authors(ii)
                 qd.Parameters("PaperID").Value = rsPaper!Id
                 qd.Parameters("AuthorName").Value = Paper.FixName(an)
                 qd.Execute dbFailOnError
-            Next iI
+            Next ii
         End If
 
 
@@ -188,11 +201,22 @@ Public Sub FillWeight()
     Loop
     
     ' Unknown Author
-'    Dim sPath As String
-'    sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_UNKNOWN_AUTHOR_FILE)
-'
-'    DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "SelectUnknownAuthor", sPath, True, Consts.SHEET_UNKNOWN_AUTHOR
+    '    Dim sPath As String
+    '    sPath = Config.SheetPath(Consts.SECTION_AUTHOR, Consts.KEY_UNKNOWN_AUTHOR_FILE)
+    '
+    '    DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "SelectUnknownAuthor", sPath, True, Consts.SHEET_UNKNOWN_AUTHOR
 End Sub
+
+Public Sub MakeUnknownAuthor()
+
+    If App.CheckTable("UnknownAuthor") Then
+        DoCmd.DeleteObject acTable, "UnknownAuthor"
+        Debug.Print "Delete UnknownAuthor", CurrentDb.RecordsAffected
+    End If
+    CurrentDb.Execute "MakeUnknownAuthor", dbFailOnError
+    Debug.Print "MakeUnknownAuthor", CurrentDb.RecordsAffected
+End Sub
+
 Public Function ImportSheets()
     App.ClearTables
 
@@ -202,8 +226,9 @@ Public Function ImportSheets()
     
     FillWeight
     
+    MakeUnknownAuthor
+    
     Dim rResult As VbMsgBoxResult
     rResult = MsgBox("Done", vbYes, "Import Sheets")
 End Function
-
 

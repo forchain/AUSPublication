@@ -17,8 +17,6 @@ Private Sub College_Combo_AfterUpdate()
 
 End Sub
 
-
-
 Private Sub Dep_Combo_AfterUpdate()
     Me.ReportButton.Visible = True
 End Sub
@@ -30,11 +28,11 @@ Private Sub ReportButton_Click()
 
 
     Dim Msg, Style, Title, Help, Ctxt, Response, MyString
-    Msg = "Exported to " & sPath            ' Define message.
+    Msg = "Exported to " & sPath                 ' Define message.
     Style = vbYes + vbCritical + vbDefaultButton2 ' Define buttons.
     
     
-    Title = "Export Report"               ' Define title.
+    Title = "Export Report"                      ' Define title.
     Help = "DEMO.HLP"                            ' Define Help file.
     Ctxt = 1000                                  ' Define topic context.
     ' Display message.
@@ -47,8 +45,4 @@ Private Sub ReportButton_Click()
     
     
 End Sub
-
-
-
-
 

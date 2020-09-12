@@ -3,7 +3,7 @@ Option Compare Database
 Option Explicit
 
 Public Property Get SettingPath() As String
-    SettingPath = CurrentProject.path + Consts.SETTINGS_FILE
+    SettingPath = CurrentProject.Path + Consts.SETTINGS_FILE
 End Property
 
 Public Property Get IndexKey(ByVal Index As String, Year As Integer) As String
@@ -14,7 +14,7 @@ End Property
 
 Public Property Get SheetPath(Section As String, Key As String) As String
 
-    SheetPath = CurrentProject.path + Consts.SHEETS_DIR + Val(Section, Key)
+    SheetPath = CurrentProject.Path + Consts.SHEETS_DIR + Val(Section, Key)
     
 End Property
 

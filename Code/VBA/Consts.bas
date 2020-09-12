@@ -51,7 +51,6 @@ Public Const SECTION_WEIGHT As String = "Weight"
 Public Const KEY_REPORT_FILE As String = "ReportFile"
 Public Const SHEET_REPORT As String = "Department"
 
-
 Property Get INDICES() As Variant
     INDICES = Array(AHCI, BHCI, BSCI, ESCI, SCIE, SSCI)
 End Property

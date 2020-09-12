@@ -1,0 +1,9 @@
+.laccdb
+.accdb
+**/*.accdb
+**/*.laccdb
+**/**/*.accdb
+**/**/*.laccdb
+~*.xlsx
+*/*.db
+.DS_Store

@@ -5,5 +5,5 @@ SELECT
        JobTitle,
        1
 FROM
-       SelectPersonnel
+      ImportAuthor 
 WHERE JobTitle not IN ( SELECT DISTINCT Title FROM Job )  

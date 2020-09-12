@@ -4,7 +4,7 @@ CREATE TABLE Paper (
     DOI VARCHAR,
     Title Memo,
     [Year] int,
-    [Index] int,
+    [Index] byte,
     Addresses Memo,
     AuthorNames Memo,
     AuthorCount int

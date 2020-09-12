@@ -49,11 +49,3 @@ Public Function CalcScore(iID As Variant, iPapInd As Integer, iCurrInd As Intege
 
 End Function
 
-
-
-
-
-
-
-
-

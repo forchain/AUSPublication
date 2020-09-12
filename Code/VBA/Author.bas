@@ -2,8 +2,6 @@ Attribute VB_Name = "Author"
 Option Compare Database
 Option Explicit
 
-
-
 Public Function ExtractOutDepID(Dep As String) As Integer
     Dim aToken
     aToken = Split(Dep, "-")

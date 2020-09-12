@@ -3,7 +3,7 @@ INSERT INTO
 SELECT
     DISTINCT CollegeName
 FROM
-    SelectPersonnel
+    ImportAuthor
 WHERE
     CollegeName not IN (
         SELECT DISTINCT

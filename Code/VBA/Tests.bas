@@ -8,7 +8,7 @@ End Function
 
 Public Sub TestCurrentProject()
 
-    Debug.Print CurrentProject.path
+    Debug.Print CurrentProject.Path
 
 
 End Sub
@@ -17,18 +17,18 @@ Public Sub TestWordApplication()
     Dim ws As Word.System
     Set ws = Word.System                         ' create the Word application object
     
-    Dim path As String
-    path = CurrentProject.path + "/settings.ini"
+    Dim Path As String
+    Path = CurrentProject.Path + "/settings.ini"
     
     
-    Debug.Print path
+    Debug.Print Path
     Dim Index As String
     
-    Index = ws.PrivateProfileString(path, "Index", "AHCI-2018")
+    Index = ws.PrivateProfileString(Path, "Index", "AHCI-2018")
     Debug.Print Index
     'Application.CurrentProject(    CurrentProject.Path "settings.ini"
     
-    Index = ws.PrivateProfileString(path, "Staff", "FacultyDeparting")
+    Index = ws.PrivateProfileString(Path, "Staff", "FacultyDeparting")
     Debug.Print Index
     
     
@@ -65,6 +65,16 @@ Public Sub TestImportPaper()
 
 End Sub
 
+Public Sub TestAppendPaper()
+
+    App.CloseTables
+    App.CloseQueries
+
+    Paper.ImportPaper
+    DoCmd.OpenTable "Paper"
+
+End Sub
+
 Public Sub TestViewPaper()
 
     App.ClearTables
@@ -72,7 +82,6 @@ Public Sub TestViewPaper()
     Paper.ViewPaper
     
 End Sub
-
 
 Public Sub TestFillWeight()
 
@@ -86,7 +95,6 @@ Public Sub TestFillWeight()
     
 End Sub
 
-
 Public Sub TestViewAuthor()
 
     App.ClearTables
@@ -94,7 +102,6 @@ Public Sub TestViewAuthor()
     Paper.ViewPaper
     
 End Sub
-
 
 Public Sub TestFixAbbr()
     CurrentDb.Execute "CreateAbbr", dbFailOnError
@@ -104,11 +111,11 @@ Public Sub TestFixAbbr()
     Debug.Print "InsertAbbr", CurrentDb.RecordsAffected
     
 
-    Dim t As String
+    Dim T As String
     For i = 1 To 9
-        t = "UpdateKnownAuthor" & CStr(i)
-        CurrentDb.Execute t, dbFailOnError
-        Debug.Print t, CurrentDb.RecordsAffected
+        T = "UpdateKnownAuthor" & CStr(i)
+        CurrentDb.Execute T, dbFailOnError
+        Debug.Print T, CurrentDb.RecordsAffected
     Next i
 End Sub
 

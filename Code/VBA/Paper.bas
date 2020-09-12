@@ -2,8 +2,6 @@ Attribute VB_Name = "Paper"
 Option Compare Database
 Option Explicit
 
-
-
 Public Sub ViewPaper()
     Dim iCurrYear As Integer
     iCurrYear = Year(Date)
@@ -177,7 +175,7 @@ Public Function SerializeAuthorNames(Addrs As String, ResearcherIDs As String, O
 
 End Function
 
-Public Function FixName(FullName As String) As String
+Public Function FixName(ByVal FullName As String) As String
     If FullName = "" Then
         'Debug.Print "[Error]FixName No Full name"
         FixName = FullName

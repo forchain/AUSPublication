@@ -6,8 +6,7 @@ SELECT  DISTINCT Code
        ,Job.ID
        ,DepartmentID
 FROM 
-( SelectPersonnel
+(ImportAuthor 
 	INNER JOIN Job
-	ON SelectPersonnel.JobTitle = Job.Title 
+	ON ImportAuthor.JobTitle = Job.Title 
 )
-WHERE Code Not IN ( SELECT distinct Code FROM Author ) 
