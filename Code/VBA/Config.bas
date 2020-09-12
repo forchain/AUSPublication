@@ -26,3 +26,12 @@ Public Property Let Val(Section As String, Key As String, Value As String)
     Word.System.PrivateProfileString(SettingPath, Section, Key) = Value
 End Property
 
+Public Property Get ExportFile() As String
+    Dim sTime As String
+    sTime = CStr(Now)
+    sTime = Replace(Now, "/", "-")
+    sTime = Replace(sTime, ":", ".")
+    ExportFile = CurrentProject.Path & Consts.EXPORT_DIR & sTime & " - " & Consts.EXPORT_FILE
+End Property
+
+

@@ -132,6 +132,9 @@ Public Function CheckFields(ByVal Table, ByVal Fields As String) As Boolean
 End Function
 
 
+Public Sub OpenFile(File As String)
+    Shell "explorer.exe " & File
+End Sub
 
 
 

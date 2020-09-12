@@ -21,55 +21,22 @@ Private Sub ButtonUnknownAuthor_Click()
     DoCmd.OpenForm "FormUnknownAuthor"
 End Sub
 
-Private Sub ButtonImportAuthor_Click()
 
 
-    Dim fd As Office.FileDialog
-    Dim sFile As Variant
- 
-    Set fd = Application.FileDialog(msoFileDialogFilePicker)
- 
-    With fd
- 
-        .Filters.Clear
-        .Filters.Add "Excel Files", "*.xlsx?", 1
-        .Title = "Choose an Excel file"
-        .AllowMultiSelect = True
-        .InitialFileName = CurrentProject.Path & Consts.SHEETS_DIR
- 
-        If .Show = True Then
- 
-
-            For Each sFile In .SelectedItems
- 
-                'Debug.Print sFile
-                Main.ImportOneAuthor sFile
- 
-            Next
-    
- 
-        End If
- 
-    End With
-    
-
-
+Private Sub ButtonReport_Click()
+DoCmd.OpenForm "DepForm"
 End Sub
-
-
 
 Private Sub Form_Load()
     Main.CreateTables
 End Sub
 
-
-
-Private Sub FrameAuthor_Click()
+Private Sub FrameImportAuthor_Click()
     Dim fd As Office.FileDialog
     Dim sFile As Variant
     
     Dim iType As Byte
-    iType = CInt(Me.FrameAuthor.Value)
+    iType = CInt(Me.FrameImportAuthor.Value)
     
     Dim sType As String
     
@@ -89,7 +56,7 @@ Private Sub FrameAuthor_Click()
         .AllowMultiSelect = True
         .InitialFileName = CurrentProject.Path & Consts.SHEETS_DIR
  
-        Me.FrameAuthor.Value = Null
+        Me.FrameImportAuthor.Value = Null
 
         If .Show = True Then
             
@@ -101,17 +68,16 @@ Private Sub FrameAuthor_Click()
             Next
             
             For Each sFile In .SelectedItems
-                Main.ImportOneAuthor iType, sFile
+                Main.ImportAuthor iType, sFile
             Next
  
         End If
  
     End With
-
 End Sub
 
 Private Sub FrameImportPaper_Click()
-    'Debug.Print Me.FrameImportPaper.Value
+  'Debug.Print Me.FrameImportPaper.Value
     
     Dim fd As Office.FileDialog
     Dim sFile As Variant
@@ -130,7 +96,7 @@ Private Sub FrameImportPaper_Click()
         .Title = "Choose " & sIndex & " Paper files"
         .AllowMultiSelect = True
         .InitialFileName = CurrentProject.Path & Consts.SHEETS_DIR
-        Me.ImportOnePaper.Value = Null
+        Me.FrameImportPaper.Value = Null
  
         If .Show = True Then
  
@@ -142,7 +108,7 @@ Private Sub FrameImportPaper_Click()
             Next
             
             For Each sFile In .SelectedItems
-                Main.ImportOnePaper iIndex, sFile
+                Main.ImportPaper iIndex, sFile
             Next
         End If
  

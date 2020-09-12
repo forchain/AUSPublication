@@ -1,7 +1,7 @@
-SELECT  DISTINCT AuthorID 
-       ,First(GetFirstName(s.AuthorName)) AS FirstName 
-       ,First(GetLastName(s.AuthorName))  AS LastName 
-       ,First(s.AuthorName)               AS AuthorName 
+SELECT  DISTINCT  
+       (GetFirstName(s.AuthorName)) AS FirstName 
+       ,(GetLastName(s.AuthorName))  AS LastName 
+       ,(s.AuthorName)               AS AuthorName 
        ,First(s.JobTitle)                 AS JobTitle 
        ,First(s.JobID)                    AS JobID 
        ,First(s.JobOrder)                 AS JobOrder 
@@ -25,4 +25,4 @@ SELECT  DISTINCT AuthorID
 FROM SelectScore AS s
 WHERE (DepartmentID) = [Forms]![DepForm]![Dep_Combo] 
 AND [Year] = [Forms]![DepForm]![Year_Combo] 
-GROUP BY  AuthorID;
+GROUP BY  AuthorName;

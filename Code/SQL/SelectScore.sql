@@ -9,10 +9,5 @@ SELECT
        CalcScore(AuthorID, [Index], 5, FacultyCount, AllCount) as SCIE,
        CalcScore(AuthorID, [Index], 6, FacultyCount, AllCount) as SSCI
 FROM
-       (
-              (
-                     SelectWeight AS w
-                     INNER JOIN SelectFacultyCount AS f ON w.PaperID = f.PaperID
-              )
-              INNER JOIN Job as j ON w.JobID = j.ID
-       )
+       SelectWeight AS w
+       INNER JOIN SelectFacultyCount AS f ON w.PaperID = f.PaperID

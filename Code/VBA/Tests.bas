@@ -13,6 +13,14 @@ Public Sub TestCurrentProject()
 
 End Sub
 
+Sub TestOpenFile()
+   Dim Shex As Object
+   Set Shex = CreateObject("Shell.Application")
+   tgtfile = "C:\Nax\dud.txt"
+   Shex.Open (tgtfile)
+End Sub
+
+
 Public Sub TestWordApplication()
     Dim ws As Word.System
     Set ws = Word.System                         ' create the Word application object

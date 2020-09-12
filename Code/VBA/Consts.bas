@@ -10,7 +10,9 @@ Public Const BSCI As String = "BSCI"
 Public Const BHCI As String = "BHCI"
 
 Public Const SETTINGS_FILE As String = "/settings.ini"
-Public Const SHEETS_DIR As String = "/Spreadsheets/"
+Public Const SHEETS_DIR As String = "\Spreadsheets\"
+Public Const EXPORT_DIR As String = "\Export\"
+Public Const EXPORT_FILE As String = "AUS ACADEMIC PUBLICATION.xlsx"
     
 Public Const BEIGN_YEAR As Integer = 2018
 

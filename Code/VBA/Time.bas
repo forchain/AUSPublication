@@ -9,7 +9,9 @@ End Function
 
 Function GetYear(PubYear, AccDate As Variant) As Integer
     Dim sAccDate As String
-    If IsNull(PubYear) Then
+    PubYear = Trim(PubYear)
+    AccDate = Trim(AccDate)
+    If PubYear = "" Or IsNull(PubYear) Then
 
         Dim aAccDate() As String
         aAccDate = Split(AccDate)
@@ -20,6 +22,7 @@ Function GetYear(PubYear, AccDate As Variant) As Integer
     End If
     GetYear = CInt(sAccDate)
 End Function
+
 
 
 

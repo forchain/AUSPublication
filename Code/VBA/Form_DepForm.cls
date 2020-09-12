@@ -14,35 +14,41 @@ Private Sub College_Combo_AfterUpdate()
     Me.Dep_Combo.Requery
     Me.Dep_Combo.Visible = True
 
-
 End Sub
 
-Private Sub Dep_Combo_AfterUpdate()
-    Me.ReportButton.Visible = True
-End Sub
 
-Private Sub ReportButton_Click()
+Private Sub CommandExport_Click()
     Dim sPath As String
-    sPath = Config.SheetPath(Consts.SECTION_WEIGHT, Consts.KEY_REPORT_FILE)
+    sPath = Config.ExportFile
     DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "SummaryOfDep", sPath, True, Consts.SHEET_REPORT
 
 
     Dim Msg, Style, Title, Help, Ctxt, Response, MyString
-    Msg = "Exported to " & sPath                 ' Define message.
-    Style = vbYes + vbCritical + vbDefaultButton2 ' Define buttons.
+    Msg = "Exported to " & sPath & vbCrLf & "Open?" ' Define message.
+    Style = vbYesNo + vbQuestion + vbDefaultButton2 ' Define buttons.
     
     
-    Title = "Export Report"                      ' Define title.
-    Help = "DEMO.HLP"                            ' Define Help file.
-    Ctxt = 1000                                  ' Define topic context.
+    Title = "Export Report"                      ' Define title.                                 ' Define topic context.
     ' Display message.
-    Response = MsgBox(Msg, Style, Title, Help, Ctxt)
+    Response = MsgBox(Msg, Style, Title)
     If Response = vbYes Then                     ' User chose Yes.
         MyString = "Yes"                         ' Perform some action.
+        Log.D "CommandExport_Click", sPath
+        App.OpenFile sPath
     Else                                         ' User chose No.
         MyString = "No"                          ' Perform some action.
     End If
     
-    
+End Sub
+
+Private Sub CommandPreview_Click()
+
+    DoCmd.OpenReport "SummaryOfDep", acViewPreview, WindowMode:=acDialog
+
+End Sub
+
+
+Private Sub Dep_Combo_AfterUpdate()
+    Me.CommandExport.Visible = True
 End Sub
 

@@ -153,7 +153,7 @@ Public Function ImportPaper(ByVal Index As Integer, ByVal Path As String) As Int
     Loop
     
     'Log.i sFunc, "Imported", "iRows", iRows
-    
+    MsgBox iRows & " records imported", Title:="Import"
     ImportPaper = iRows
 
 End Function
