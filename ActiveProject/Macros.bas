@@ -6,7 +6,7 @@ Option Explicit
 Public Function AutoExec()
     Main.CreateTables
     
-    DoCmd.OpenForm "FormMain", WindowMode:=acDialog
+    DoCmd.OpenForm "FormMain"
 End Function
 
 Public Function Test()

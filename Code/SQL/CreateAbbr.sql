@@ -1,5 +1,0 @@
-CREATE TABLE Abbr (
-    ID COUNTER PRIMARY KEY,
-    FullName VARCHAR,
-    AbbrName VARCHAR
-);

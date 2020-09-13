@@ -2,6 +2,54 @@ Attribute VB_Name = "Paper"
 Option Compare Database
 Option Explicit
 
+Public Sub ViewPaper()
+    Dim iCurrYear As Integer
+    iCurrYear = Year(Date)
+
+    Dim y As Integer
+    Dim i As Integer
+    Dim sKey As String
+    Dim sPath As String
+    
+    CurrentDb.Execute "CreatePaper", dbFailOnError
+    Debug.Print "CreatePaper", CurrentDb.RecordsAffected
+
+    Dim qd As DAO.QueryDef
+    Set qd = CurrentDb.QueryDefs("InsertPaper")
+    
+    For y = Consts.BEIGN_YEAR To iCurrYear
+        For i = 0 To UBound(Consts.INDICES)
+            
+            sKey = Config.IndexKey(Consts.INDICES(i), y)
+
+            sPath = Config.SheetPath(Consts.SECTION_INDEX, sKey)
+            
+            'Debug.Print sPath
+
+            DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel9, "LinkPaper", sPath, True, Consts.SHEET_PAPER & "!"
+            
+            qd.Parameters("Year").Value = y
+            qd.Parameters("Index").Value = i + 1
+
+            qd.Execute dbFailOnError
+            Debug.Print "InsertPaper", CurrentDb.RecordsAffected
+        
+            DoCmd.DeleteObject acTable, "LinkPaper"
+            Debug.Print "Delete LinkPaper", CurrentDb.RecordsAffected
+        Next i
+    Next y
+    
+    ' UnknownPaper
+    
+    sPath = Config.SheetPath(Consts.SECTION_PAPER, Consts.KEY_UNKNOWN_PAPER_FILE)
+    
+    DoCmd.TransferSpreadsheet acExport, acSpreadsheetTypeExcel12Xml, "SelectUnknownPaper", sPath, True, Consts.SHEET_UNKNOWN_PAPER
+    
+    
+    DoCmd.TransferSpreadsheet acLink, acSpreadsheetTypeExcel12Xml, "UnknownPaper", sPath, True, Consts.SHEET_UNKNOWN_PAPER & "!"
+    
+End Sub
+
 Public Function ExtractAuthorsFromAddrs(Addrs As String) As String()
     
     Dim iEndPos As Integer
@@ -280,27 +328,4 @@ Public Function GetLastName(sFullName) As String
         GetLastName = Trim(aFullName(1))
     End If
 End Function
-
-Public Function GetWoSAuthorName(ByVal FullName As String) As String
-
-    FullName = Trim(FullName)
-    
-    Dim sFirstName, sLastName As String
-
-    Dim iPos As String
-    iPos = InStrRev(FullName, " ")
-    
-    If iPos = 0 Then
-        Log.W "GetWoSAuthorName", "No Space", "FullName", FullName
-        GetWoSAuthorName = FullName
-        Exit Function
-    End If
-    
-    sFirstName = Mid(FullName, 1, iPos - 1)
-    sLastName = Mid(FullName, iPos + 1, Len(FullName) - iPos)
-    
-    GetWoSAuthorName = Trim(sLastName) & ", " & Trim(sFirstName)
-End Function
-
-
 

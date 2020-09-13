@@ -1,0 +1,24 @@
+﻿Option Compare Database
+Option Explicit
+
+
+
+Private Sub CommandAddAuthor_Click()
+    DoCmd.OpenForm "NewAuthor", , , , , acDialog
+End Sub
+
+Private Sub CommandEditPaper_Click()
+DoCmd.OpenForm "EditPaper"
+Debug.Print Forms![FormUnknownAuthor]![WoS ID]
+End Sub
+
+Private Sub Form_Current()
+Debug.Print Me.CurrentRecord
+
+End Sub
+
+Private Sub Form_Load()
+    'Main.MakeUnknownAuthor
+    Debug.Print Forms![FormUnknownAuthor]![WoS ID]
+
+End Sub

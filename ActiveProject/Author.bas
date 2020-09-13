@@ -41,7 +41,7 @@ Public Function ExtractInDepName(Dep As String) As String
     ExtractInDepName = Trim(aToken(1))
 End Function
 
-Public Function GetAuthorName(ByVal Name As String) As String
+Public Function GetAuthorName(Name As String) As String
     Dim aToken
     aToken = Split(Name, " ")
     

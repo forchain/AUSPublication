@@ -1,0 +1,18 @@
+﻿Option Compare Database
+Option Explicit
+
+Private Sub CommandAddAuthor_Click()
+    DoCmd.OpenForm "NewAuthor", , , , , acDialog
+End Sub
+
+Private Sub CommandEditPaper_Click()
+    DoCmd.OpenForm "EditPaper"
+End Sub
+
+Private Sub Form_Current()
+'    Debug.Print Me.CurrentRecord
+
+End Sub
+
+Private Sub Form_Load()
+End Sub

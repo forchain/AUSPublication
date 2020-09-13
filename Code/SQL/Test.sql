@@ -1,2 +1,3 @@
+
 select * from SelectWeight
-where Department = 0
+where AuthorID is null

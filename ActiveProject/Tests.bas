@@ -83,7 +83,25 @@ Public Sub TestAppendPaper()
 
 End Sub
 
+Public Sub TestViewPaper()
 
+    App.ClearTables
+
+    Paper.ViewPaper
+    
+End Sub
+
+Public Sub TestFillWeight()
+
+    App.ClearTables
+
+    Paper.ImportPaper
+    
+    Author.ImportAuthor
+    
+    Weight.FillWeight
+    
+End Sub
 
 Public Sub TestViewAuthor()
 

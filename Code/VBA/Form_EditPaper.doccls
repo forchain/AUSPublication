@@ -1,0 +1,68 @@
+﻿Option Compare Database
+Option Explicit
+
+Private Sub AuthorNames_AfterUpdate()
+'    Dim sQuery As String
+'    sQuery = "DeleteWeightByPaper"
+'    App.Execute sQuery, "PaperID", Me!WeightID
+'
+'    Paper.ExtractAuthors
+End Sub
+
+Private Sub Form_AfterUpdate()
+
+End Sub
+
+Private Sub Form_BeforeUpdate(Cancel As Integer)
+
+End Sub
+
+Private Sub TextFullNames_AfterUpdate()
+    Dim sFullNames, sName As String
+
+Debug.Print "tset"
+    Dim aFullName, aWoSOld, aAuthName As Variant
+    
+    aFullName = Split(Me!TextFullNames, ";")
+
+    Dim iLen As Integer
+    iLen = UBound(aFullName)
+    Dim aWoSNew() As String
+    ReDim aWoSNew(iLen), aAuthName(iLen)
+
+    Dim sFullName As String
+
+    Dim i As Integer
+    For i = 0 To UBound(aFullName)
+        sFullName = Trim(aFullName(i))
+        aAuthName(i) = GetAuthorName(sFullName)
+        aWoSNew(i) = GetWoSAuthorName(sFullName)
+    Next
+    
+    Dim sNewWoSNames As String
+    sNewWoSNames = Join(aWoSNew, "; ")
+      
+    
+    Dim sOldWoSNames As String
+    sOldWoSNames = Paper.ExtractAuthorsText(Me!Addresses)
+    If sOldWoSNames = "" Then
+        Me!TextAddresses = Me!Addresses & "; [" & sNewWoSNames & "] Amer Univ Sharjah, Sharjah, U Arab Emirates"
+    Else
+        Me!TextAddresses = Replace(Me!Addresses, sOldWoSNames, sNewWoSNames)
+    End If
+    
+    Dim sOldAuths, sNewAuths As String
+    sOldAuths = Me!AuthorNames
+    sNewAuths = Join(aAuthName, "; ")
+    Me!TextAuthorNames = sNewAuths
+    
+    Main.UpdateWeightByPaper Me![ID], sOldAuths, sNewAuths
+End Sub
+
+
+
+
+
+
+
+

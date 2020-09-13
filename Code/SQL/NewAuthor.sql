@@ -1,0 +1,1 @@
+INSERT INTO Author ( Code, FullName, AuthorName, AbbrName, JobID, DepartmentID ) Values ( Code, FullName, AuthorName, AbbrName, JobID, DepartmentID )

@@ -1,0 +1,66 @@
+﻿Option Compare Database
+Option Explicit
+
+
+Private Sub CommandReset_Click()
+    Me.TextID.Value = "@"
+    Me.TextName.Value = ""
+    Me.ComboDep.Value = 0
+    Me.ComboJob.Value = 0
+End Sub
+
+Private Sub CommandSave_Click()
+
+    Dim sQuery, sAuthorName, sAbbrName As String
+    Dim iRows As Integer
+    sQuery = "NewAuthor"
+    sAuthorName = GetAuthorName(Me!TextName)
+    sAbbrName = GetAbbrName(sAuthorName)
+    iRows = App.Execute( _
+            sQuery, _
+            "Code", Me!TextID, _
+            "FullName", Me!TextName, _
+            "AuthorName", sAuthorName, _
+            "AbbrName", sAbbrName, _
+            "JobID", Me!ComboJob, _
+            "DepartmentID", Me!ComboDep)
+            
+    If iRows > 0 Then
+        MsgBox "Author added", vbYesNo, "Save"
+    End If
+                                                                            
+                                                                            
+End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

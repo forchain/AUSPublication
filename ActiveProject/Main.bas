@@ -2,40 +2,6 @@ Attribute VB_Name = "Main"
 Option Compare Database
 Option Explicit
 
-Public Sub UpdateWeightByPaper(ByVal PaperID As Integer, ByVal OldNames As String, ByVal NewNames As String)
-
-    Dim sAuthorName As Variant
-   
-    Dim aOldName, aNewName As Variant
-    
-    aOldName = Split(OldNames, ";")
-    aNewName = Split(NewNames, ";")
-    
-    If UBound(aOldName) = UBound(aNewName) Then
-        Dim i As Integer
-        Dim sNewAuthor, sOldAuthor As String
-        
-        For i = 0 To UBound(aNewName)
-            sNewAuthor = Trim(aNewName(i))
-            sOldAuthor = Trim(aOldName(i))
-            If sNewAuthor <> sOldAuthor Then
-                App.Execute "UpdateWeightByPaper", "PID", PaperID, "OldAuthor", sOldAuthor, "NewAuthor", sNewAuthor
-
-            End If
-        Next
-
-    Else
-        App.Execute "DeleteWeightByPaper", "PID", PaperID
-
-        For Each sAuthorName In aNewName
-            App.Execute "InsertWeight", "PaperID", PaperID, "AuthorName", sAuthorName
-        Next
-    End If
-   
-
-End Sub
-
-
 Public Sub CreateTables()
     Dim dicUnknown As New Scripting.Dictionary
     Dim dicOther As New Scripting.Dictionary
@@ -170,7 +136,7 @@ Public Function ImportPaper(ByVal Index As Integer, ByVal Path As String) As Int
     sQuery = "InsertWeight"
     Do While Not rsPaper.EOF
         If IsNull(rsPaper!AuthorNames) Then
-            App.Execute sQuery, "PaperID", rsPaper!ID, "AuthorName", ""
+            App.Execute sQuery, "PaperID", rsPaper!Id, "AuthorName", ""
         Else
             Dim sName As String
             Dim vAuthors As Variant
@@ -179,7 +145,7 @@ Public Function ImportPaper(ByVal Index As Integer, ByVal Path As String) As Int
             Dim i As Integer
             For i = 0 To UBound(vAuthors)
                 sName = Paper.FixName(vAuthors(i))
-                App.Execute sQuery, "PaperID", rsPaper!ID, "AuthorName", sName
+                App.Execute sQuery, "PaperID", rsPaper!Id, "AuthorName", sName
             Next i
         End If
 
@@ -216,7 +182,7 @@ Public Sub FillWeight()
         '        End If
        
         If IsNull(rsPaper!AuthorNames) Then
-            qd.Parameters("PaperID").Value = rsPaper!ID
+            qd.Parameters("PaperID").Value = rsPaper!Id
             qd.Parameters("AuthorName").Value = ""
             qd.Execute dbFailOnError
         Else
@@ -224,7 +190,7 @@ Public Sub FillWeight()
             Dim ii As Integer
             For ii = 0 To UBound(Authors)
                 an = Authors(ii)
-                qd.Parameters("PaperID").Value = rsPaper!ID
+                qd.Parameters("PaperID").Value = rsPaper!Id
                 qd.Parameters("AuthorName").Value = Paper.FixName(an)
                 qd.Execute dbFailOnError
             Next ii

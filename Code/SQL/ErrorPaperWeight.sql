@@ -1,3 +1,0 @@
-SELECT  *
-FROM Paper
-WHERE SCIE + SSCI + ESCI + [AHCI] = 0;  
