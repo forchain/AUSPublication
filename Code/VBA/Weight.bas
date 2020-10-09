@@ -49,3 +49,90 @@ Public Function CalcScore(iID As Variant, iPapInd As Integer, iCurrInd As Intege
 
 End Function
 
+Public Function CalcMatchingScore(WeightFirstName, WeightMiddleName, WeightMiddleInitial, _
+                                  Code, AuthorFirstName, AuthorFirstInitial, AuthorMiddleName, AuthorMiddleInitial As Variant) As Integer
+    Dim lScore As Integer
+
+    lScore = 0
+    
+    If Not IsNull(Code) Then
+        lScore = 2 ^ 0
+    Else
+        CalcMatchingScore = lScore
+        Exit Function
+    End If
+
+    If Not IsNull(WeightFirstName) And Not IsNull(AuthorFirstName) Then
+        lScore = lScore + 2 ^ 1
+        
+        If WeightFirstName <> AuthorFirstName Then
+            CalcMatchingScore = lScore
+            Exit Function
+        Else
+            lScore = lScore + 2 ^ 2
+        End If
+
+    End If
+
+    Dim i As Integer
+    If Not IsNull(WeightMiddleName) And Not IsNull(AuthorMiddleName) Then
+        lScore = lScore + 2 ^ 3
+        
+        Dim sWeightMiddleName As String
+        Dim vWeightMiddleName As Variant
+        vWeightMiddleName = Split(WeightMiddleName)
+        For i = 0 To UBound(vWeightMiddleName)
+            sWeightMiddleName = vWeightMiddleName(i)
+            If InStr(AuthorMiddleName, sWeightMiddleName) = 0 Then
+                CalcMatchingScore = lScore
+                Exit Function
+            End If
+        Next
+        
+        lScore = lScore + 2 ^ 4
+ 
+    End If
+
+    If Not IsNull(WeightMiddleInitial) And Not IsNull(AuthorMiddleInitial) Then
+        lScore = lScore + 2 ^ 5
+
+        Dim sWeightMiddleInitial As String
+        Dim vWeightMiddleInitial As Variant
+        vWeightMiddleInitial = Split(WeightMiddleInitial)
+        For i = 0 To UBound(vWeightMiddleInitial)
+            sWeightMiddleInitial = vWeightMiddleInitial(i)
+            If InStr(AuthorMiddleInitial, sWeightMiddleInitial) = 0 Then
+                CalcMatchingScore = lScore
+                Exit Function
+            End If
+        Next
+        lScore = lScore + 2 ^ 6
+    End If
+    CalcMatchingScore = lScore
+End Function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

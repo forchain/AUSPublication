@@ -35,7 +35,6 @@ Public Sub UpdateWeightByPaper(ByVal PaperID As Integer, ByVal OldNames As Strin
 
 End Sub
 
-
 Public Sub CreateTables()
     Dim dicUnknown As New Scripting.Dictionary
     Dim dicOther As New Scripting.Dictionary
@@ -45,7 +44,10 @@ Public Sub CreateTables()
     dicUnknown.Add "Department", True
     dicUnknown.Add "Job", True
     dicUnknown.Add "Paper", False
-    dicUnknown.Add "Weight", False
+
+    dicUnknown.Add "Paper2Author", False
+    dicUnknown.Add "Score", False
+    dicUnknown.Add "Match", False
     
     dicOther.Add "College", True
 
@@ -96,7 +98,7 @@ Public Function ImportAuthor(EmplType As Byte, ByVal Path As String) As Integer
     App.DeleteTable "ImportAuthor"
     
     Dim iRows As Integer
-    iRows = App.Execute(sQuery)
+    iRows = App.Execute sQuery
 
     If iRows = 0 Then
         MsgBox "No new records imported", Title:="Import"
@@ -107,19 +109,26 @@ Public Function ImportAuthor(EmplType As Byte, ByVal Path As String) As Integer
     '1 Faculty; 2 Staff
     If EmplType = 1 Then
         sQuery = "InsertCollege"
-        App.Execute (sQuery)
+        App.Execute sQuery
         sQuery = "InsertDepartment"
-        App.Execute (sQuery)
+        App.Execute sQuery
     Else
         sQuery = "InsertOtherDepartment"
-        App.Execute (sQuery)
+        App.Execute sQuery
     End If
     
     sQuery = "InsertJob"
-    App.Execute (sQuery)
+    App.Execute sQuery
     
     sQuery = "InsertAuthor"
-    App.Execute (sQuery)
+    App.Execute sQuery
+
+    sQuery = "MakeImportMatchByAuthor"
+    App.Execute sQuery
+    sQuery = "DeleteUnknownMatch"
+    App.Execute sQuery
+    sQuery = "InsertMatch"
+    App.Execute sQuery
     
     'Log.i sFunc, "Imported", "iRows", iRows
     MsgBox iRows & " records imported", Title:="Import"
@@ -167,24 +176,19 @@ Public Function ImportPaper(ByVal Index As Integer, ByVal Path As String) As Int
     Dim rsPaper As Recordset
     Set rsPaper = CurrentDb.OpenRecordset("SelectImportPaper", dbOpenSnapshot)
 
-    sQuery = "InsertWeight"
+    sQuery = "InsertImportScore"
     Do While Not rsPaper.EOF
-        If IsNull(rsPaper!AuthorNames) Then
-            App.Execute sQuery, "PaperID", rsPaper!ID, "AuthorName", ""
-        Else
-            Dim sName As String
-            Dim vAuthors As Variant
-            vAuthors = Split(rsPaper!AuthorNames, ";")
-            
-            Dim i As Integer
-            For i = 0 To UBound(vAuthors)
-                sName = Paper.FixName(vAuthors(i))
-                App.Execute sQuery, "PaperID", rsPaper!ID, "AuthorName", sName
-            Next i
-        End If
-
+        For i = 0 To UBound(vAuthors)
+            sName = Trim(vAuthors(i))
+            App.Execute sQuery, "PaperID", rsPaper!ID, "WoSID", rsPaper!WoSID, "FullName", sName, "LastName", Paper.GetLastName(sName), "FirstName", Paper.GetFirstName(sName), "MiddleName", Paper.GetMiddleName(sName), "FirstInitial", Paper.GetFirstInitial(sName), "MiddleInitial", Paper.GetMiddleInitial(sName)
+        Next i
         rsPaper.MoveNext
     Loop
+
+    sQuery = "MakeImportMatchByPaper"
+    App.Execute sQuery
+    sQuery = "InsertMatch"
+    App.Execute sQuery
     
     'Log.i sFunc, "Imported", "iRows", iRows
     MsgBox iRows & " records imported", Title:="Import"
@@ -203,7 +207,7 @@ Public Sub FillWeight()
 
     Dim rsPaper As Recordset
     Set rsPaper = db.OpenRecordset("Paper", dbOpenTable)
-    '    Set rsPaper = db.OpenRecordset("ViewPaper", dbOpenDynaset)
+    '    Set rsPaper = db.OpenRecordset("ThanViewPaper", dbOpenDynaset)
 
     Dim qd As DAO.QueryDef
     Dim an As String
@@ -213,23 +217,38 @@ Public Sub FillWeight()
         Dim Authors() As String
         '        If rsPaper!Id = 828 Then
         '            Debug.Print rsPaper!AuthorNames
-        '        End If
+        '        End Ifn
        
-        If IsNull(rsPaper!AuthorNames) Then
+        If IsNull(rsPaper!FullNames) Then
             qd.Parameters("PaperID").Value = rsPaper!ID
             qd.Parameters("AuthorName").Value = ""
+            
+            qd.Parameters("FullName").Value = ""
+            qd.Parameters("FirstName").Value = ""
+            qd.Parameters("LastName").Value = ""
+            qd.Parameters("MiddleName").Value = ""
+                
+            qd.Parameters("FristInitial").Value = ""
+            qd.Parameters("MiddleInitial").Value = ""
             qd.Execute dbFailOnError
         Else
-            Authors = Split(rsPaper!AuthorNames, ";")
+            Authors = Split(rsPaper!FullNames, ";")
             Dim ii As Integer
             For ii = 0 To UBound(Authors)
                 an = Authors(ii)
                 qd.Parameters("PaperID").Value = rsPaper!ID
                 qd.Parameters("AuthorName").Value = Paper.FixName(an)
+                qd.Parameters("FullName").Value = an
+                qd.Parameters("FirstName").Value = Paper.GetFirstName(an)
+                qd.Parameters("LastName").Value = Paper.GetLastName(an)
+                qd.Parameters("MiddleName").Value = Paper.GetMiddleName(an)
+                
+                qd.Parameters("FristInitial").Value = Paper.GetFirstInitial(an)
+                qd.Parameters("MiddleInitial").Value = Paper.GetMiddleInitial(an)
+                
                 qd.Execute dbFailOnError
             Next ii
         End If
-
 
         rsPaper.MoveNext
     Loop

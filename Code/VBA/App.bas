@@ -87,7 +87,6 @@ Public Function Execute(ByVal Query As String, ParamArray Params() As Variant) A
 
 End Function
 
-
 Public Sub DeleteTable(Table As String)
     If CheckTable(Table) Then
         DoCmd.Close acTable, Table
@@ -131,16 +130,7 @@ Public Function CheckFields(ByVal Table, ByVal Fields As String) As Boolean
     CheckFields = True
 End Function
 
-
 Public Sub OpenFile(File As String)
     Shell "explorer.exe " & File
 End Sub
-
-
-
-
-
-
-
-
 

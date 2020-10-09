@@ -7,7 +7,6 @@ Private Sub College_Combo_AfterUpdate()
 
 End Sub
 
-
 Private Sub CommandExport_Click()
     Dim sPath As String
     sPath = Config.ExportFile
@@ -37,7 +36,6 @@ Private Sub CommandPreview_Click()
     DoCmd.OpenReport "SummaryOfDep", acViewPreview, WindowMode:=acDialog
 
 End Sub
-
 
 Private Sub Dep_Combo_AfterUpdate()
     Me.CommandExport.Visible = True

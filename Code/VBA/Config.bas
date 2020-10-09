@@ -34,4 +34,3 @@ Public Property Get ExportFile() As String
     ExportFile = CurrentProject.Path & Consts.EXPORT_DIR & sTime & " - " & Consts.EXPORT_FILE
 End Property
 
-

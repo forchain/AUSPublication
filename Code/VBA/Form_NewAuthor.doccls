@@ -1,7 +1,6 @@
 ﻿Option Compare Database
 Option Explicit
 
-
 Private Sub CommandReset_Click()
     Me.TextID.Value = "@"
     Me.TextName.Value = ""
@@ -31,36 +30,4 @@ Private Sub CommandSave_Click()
                                                                             
                                                                             
 End Sub
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

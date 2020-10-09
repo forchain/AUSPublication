@@ -225,8 +225,6 @@ Public Function SelectAuthor(Addrs As String, Order As Integer, ResearcherIDs As
         Exit Function
     End If
 
-
-
     Dim aAuthor() As String
 
     aAuthor = ExtractAuthorsFromAddrs(Addrs)
@@ -261,23 +259,134 @@ Public Function SelectAuthor(Addrs As String, Order As Integer, ResearcherIDs As
 
 End Function
 
-Public Function GetFirstName(sFullName) As String
-    Dim aFullName() As String
+Public Function GetFirstName(FullName As String) As Variant
 
-    aFullName = Split(sFullName, " ")
-    If UBound(aFullName) = 0 Then
-        Debug.Print "GetFirstName failed, " & sFullName
-        GetFirstName = ""
+    Dim aFullName As Variant
+    Dim sFirstName As String
+    
+    aFullName = Split(FullName, ", ")
+    
+    If UBound(aFullName) < 1 Then
+        GetFirstName = Null
         Exit Function
     End If
-    GetFirstName = Trim(aFullName(0))
+
+    aFullName = Split(aFullName(1), " ")
+    If UBound(aFullName) < 0 Then
+        Debug.Print "GetFirstName failed, " & FullName
+        GetFirstName = Null
+        Exit Function
+    End If
+    sFirstName = aFullName(0)
+    If Len(sFirstName) = 2 And Right(sFirstName, 1) = "." Then
+        GetFirstName = Null
+        Exit Function
+    End If
+    
+    GetFirstName = Trim(sFirstName)
 End Function
 
-Public Function GetLastName(sFullName) As String
+
+Public Function GetFirstInitial(FullName As String) As Variant
+    Dim aFullName As Variant
+    Dim sFirstName As String
+    
+    aFullName = Split(FullName, ", ")
+    
+    If UBound(aFullName) < 1 Then
+        GetFirstInitial = Null
+        Exit Function
+    End If
+
+    aFullName = Split(aFullName(1), " ")
+    If UBound(aFullName) < 0 Then
+        Debug.Print "GetFirstName failed, " & FullName
+        GetFirstInitial = Null
+        Exit Function
+    End If
+    sFirstName = Left(aFullName(0), 1) + "."
+    GetFirstInitial = Trim(sFirstName)
+End Function
+
+Public Function GetMiddleName(FullName) As Variant
+    Dim aFullName As Variant
+    Dim sFullName As String
+    
+    aFullName = Split(FullName, ", ")
+    
+    If UBound(aFullName) < 1 Then
+        GetMiddleName = Null
+        Exit Function
+    End If
+    
+    aFullName = Split(aFullName(1), " ")
+    
+    If UBound(aFullName) < 1 Then
+        GetMiddleName = Null
+        Exit Function
+    End If
+
+    Dim iLen As Integer
+    ' deduce FN, LN
+    iLen = UBound(aFullName)
+
+    Dim aMiddleName() As String
+    ReDim aMiddleName(iLen)
+
+    Dim i As Integer
+    For i = 1 To UBound(aFullName)
+        sFullName = aFullName(i)
+        If Len(sFullName) = 2 And Right(sFullName, 1) = "." Then
+            GetMiddleName = Null
+            Exit Function
+        End If
+        aMiddleName(i - 1) = aFullName(i)
+    Next
+    
+    GetMiddleName = Trim(Join(aMiddleName, " "))
+End Function
+
+Public Function GetMiddleInitial(FullName As String) As Variant
+    Dim aMiddleName(), sMiddleName As String
+    
+    Dim aFullName As Variant
+    Dim sFullName As String
+    
+    aFullName = Split(FullName, ", ")
+    
+    If UBound(aFullName) < 1 Then
+        GetMiddleInitial = Null
+        Exit Function
+    End If
+    
+    aFullName = Split(aFullName(1), " ")
+    
+    If UBound(aFullName) < 1 Then
+        GetMiddleInitial = Null
+        Exit Function
+    End If
+
+    Dim iLen As Integer
+    ' deduce FN, LN
+    iLen = UBound(aFullName)
+
+    ReDim aMiddleName(iLen)
+
+    Dim i As Integer
+    For i = 1 To UBound(aFullName)
+        sFullName = Left(aFullName(i), 1) + "."
+        aMiddleName(i - 1) = sFullName
+    Next
+    
+    GetMiddleInitial = Trim(Join(aMiddleName, " "))
+
+End Function
+
+Public Function GetLastName(sFullName) As Variant
     Dim aFullName() As String
-    aFullName = Split(sFullName, " ")
+    aFullName = Split(sFullName, ", ")
     If UBound(aFullName) > 0 Then
-        GetLastName = Trim(aFullName(1))
+        GetLastName = Trim(aFullName(0))
     End If
 End Function
 
@@ -301,6 +410,4 @@ Public Function GetWoSAuthorName(ByVal FullName As String) As String
     
     GetWoSAuthorName = Trim(sLastName) & ", " & Trim(sFirstName)
 End Function
-
-
 

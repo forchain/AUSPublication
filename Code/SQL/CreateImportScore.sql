@@ -1,11 +1,12 @@
-CREATE TABLE [Weight] (
+CREATE TABLE ImportScore (
     ID COUNTER PRIMARY KEY,
     PaperID int,
-    AuthorName VARCHAR
+    WoSID VARCHAR,
+
     FullName VARCHAR, 
     LastName VARCHAR, 
     FirstName VARCHAR, 
     MiddleName VARCHAR, 
     FirstInitial VARCHAR, 
-    MiddleInitial VARCHAR
+    MiddleInitial VARCHAR,
 );

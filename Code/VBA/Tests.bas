@@ -14,12 +14,11 @@ Public Sub TestCurrentProject()
 End Sub
 
 Sub TestOpenFile()
-   Dim Shex As Object
-   Set Shex = CreateObject("Shell.Application")
-   tgtfile = "C:\Nax\dud.txt"
-   Shex.Open (tgtfile)
+    Dim Shex As Object
+    Set Shex = CreateObject("Shell.Application")
+    tgtfile = "C:\Nax\dud.txt"
+    Shex.Open (tgtfile)
 End Sub
-
 
 Public Sub TestWordApplication()
     Dim ws As Word.System
@@ -82,8 +81,6 @@ Public Sub TestAppendPaper()
     DoCmd.OpenTable "Paper"
 
 End Sub
-
-
 
 Public Sub TestViewAuthor()
 

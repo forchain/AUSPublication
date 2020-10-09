@@ -27,26 +27,23 @@ Private Function Out(Tag, Func, Reason As String, ParamArray Vars() As Variant) 
 End Function
 
 Public Sub D(Func, Reason As String, ParamArray Vars() As Variant)
-Dim sLog As String
-  sLog = Out("D", Func, Reason, Vars)
+    Dim sLog As String
+    sLog = Out("D", Func, Reason, Vars)
 End Sub
-
 
 Public Sub i(Func, Reason As String, ParamArray Vars() As Variant)
-  Dim sLog As String
-  sLog = Out("I", Func, Reason, Vars)
+    Dim sLog As String
+    sLog = Out("I", Func, Reason, Vars)
 End Sub
 
-
-
 Public Sub W(Func, Reason As String, ParamArray Vars() As Variant)
-   Dim sLog As String
-  sLog = Out("W", Func, Reason, Vars)
+    Dim sLog As String
+    sLog = Out("W", Func, Reason, Vars)
 End Sub
 
 Public Sub T(Func, Reason As String, ParamArray Vars() As Variant)
-   Dim sLog As String
-  sLog = Out("T", Func, Reason, Vars)
+    Dim sLog As String
+    sLog = Out("T", Func, Reason, Vars)
 End Sub
 
 Public Sub E(Func, Reason As String, ParamArray Vars() As Variant)
@@ -56,10 +53,4 @@ Public Sub E(Func, Reason As String, ParamArray Vars() As Variant)
     Dim rResult As VbMsgBoxResult
     rResult = MsgBox(Reason, vbYes, Func)
 End Sub
-
-
-
-
-
-
 

@@ -7,5 +7,6 @@ CREATE TABLE Paper (
     [Index] byte,
     Addresses Memo,
     AuthorNames Memo,
-    AuthorCount int
+    AuthorCount int,
+    FullNames VARCHAR
 );

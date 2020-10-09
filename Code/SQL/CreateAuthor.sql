@@ -5,5 +5,11 @@ CREATE TABLE Author (
     AuthorName VARCHAR,
     AbbrName VARCHAR,
     JobID int,
-    DepartmentID int
+    DepartmentID int,
+
+    LastName VARCHAR,
+    FirstName VARCHAR,
+    FirstInitial VARCHAR,
+    MiddleName VARCHAR,
+    MiddleInitial VARCHAR
 );

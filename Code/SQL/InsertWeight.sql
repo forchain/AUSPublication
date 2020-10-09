@@ -1,2 +1,2 @@
-INSERT INTO [Weight] (PaperID, AuthorName)
-Values (PaperID, AuthorName);
+INSERT INTO [Weight] (PaperID, AuthorName, FullName, LastName, FirstName, MiddleName, FirstInitial, MiddleInitial)
+Values (PaperID, AuthorName, FullName, LastName, FirstName, MiddleName, FirstInitial, MiddleInitial);

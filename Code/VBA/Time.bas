@@ -23,6 +23,3 @@ Function GetYear(PubYear, AccDate As Variant) As Integer
     GetYear = CInt(sAccDate)
 End Function
 
-
-
-

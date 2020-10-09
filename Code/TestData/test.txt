@@ -5,3 +5,6 @@
 Debug.Print sAddrs
 Asian Growth Res Inst, Kitakyushu, Fukuoka, Japan; Osaka Univ, Inst Social & Econ Res, Osaka, Japan; Natl Bur Econ Res, Cambridge, MA 02138 USA; Amer Univ Sharjah, Sharjah, U Arab Emirates; Deakin Univ, Geelong, Vic, Australia; Deakin Univ, Geelong, Vic, Australia
 
+
+Addresses
+[Badran, Sammy Zeyad] Amer Univ Sharjah, Coll Arts & Sci, Dept Int Studies, POB 26666, Sharjah, U Arab Emirates

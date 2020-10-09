@@ -82,7 +82,7 @@ Private Sub FrameImportAuthor_Click()
 End Sub
 
 Private Sub FrameImportPaper_Click()
-  'Debug.Print Me.FrameImportPaper.Value
+    'Debug.Print Me.FrameImportPaper.Value
     
     Dim fd As Office.FileDialog
     Dim sFile As Variant
@@ -119,10 +119,3 @@ Private Sub FrameImportPaper_Click()
  
     End With
 End Sub
-
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-INSERT INTO Paper ( WoSID, DOI, Title, [Year], [Index], Addresses, AuthorNames, AuthorCount )
+INSERT INTO Paper ( WoSID, DOI, Title, [Year], [Index], Addresses, AuthorNames, AuthorCount, FullNames )
 SELECT  WoSID
        ,DOI
        ,Title
@@ -7,4 +7,5 @@ SELECT  WoSID
        ,Addresses
        ,AuthorNames
        ,AuthorCount
-FROM ImportPaper 
+       ,FullNames
+FROM ImportPaper
