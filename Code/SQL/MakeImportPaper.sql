@@ -1,4 +1,3 @@
- -- MakeImportPaper
 SELECT  [UT (Unique WOS ID)]                                    AS WosID
        ,DOI
        ,[Article Title]                                         AS Title

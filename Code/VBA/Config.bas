@@ -1,4 +1,5 @@
 Attribute VB_Name = "Config"
+
 Option Compare Database
 Option Explicit
 
@@ -33,4 +34,5 @@ Public Property Get ExportFile() As String
     sTime = Replace(sTime, ":", ".")
     ExportFile = CurrentProject.Path & Consts.EXPORT_DIR & sTime & " - " & Consts.EXPORT_FILE
 End Property
+
 

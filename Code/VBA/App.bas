@@ -1,4 +1,5 @@
 Attribute VB_Name = "App"
+
 Option Compare Database
 Option Explicit
 
@@ -133,4 +134,5 @@ End Function
 Public Sub OpenFile(File As String)
     Shell "explorer.exe " & File
 End Sub
+
 

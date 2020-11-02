@@ -8,5 +8,5 @@ CREATE TABLE ImportScore (
     FirstName VARCHAR, 
     MiddleName VARCHAR, 
     FirstInitial VARCHAR, 
-    MiddleInitial VARCHAR,
+    MiddleInitial VARCHAR
 );

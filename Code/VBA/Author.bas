@@ -1,4 +1,5 @@
 Attribute VB_Name = "Author"
+
 Option Compare Database
 Option Explicit
 
@@ -186,4 +187,5 @@ Public Function FixTitle(Title As String) As String
     FixTitle = Trim(sTitle)
 
 End Function
+
 

@@ -1,4 +1,5 @@
 Attribute VB_Name = "Main"
+
 Option Compare Database
 Option Explicit
 
@@ -45,7 +46,7 @@ Public Sub CreateTables()
     dicUnknown.Add "Job", True
     dicUnknown.Add "Paper", False
 
-    dicUnknown.Add "Paper2Author", False
+    dicUnknown.Add "ImportScore", False
     dicUnknown.Add "Score", False
     dicUnknown.Add "Match", False
     
@@ -98,7 +99,7 @@ Public Function ImportAuthor(EmplType As Byte, ByVal Path As String) As Integer
     App.DeleteTable "ImportAuthor"
     
     Dim iRows As Integer
-    iRows = App.Execute sQuery
+    iRows = App.Execute(sQuery)
 
     If iRows = 0 Then
         MsgBox "No new records imported", Title:="Import"
@@ -175,16 +176,26 @@ Public Function ImportPaper(ByVal Index As Integer, ByVal Path As String) As Int
     
     Dim rsPaper As Recordset
     Set rsPaper = CurrentDb.OpenRecordset("SelectImportPaper", dbOpenSnapshot)
-
+    
+    Dim i As Integer
+    Dim sName As String
     sQuery = "InsertImportScore"
     Do While Not rsPaper.EOF
+        Dim vAuthors As Variant
+        vAuthors = Split(rsPaper!FullNames, ";")
+
         For i = 0 To UBound(vAuthors)
             sName = Trim(vAuthors(i))
             App.Execute sQuery, "PaperID", rsPaper!ID, "WoSID", rsPaper!WoSID, "FullName", sName, "LastName", Paper.GetLastName(sName), "FirstName", Paper.GetFirstName(sName), "MiddleName", Paper.GetMiddleName(sName), "FirstInitial", Paper.GetFirstInitial(sName), "MiddleInitial", Paper.GetMiddleInitial(sName)
         Next i
         rsPaper.MoveNext
     Loop
+    
+    sQuery = "InsertScore"
+    App.Execute sQuery
 
+
+    App.DeleteTable "ImportMatch"
     sQuery = "MakeImportMatchByPaper"
     App.Execute sQuery
     sQuery = "InsertMatch"

@@ -1,4 +1,5 @@
 Attribute VB_Name = "Tests"
+
 Option Compare Database
 Option Explicit
 
@@ -124,4 +125,5 @@ Public Sub TestConfig()
  
     Debug.Print Config.Val("TestSection", "TestKey")
 End Sub
+
 

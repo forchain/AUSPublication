@@ -2,11 +2,11 @@
 INNER JOIN 
 (
 	SELECT  ScoreID
-	FROM Match 
+	FROM Match
 	WHERE Matched 
 	GROUP BY  ScoreID
 	HAVING COUNT(ScoreID) = 1 
 ) AS m
-ON IsNull(Score.AuthorID) AND s.ID = m.ScoreID
+ON (IsNull(s.AuthorID) AND s.ID = m.ScoreID)
 
-Set s.AuthorID = m.AuthorID
+SET s.AuthorID = m.AuthorID

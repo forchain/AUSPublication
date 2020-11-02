@@ -3,46 +3,43 @@ Option Compare Database
 Option Explicit
 
 Public Function IsMatched(PaperFirstName, PaperMiddleName, PaperMiddleInitial, _
-                                  AuthorID, AuthorFirstName, AuthorFirstInitial, AuthorMiddleName, AuthorMiddleInitial, 
-                                                                  FirstNameRequired ,
-    FirstNameMatched ,
-    MiddleNameRequired ,
-    MiddleNameMatched ,
-    MiddleInitialRequired ,
-    MiddleInitialMatched  
-                                  
-                                  As Variant) As Integer
+                          AuthorID, AuthorFirstName, AuthorFirstInitial, AuthorMiddleName, AuthorMiddleInitial, _
+                          FirstNameRequired, FirstNameMatched, _
+                          MiddleNameRequired, MiddleNameMatched, _
+                          MiddleInitialRequired, MiddleInitialMatched As Variant) As Boolean
 
     IsMatched = False
 
-    If  IsNull(AuthorID) Then
-    Exit Function
-    end if
+    If IsNull(AuthorID) Then
+        Exit Function
+    End If
 
-' Must exist AuthorFirstName
-    If  FirstNameRequired Then
-        if IsNull(AuthorFirstName) Then
-        exit Function
-        end if
-    end if
-
-' Must match AuthorFirstName
-    If FirstNameMatched Then
-    If Not IsNull(PaperFirstName) And Not IsNull(AuthorFirstName) Then
-        If PaperFirstName <> AuthorFirstName Then
+    ' Must exist AuthorFirstName
+    If FirstNameRequired Then
+        If IsNull(AuthorFirstName) Then
             Exit Function
         End If
     End If
-    end if
 
-' Must exist AuthorMiddleName
-    If MiddleNameRequired  Then
-        if IsNull(AuthorMiddleName) Then
-        exit Function
-        end if
-    end if
+    ' Must match AuthorFirstName
+    If FirstNameMatched Then
+        If Not IsNull(PaperFirstName) And Not IsNull(AuthorFirstName) Then
+            If PaperFirstName <> AuthorFirstName Then
+                Exit Function
+            End If
+        End If
+    End If
 
-' Must  match AuthorMiddleName
+    ' Must exist AuthorMiddleName
+    If MiddleNameRequired Then
+        If IsNull(AuthorMiddleName) Then
+            Exit Function
+        End If
+    End If
+
+    ' Must  match AuthorMiddleName
+    Dim i As Integer
+    
     If MiddleNameMatched Then
         Dim sPaperMiddleName As String
         Dim vPaperMiddleName As Variant
@@ -53,16 +50,16 @@ Public Function IsMatched(PaperFirstName, PaperMiddleName, PaperMiddleInitial, _
                 Exit Function
             End If
         Next
-    end if
+    End If
 
-' Must exist AuthorMiddleInitial
+    ' Must exist AuthorMiddleInitial
     If MiddleInitialRequired Then
-        if IsNull(AuthorMiddleInitial) Then
-        exit Function
-        end if
-    end if
+        If IsNull(AuthorMiddleInitial) Then
+            Exit Function
+        End If
+    End If
 
-' Must  match AuthorMiddleInitial
+    ' Must  match AuthorMiddleInitial
     If MiddleInitialMatched Then
         Dim sPaperMiddleInitial As String
         Dim vPaperMiddleInitial As Variant
@@ -73,25 +70,11 @@ Public Function IsMatched(PaperFirstName, PaperMiddleName, PaperMiddleInitial, _
                 Exit Function
             End If
         Next
-    end if
+    End If
 
     IsMatched = True
 End Function
 
-
-Public Function CalcPoints(Points, Condition as Integer) as Boolean
-
-if Points& 2^0
-    If True Then
-        
-    Else
-        
-    End If
-
-
-    CalcPoints=False
-
-End Function
 
 
 Public Function CalcPoints(PaperFirstName, PaperMiddleName, PaperMiddleInitial, _
@@ -155,3 +138,4 @@ Public Function CalcPoints(PaperFirstName, PaperMiddleName, PaperMiddleInitial, 
     End If
     CalcMatchingScore = lScore
 End Function
+

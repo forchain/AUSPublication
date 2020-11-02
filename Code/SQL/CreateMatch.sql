@@ -20,13 +20,12 @@ CREATE TABLE Match (
     AuthorFirstInitial VARCHAR, 
     AuthorMiddleInitial VARCHAR,
 
-    FirstNameRequired boolean,
-    FirstNameMatched boolean,
-    MiddleNameRequired boolean,
-    MiddleNameMatched boolean,
-    MiddleInitialRequired boolean,
-    MiddleInitialMatched boolean,
+    FirstNameRequired bit,
+    FirstNameMatched bit,
+    MiddleNameRequired bit,
+    MiddleNameMatched bit,
+    MiddleInitialRequired bit,
+    MiddleInitialMatched bit,
 
-    Points float,
-    Condition float
+    Matched bit
 );

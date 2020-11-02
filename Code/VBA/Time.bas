@@ -1,4 +1,5 @@
 Attribute VB_Name = "Time"
+
 Option Compare Database
 Option Explicit
 
@@ -22,4 +23,5 @@ Function GetYear(PubYear, AccDate As Variant) As Integer
     End If
     GetYear = CInt(sAccDate)
 End Function
+
 

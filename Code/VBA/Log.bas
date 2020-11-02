@@ -1,4 +1,5 @@
 Attribute VB_Name = "Log"
+
 Option Compare Database
 Option Explicit
 
@@ -53,4 +54,5 @@ Public Sub E(Func, Reason As String, ParamArray Vars() As Variant)
     Dim rResult As VbMsgBoxResult
     rResult = MsgBox(Reason, vbYes, Func)
 End Sub
+
 

@@ -1,4 +1,5 @@
 Attribute VB_Name = "Paper"
+
 Option Compare Database
 Option Explicit
 
@@ -410,4 +411,5 @@ Public Function GetWoSAuthorName(ByVal FullName As String) As String
     
     GetWoSAuthorName = Trim(sLastName) & ", " & Trim(sFirstName)
 End Function
+
 

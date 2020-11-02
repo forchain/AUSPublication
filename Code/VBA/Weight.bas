@@ -1,4 +1,5 @@
 Attribute VB_Name = "Weight"
+
 Option Compare Database
 Option Explicit
 
@@ -110,6 +111,8 @@ Public Function CalcMatchingScore(WeightFirstName, WeightMiddleName, WeightMiddl
     End If
     CalcMatchingScore = lScore
 End Function
+
+
 
 
 

@@ -1,4 +1,5 @@
 Attribute VB_Name = "Score"
+
 Option Compare Database
 Option Explicit
 
@@ -48,3 +49,4 @@ Public Function CalcScore(iID As Variant, iPapInd As Integer, iCurrInd As Intege
     End If
 
 End Function
+
