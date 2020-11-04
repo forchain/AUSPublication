@@ -83,6 +83,7 @@ Public Function ImportAuthor(EmplType As Byte, ByVal Path As String) As Integer
     Dim i As Integer
     Dim sQuery As String
     
+    App.DeleteTable "ImportAuthor"
     Dim sInFields, sOutFields As String
     sInFields = "Type;Full Name;ID;Current Hire Date;Job Title;Department;Department Description"
     sOutFields = "Empl Type;Department;Name;ID;Current Hire Date;Termination Date;Title"
@@ -95,8 +96,6 @@ Public Function ImportAuthor(EmplType As Byte, ByVal Path As String) As Integer
         Log.E sFunc, "Invalid fields", "Path", Path
         Exit Function
     End If
-    
-    App.DeleteTable "ImportAuthor"
     
     Dim iRows As Integer
     iRows = App.Execute(sQuery)
@@ -124,8 +123,11 @@ Public Function ImportAuthor(EmplType As Byte, ByVal Path As String) As Integer
     sQuery = "InsertAuthor"
     App.Execute sQuery
 
+    
+    App.DeleteTable "ImportMatch"
     sQuery = "MakeImportMatchByAuthor"
     App.Execute sQuery
+    'replace empty records in match with those matched in ImportMatch
     sQuery = "DeleteUnknownMatch"
     App.Execute sQuery
     sQuery = "InsertMatch"
@@ -174,6 +176,8 @@ Public Function ImportPaper(ByVal Index As Integer, ByVal Path As String) As Int
     sQuery = "InsertPaper"
     App.Execute sQuery
     
+    
+    App.Execute "ClearImportScore"
     Dim rsPaper As Recordset
     Set rsPaper = CurrentDb.OpenRecordset("SelectImportPaper", dbOpenSnapshot)
     

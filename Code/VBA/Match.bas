@@ -16,7 +16,7 @@ Public Function IsMatched(PaperFirstName, PaperMiddleName, PaperMiddleInitial, _
 
     ' Must exist AuthorFirstName
     If FirstNameRequired Then
-        If IsNull(AuthorFirstName) Then
+        If IsNull(PaperFirstName) Then
             Exit Function
         End If
     End If
@@ -32,7 +32,7 @@ Public Function IsMatched(PaperFirstName, PaperMiddleName, PaperMiddleInitial, _
 
     ' Must exist AuthorMiddleName
     If MiddleNameRequired Then
-        If IsNull(AuthorMiddleName) Then
+        If (IsNull(AuthorMiddleName) And Not IsNull(AuthorMiddleName)) Or (Not IsNull(AuthorMiddleName) And Not IsNull(AuthorMiddleName)) Then
             Exit Function
         End If
     End If
@@ -41,15 +41,17 @@ Public Function IsMatched(PaperFirstName, PaperMiddleName, PaperMiddleInitial, _
     Dim i As Integer
     
     If MiddleNameMatched Then
-        Dim sPaperMiddleName As String
-        Dim vPaperMiddleName As Variant
-        vPaperMiddleName = Split(PaperMiddleName)
-        For i = 0 To UBound(vPaperMiddleName)
-            sPaperMiddleName = vPaperMiddleName(i)
-            If InStr(AuthorMiddleName, sPaperMiddleName) = 0 Then
-                Exit Function
-            End If
-        Next
+        If Not IsNull(PaperMiddleName) And Not IsNull(AuthorMiddleName) Then
+            Dim sPaperMiddleName As String
+            Dim vPaperMiddleName As Variant
+            vPaperMiddleName = Split(PaperMiddleName)
+            For i = 0 To UBound(vPaperMiddleName)
+                sPaperMiddleName = vPaperMiddleName(i)
+                If InStr(AuthorMiddleName, sPaperMiddleName) = 0 Then
+                    Exit Function
+                End If
+            Next
+        End If
     End If
 
     ' Must exist AuthorMiddleInitial
@@ -57,19 +59,24 @@ Public Function IsMatched(PaperFirstName, PaperMiddleName, PaperMiddleInitial, _
         If IsNull(AuthorMiddleInitial) Then
             Exit Function
         End If
+        If (IsNull(AuthorMiddleInitial) And Not IsNull(AuthorMiddleInitial)) Or (Not IsNull(AuthorMiddleInitial) And Not IsNull(AuthorMiddleInitial)) Then
+            Exit Function
+        End If
     End If
 
     ' Must  match AuthorMiddleInitial
     If MiddleInitialMatched Then
-        Dim sPaperMiddleInitial As String
-        Dim vPaperMiddleInitial As Variant
-        vPaperMiddleInitial = Split(PaperMiddleInitial)
-        For i = 0 To UBound(vPaperMiddleInitial)
-            sPaperMiddleInitial = vPaperMiddleInitial(i)
-            If InStr(AuthorMiddleInitial, sPaperMiddleInitial) = 0 Then
-                Exit Function
-            End If
-        Next
+        If Not IsNull(PaperMiddleInitial) And Not IsNull(AuthorMiddleInitial) Then
+            Dim sPaperMiddleInitial As String
+            Dim vPaperMiddleInitial As Variant
+            vPaperMiddleInitial = Split(PaperMiddleInitial)
+            For i = 0 To UBound(vPaperMiddleInitial)
+                sPaperMiddleInitial = vPaperMiddleInitial(i)
+                If InStr(AuthorMiddleInitial, sPaperMiddleInitial) = 0 Then
+                    Exit Function
+                End If
+            Next
+        End If
     End If
 
     IsMatched = True

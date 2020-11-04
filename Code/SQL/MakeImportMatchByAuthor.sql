@@ -16,5 +16,9 @@ SELECT  CLng(s.ID)      AS ScoreID
        ,a.FirstInitial  AS AuthorFirstInitial 
        ,a.MiddleInitial AS AuthorMiddleInitial into ImportMatch
 FROM Score AS s
-INNER JOIN ImportAuthor AS a
+INNER JOIN 
+(ImportAuthor AS ia
+	INNER JOIN Author AS a
+	ON ia.Code = a.Code
+)
 ON s.LastName = a.LastName AND s.FirstInitial = a.FirstInitial 
