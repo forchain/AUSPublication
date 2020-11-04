@@ -1,0 +1,6 @@
+﻿Option Compare Database
+Option Explicit
+
+Private Sub FrameMiddleInitialCheck_AfterUpdate()
+Debug.Print FrameMiddleInitialCheck.Value
+End Sub

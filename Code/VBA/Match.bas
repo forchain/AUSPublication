@@ -63,10 +63,10 @@ Public Function IsMiddleNameMatched(ByVal MiddleNameCheck As Boolean, PaperMiddl
 End Function
 
 Public Function IsMiddleInitialMatched(ByVal MiddleInitialCheck As Boolean, PaperMiddleInitial, AuthorMiddleInitial As Variant) As Boolean
-
+    IsMiddleInitialMatched = False
     ' Must exist AuthorMiddleInitial
     If MiddleInitialCheck Then
-        If (IsNull(AuthorMiddleInitial) And Not IsNull(AuthorMiddleInitial)) Or (Not IsNull(AuthorMiddleInitial) And Not IsNull(AuthorMiddleInitial)) Then
+        If (IsNull(AuthorMiddleInitial) And Not IsNull(PaperMiddleInitial)) Or (Not IsNull(AuthorMiddleInitial) And Not IsNull(PaperMiddleInitial)) Then
             Exit Function
         End If
     End If
