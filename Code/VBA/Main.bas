@@ -73,6 +73,37 @@ Public Sub CreateTables()
 
 End Sub
 
+Public Sub CreateFields()
+
+    Dim db As DAO.Database
+    Dim td As DAO.TableDef
+    Dim field As DAO.Field2
+
+    Set db = CurrentDb()
+    Set td = db.TableDefs("Match")
+
+    Set field = td.CreateField("MinimumMatched", dbBoolean)
+    field.Expression = "IsMinimumMatched(AuthorID)"
+    td.Fields.Append field
+
+    Set field = td.CreateField("FirstNameMatched", dbBoolean)
+    field.Expression = "IsFirstNameMatched(FirstNameCheck, PaperFirstName, AuthorFirstName )"
+    td.Fields.Append field
+
+    Set field = td.CreateField("MiddleNameMatched", dbBoolean)
+    field.Expression = "IsMiddleNameMatched(MiddleNameCheck, PaperMiddleName, AuthorMiddleName )"
+    td.Fields.Append field
+
+    Set field = td.CreateField("MiddleInitialMatched", dbBoolean)
+    field.Expression = "IsMiddleInitialMatched(MiddleInitialCheck, PaperMiddleInitial, AuthorMiddleInitial)"
+    td.Fields.Append field
+    
+        Set field = td.CreateField("AllMatched", dbBoolean)
+    field.Expression = "MinimumMatched and FirstNameMatched and MiddleNameMatched and MiddleInitialMatched"
+    td.Fields.Append field
+
+End Sub
+
 Public Function ImportAuthor(EmplType As Byte, ByVal Path As String) As Integer
     Dim sFunc As String
     sFunc = "ImportAuthor"
@@ -131,7 +162,8 @@ Public Function ImportAuthor(EmplType As Byte, ByVal Path As String) As Integer
     sQuery = "DeleteUnknownMatch"
     App.Execute sQuery
     sQuery = "InsertMatch"
-    App.Execute sQuery
+
+    App.Execute sQuery, "FirstNameCheck", False, "MiddleNameCheck", False, "MiddleInitialCheck", False
     
     'Log.i sFunc, "Imported", "iRows", iRows
     MsgBox iRows & " records imported", Title:="Import"
@@ -203,7 +235,7 @@ Public Function ImportPaper(ByVal Index As Integer, ByVal Path As String) As Int
     sQuery = "MakeImportMatchByPaper"
     App.Execute sQuery
     sQuery = "InsertMatch"
-    App.Execute sQuery
+    App.Execute sQuery, "FirstNameCheck", False, "MiddleNameCheck", False, "MiddleInitialCheck", False
     
     'Log.i sFunc, "Imported", "iRows", iRows
     MsgBox iRows & " records imported", Title:="Import"

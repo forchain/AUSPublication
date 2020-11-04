@@ -2,37 +2,44 @@ Attribute VB_Name = "Match"
 Option Compare Database
 Option Explicit
 
-Public Function IsMatched(PaperFirstName, PaperMiddleName, PaperMiddleInitial, _
-                          AuthorID, AuthorFirstName, AuthorFirstInitial, AuthorMiddleName, AuthorMiddleInitial, _
-                          FirstNameRequired, FirstNameMatched, _
-                          MiddleNameRequired, MiddleNameMatched, _
-                          MiddleInitialRequired, MiddleInitialMatched As Variant) As Boolean
-
-    IsMatched = False
-
+' Minimum match: last name and first initial
+Public Function IsMinimumMatched(ByVal AuthorID As Variant) As Boolean
+    IsMinimumMatched = False
     If IsNull(AuthorID) Then
         Exit Function
     End If
+    IsMinimumMatched = True
+End Function
 
+Public Function IsFirstNameMatched(ByVal FirstNameCheck As Boolean, PaperFirstName, AuthorFirstName As Variant) As Boolean
+
+    IsFirstNameMatched = False
     ' Must exist AuthorFirstName
-    If FirstNameRequired Then
+    ' No need to check author first name since it cannot be empty
+    If FirstNameCheck Then
         If IsNull(PaperFirstName) Then
             Exit Function
         End If
     End If
 
     ' Must match AuthorFirstName
-    If FirstNameMatched Then
-        If Not IsNull(PaperFirstName) And Not IsNull(AuthorFirstName) Then
-            If PaperFirstName <> AuthorFirstName Then
-                Exit Function
-            End If
+    
+    If Not IsNull(PaperFirstName) And Not IsNull(AuthorFirstName) Then
+        If PaperFirstName <> AuthorFirstName Then
+            Exit Function
         End If
     End If
 
+    IsFirstNameMatched = True
+
+
+End Function
+
+Public Function IsMiddleNameMatched(ByVal MiddleNameCheck As Boolean, PaperMiddleName, AuthorMiddleName As Variant) As Boolean
+    IsMiddleNameMatched = False
     ' Must exist AuthorMiddleName
-    If MiddleNameRequired Then
-        If (IsNull(AuthorMiddleName) And Not IsNull(AuthorMiddleName)) Or (Not IsNull(AuthorMiddleName) And Not IsNull(AuthorMiddleName)) Then
+    If MiddleNameCheck Then
+        If (IsNull(AuthorMiddleName) And Not IsNull(PaperMiddleName)) Or (Not IsNull(AuthorMiddleName) And Not IsNull(PaperMiddleName)) Then
             Exit Function
         End If
     End If
@@ -40,52 +47,78 @@ Public Function IsMatched(PaperFirstName, PaperMiddleName, PaperMiddleInitial, _
     ' Must  match AuthorMiddleName
     Dim i As Integer
     
-    If MiddleNameMatched Then
-        If Not IsNull(PaperMiddleName) And Not IsNull(AuthorMiddleName) Then
-            Dim sPaperMiddleName As String
-            Dim vPaperMiddleName As Variant
-            vPaperMiddleName = Split(PaperMiddleName)
-            For i = 0 To UBound(vPaperMiddleName)
-                sPaperMiddleName = vPaperMiddleName(i)
-                If InStr(AuthorMiddleName, sPaperMiddleName) = 0 Then
-                    Exit Function
-                End If
-            Next
-        End If
+
+    If Not IsNull(PaperMiddleName) And Not IsNull(AuthorMiddleName) Then
+        Dim sPaperMiddleName As String
+        Dim vPaperMiddleName As Variant
+        vPaperMiddleName = Split(PaperMiddleName)
+        For i = 0 To UBound(vPaperMiddleName)
+            sPaperMiddleName = vPaperMiddleName(i)
+            If InStr(AuthorMiddleName, sPaperMiddleName) = 0 Then
+                Exit Function
+            End If
+        Next
     End If
+    IsMiddleNameMatched = True
+End Function
+
+Public Function IsMiddleInitialMatched(ByVal MiddleInitialCheck As Boolean, PaperMiddleInitial, AuthorMiddleInitial As Variant) As Boolean
 
     ' Must exist AuthorMiddleInitial
-    If MiddleInitialRequired Then
-        If IsNull(AuthorMiddleInitial) Then
-            Exit Function
-        End If
+    If MiddleInitialCheck Then
         If (IsNull(AuthorMiddleInitial) And Not IsNull(AuthorMiddleInitial)) Or (Not IsNull(AuthorMiddleInitial) And Not IsNull(AuthorMiddleInitial)) Then
             Exit Function
         End If
     End If
 
     ' Must  match AuthorMiddleInitial
-    If MiddleInitialMatched Then
-        If Not IsNull(PaperMiddleInitial) And Not IsNull(AuthorMiddleInitial) Then
-            Dim sPaperMiddleInitial As String
-            Dim vPaperMiddleInitial As Variant
-            vPaperMiddleInitial = Split(PaperMiddleInitial)
-            For i = 0 To UBound(vPaperMiddleInitial)
-                sPaperMiddleInitial = vPaperMiddleInitial(i)
-                If InStr(AuthorMiddleInitial, sPaperMiddleInitial) = 0 Then
-                    Exit Function
-                End If
-            Next
-        End If
+
+    Dim i As Integer
+
+    If Not IsNull(PaperMiddleInitial) And Not IsNull(AuthorMiddleInitial) Then
+        Dim sPaperMiddleInitial As String
+        Dim vPaperMiddleInitial As Variant
+        vPaperMiddleInitial = Split(PaperMiddleInitial)
+        For i = 0 To UBound(vPaperMiddleInitial)
+            sPaperMiddleInitial = vPaperMiddleInitial(i)
+            If InStr(AuthorMiddleInitial, sPaperMiddleInitial) = 0 Then
+                Exit Function
+            End If
+        Next
+    End If
+    
+    IsMiddleInitialMatched = True
+
+End Function
+
+Public Function IsMatched(ByVal PaperFirstName, PaperMiddleName, PaperMiddleInitial, _
+                          AuthorID, AuthorFirstName, AuthorMiddleName, AuthorMiddleInitial As Variant, _
+                          FirstNameCheck, MiddleNameCheck, MiddleInitialCheck As Boolean) As Boolean
+
+    IsMatched = False
+    
+    
+    If Not IsMinimumMatched(AuthorID) Then
+        Exit Function
+    End If
+    
+    If Not IsFirstNameMatched(FirstNameCheck, PaperFirstName, AuthorFirstName) Then
+        Exit Function
+    End If
+
+    If Not IsMiddleNameMatched(MiddleNameCheck, PaperMiddleName, AuthorMiddleName) Then
+        Exit Function
+    End If
+
+    If Not IsMiddleInitialMatched(MiddleInitialCheck, PaperMiddleInitial, AuthorMiddleInitial) Then
+        Exit Function
     End If
 
     IsMatched = True
 End Function
 
-
-
 Public Function CalcPoints(PaperFirstName, PaperMiddleName, PaperMiddleInitial, _
-                                  AuthorCode, AuthorFirstName, AuthorFirstInitial, AuthorMiddleName, AuthorMiddleInitial As Variant) As Integer
+                           AuthorCode, AuthorFirstName, AuthorFirstInitial, AuthorMiddleName, AuthorMiddleInitial As Variant) As Integer
     Dim lScore As Integer
 
     lScore = 0
@@ -145,4 +178,5 @@ Public Function CalcPoints(PaperFirstName, PaperMiddleName, PaperMiddleInitial, 
     End If
     CalcMatchingScore = lScore
 End Function
+
 

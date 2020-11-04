@@ -20,12 +20,9 @@ CREATE TABLE Match (
     AuthorFirstInitial VARCHAR, 
     AuthorMiddleInitial VARCHAR,
 
-    FirstNameRequired bit,
-    FirstNameMatched bit,
-    MiddleNameRequired bit,
-    MiddleNameMatched bit,
-    MiddleInitialRequired bit,
-    MiddleInitialMatched bit,
+    FirstNameCheck bit,
+    MiddleNameCheck bit,
+    MiddleInitialCheck bit,
 
     Matched bit
 );
