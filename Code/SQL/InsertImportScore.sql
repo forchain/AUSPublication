@@ -1,2 +1,2 @@
-INSERT INTO ImportScore ( PaperID, WoSID, FullName, LastName, FirstName, MiddleName, FirstInitial, MiddleInitial )
-Values (PaperID, WoSID, FullName, LastName, FirstName, MiddleName, FirstInitial, MiddleInitial);
+INSERT INTO ImportScore ( PaperID, WoSID, [Index], AuthorCount, FullName, LastName, FirstName, MiddleName, FirstInitial, MiddleInitial )
+Values (PaperID, WoSID, [Index], AuthorCount, FullName, LastName, FirstName, MiddleName, FirstInitial, MiddleInitial);

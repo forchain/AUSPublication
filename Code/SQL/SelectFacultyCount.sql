@@ -1,8 +1,4 @@
-SELECT
-    PaperID,
-    Count(AuthorID) as FacultyCount,
-    First(AuthorCount) as AllCount
-FROM
-    SelectWeight
-GROUP BY
-    PaperID
+SELECT  PaperID
+       ,COUNT(Not IsStudent) AS FacultyCount
+FROM SelectResolvedMatch
+GROUP BY  PaperID

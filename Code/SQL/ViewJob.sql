@@ -1,2 +1,2 @@
-Select Display, Order From Job
+Select Display, Order, IsStudent From Job
 Where [ID] > 0

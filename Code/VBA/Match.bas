@@ -39,7 +39,7 @@ Public Function IsMiddleNameMatched(ByVal MiddleNameCheck As Boolean, PaperMiddl
     IsMiddleNameMatched = False
     ' Must exist AuthorMiddleName
     If MiddleNameCheck Then
-        If (IsNull(AuthorMiddleName) And Not IsNull(PaperMiddleName)) Or (Not IsNull(AuthorMiddleName) And Not IsNull(PaperMiddleName)) Then
+        If (IsNull(AuthorMiddleName) And Not IsNull(PaperMiddleName)) Or (Not IsNull(AuthorMiddleName) And IsNull(PaperMiddleName)) Then
             Exit Function
         End If
     End If
@@ -66,7 +66,7 @@ Public Function IsMiddleInitialMatched(ByVal MiddleInitialCheck As Boolean, Pape
     IsMiddleInitialMatched = False
     ' Must exist AuthorMiddleInitial
     If MiddleInitialCheck Then
-        If (IsNull(AuthorMiddleInitial) And Not IsNull(PaperMiddleInitial)) Or (Not IsNull(AuthorMiddleInitial) And Not IsNull(PaperMiddleInitial)) Then
+        If (IsNull(AuthorMiddleInitial) And Not IsNull(PaperMiddleInitial)) Or (Not IsNull(AuthorMiddleInitial) And IsNull(PaperMiddleInitial)) Then
             Exit Function
         End If
     End If

@@ -9,6 +9,7 @@ SELECT  CLng(s.ID)      AS ScoreID
        ,s.MiddleInitial AS PaperMiddleInitial 
        ,CVar(a.ID)      AS AuthorID 
        ,a.Code          AS AuthorCode 
+       ,a.JobID         AS JobID 
        ,a.FullName      AS AuthorFullName 
        ,a.LastName      AS AuthorLastName 
        ,a.FirstName     AS AuthorFirstName 

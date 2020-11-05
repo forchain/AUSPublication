@@ -2,6 +2,8 @@ CREATE TABLE Score (
     ID COUNTER PRIMARY KEY,
     PaperID int,
     WoSID VARCHAR,
+    [Index] byte,
+    AuthorCount byte,
 
     FullName VARCHAR, 
     LastName VARCHAR, 

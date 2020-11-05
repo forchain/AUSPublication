@@ -1,4 +1,4 @@
-INSERT INTO Match ( ScoreID, PaperID, WoSID, PaperFullName, PaperLastName, PaperFirstName, PaperMiddleName, PaperFirstInitial, PaperMiddleInitial ,AuthorID, AuthorCode, AuthorFullName, AuthorLastName, AuthorFirstName, AuthorMiddleName, AuthorFirstInitial, AuthorMiddleInitial, FirstNameCheck , MiddleNameCheck , MiddleInitialCheck, Matched )
+INSERT INTO Match ( ScoreID, PaperID, WoSID, PaperFullName, PaperLastName, PaperFirstName, PaperMiddleName, PaperFirstInitial, PaperMiddleInitial ,AuthorID, AuthorCode, AuthorFullName, AuthorLastName, AuthorFirstName, AuthorMiddleName, AuthorFirstInitial, AuthorMiddleInitial, JobID , JobTitle , JobDisplay , JobOrder , IsStudent , FirstNameCheck , MiddleNameCheck , MiddleInitialCheck, Matched )
 SELECT  ScoreID 
        ,PaperID 
        ,WosID 
@@ -8,7 +8,7 @@ SELECT  ScoreID
        ,PaperMiddleName 
        ,PaperFirstInitial 
        ,PaperMiddleInitial 
-       ,CVar(AuthorID)
+       ,CVar(AuthorID) 
        ,AuthorCode 
        ,AuthorFullName 
        ,AuthorLastName 
@@ -16,8 +16,15 @@ SELECT  ScoreID
        ,AuthorMiddleName 
        ,AuthorFirstInitial 
        ,AuthorMiddleInitial 
-       ,CBool(FirstNameCheck )
-       ,CBool(MiddleNameCheck )
-       ,CBool(MiddleInitialCheck )
+       ,j.ID as JobID
+       ,j.Title as JobTitle
+       ,j.Display as JobDisplay
+       ,j.Order as JobOrder
+       ,j.IsStudent as IsStudent
+       ,CBool(FirstNameCheck) 
+       ,CBool(MiddleNameCheck) 
+       ,CBool(MiddleInitialCheck) 
        ,IsMatched(PaperFirstName,PaperMiddleName,PaperMiddleInitial,AuthorID,AuthorFirstName,AuthorMiddleName,AuthorMiddleInitial,CBool(FirstNameCheck),CBool(MiddleNameCheck),CBool(MiddleInitialCheck))
-FROM ImportMatch;
+FROM ImportMatch AS im
+Left JOIN Job AS j
+ON im.JobID = j.ID

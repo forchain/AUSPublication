@@ -9,6 +9,7 @@ SELECT  CLng(s.ID)      AS ScoreID
        ,s.MiddleInitial AS PaperMiddleInitial 
        ,CVar(a.ID)      AS AuthorID 
        ,a.Code          AS AuthorCode 
+       ,a.JobID         AS JobID 
        ,a.FullName      AS AuthorFullName 
        ,a.LastName      AS AuthorLastName 
        ,a.FirstName     AS AuthorFirstName 
@@ -17,8 +18,8 @@ SELECT  CLng(s.ID)      AS ScoreID
        ,a.MiddleInitial AS AuthorMiddleInitial into ImportMatch
 FROM Score AS s
 INNER JOIN 
-(ImportAuthor AS ia
+( ImportAuthor AS ia
 	INNER JOIN Author AS a
-	ON ia.Code = a.Code
+	ON ia.Code = a.Code 
 )
-ON s.LastName = a.LastName AND s.FirstInitial = a.FirstInitial 
+ON s.LastName = a.LastName AND s.FirstInitial = a.FirstInitial

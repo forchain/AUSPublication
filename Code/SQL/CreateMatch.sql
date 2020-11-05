@@ -20,6 +20,12 @@ CREATE TABLE Match (
     AuthorFirstInitial VARCHAR, 
     AuthorMiddleInitial VARCHAR,
 
+    JobID int,
+    JobTitle VARCHAR,
+    JobDisplay VARCHAR,
+    JobOrder VARCHAR,
+    IsStudent bit,
+
     FirstNameCheck bit,
     MiddleNameCheck bit,
     MiddleInitialCheck bit,

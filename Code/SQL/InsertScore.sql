@@ -1,6 +1,8 @@
-INSERT INTO Score ( PaperID, WoSID, FullName, LastName, FirstName, MiddleName, FirstInitial, MiddleInitial )
+INSERT INTO Score ( PaperID, WoSID, [Index], AuthorCount, FullName, LastName, FirstName, MiddleName, FirstInitial, MiddleInitial )
 SELECT  PaperID
        ,WoSID
+       ,[Index]
+       ,AuthorCount
        ,FullName
        ,LastName
        ,FirstName
