@@ -1,8 +1,8 @@
 ﻿Option Compare Database
 Option Explicit
 
-Private Sub CommandSave_Click()
 
+Private Sub CommandResolve_Click()
     If Not FrameResolved.Value Then
         Log.E "CommandSave_Click", "Resolved First"
         Exit Sub
@@ -12,11 +12,15 @@ Private Sub CommandSave_Click()
     
     Dim sQuery As String
     sQuery = "DeleteUnresolvedMatch"
-    App.Execute sQuery, "MatchID", Me.ID
+    App.Execute sQuery, "ParamMatchID", Me.ID, "ParamScoreID", Me.ScoreID
     
-    sQuery = "UpdateScoreByMatch"
-    App.Execute sQuery, "MatchID", Me.ID
-
+    App.DeleteTable "ResolvedMatch"
+    App.Execute "MakeResolvedMatchByID", "MatchID", Me.ID
+    sQuery = "UpdateScore"
+    App.Execute sQuery
+    
+    Me.Requery
+    
 End Sub
 
 Private Sub CommandSelect_Click()

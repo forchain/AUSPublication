@@ -1,0 +1,1 @@
+CREATE TABLE Setting (  FirstNameCheck bit, MiddleNameCheck bit, MiddleInitialCheck bit );

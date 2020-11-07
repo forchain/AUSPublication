@@ -1,0 +1,1 @@
+Select true as FirstNameCheck, true as MiddleNameCheck, true as MiddleInitialCheck into Setting

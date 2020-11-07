@@ -39,6 +39,7 @@ End Sub
 Public Sub CreateTables()
     Dim dicUnknown As New Scripting.Dictionary
     Dim dicOther As New Scripting.Dictionary
+    Dim dicDefault As New Scripting.Dictionary
     
     dicUnknown.Add "Author", False
     dicUnknown.Add "College", True
@@ -49,8 +50,11 @@ Public Sub CreateTables()
     dicUnknown.Add "ImportScore", False
     dicUnknown.Add "Score", False
     dicUnknown.Add "Match", False
+    dicUnknown.Add "Setting", False
     
     dicOther.Add "College", True
+    dicDefault.Add "Setting", True
+
 
     Dim bUnknown, bOthers As Boolean
     Dim sKey, sQuery As String
@@ -66,6 +70,10 @@ Public Sub CreateTables()
             End If
             If dicOther.Exists(sKey) Then
                 sQuery = "InsertOther" + sKey
+                App.Execute sQuery
+            End If
+            If dicDefault.Exists(sKey) Then
+                sQuery = "InsertDefault" + sKey
                 App.Execute sQuery
             End If
         End If
@@ -163,8 +171,10 @@ Public Function ImportAuthor(EmplType As Byte, ByVal Path As String) As Integer
     App.Execute sQuery
     sQuery = "InsertMatch"
 
-    App.Execute sQuery, "FirstNameCheck", False, "MiddleNameCheck", False, "MiddleInitialCheck", False
-    
+    App.Execute sQuery, _
+                "FirstNameCheck", Config.Setting("FirstNameCheck"), _
+                "MiddleNameCheck", Config.Setting("MiddleNameCheck"), _
+                "MiddleInitialCheck", Config.Setting("MiddleInitialCheck")
     
     App.DeleteTable "ResolvedMatch"
     sQuery = "MakeResolvedMatch"
@@ -243,7 +253,10 @@ Public Function ImportPaper(ByVal Index As Integer, ByVal Path As String) As Int
     sQuery = "MakeImportMatchByPaper"
     App.Execute sQuery
     sQuery = "InsertMatch"
-    App.Execute sQuery, "FirstNameCheck", False, "MiddleNameCheck", False, "MiddleInitialCheck", False
+    App.Execute sQuery, _
+                "FirstNameCheck", Config.Setting("FirstNameCheck"), _
+                "MiddleNameCheck", Config.Setting("MiddleNameCheck"), _
+                "MiddleInitialCheck", Config.Setting("MiddleInitialCheck")
     
     App.DeleteTable "ResolvedMatch"
     sQuery = "MakeResolvedMatch"
