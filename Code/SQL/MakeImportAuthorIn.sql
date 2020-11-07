@@ -1,7 +1,5 @@
-SELECT  DISTINCT GetAuthorName([Full Name])         AS AuthorName 
-       ,ID                                          AS Code 
+SELECT  DISTINCT ID                                 AS Code 
        ,[Full Name]                                 AS FullName 
-       ,GetAbbrName(AuthorName)                     AS AbbrName 
        ,FixTitle([Job Title])                       AS JobTitle 
        ,Department                                  AS DepartmentID 
        ,ExtractInDepName([Department Description])  AS DepartmentName 

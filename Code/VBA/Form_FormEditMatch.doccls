@@ -1,6 +1,57 @@
 ﻿Option Compare Database
 Option Explicit
 
+Private Sub CommandSave_Click()
+
+    If Not FrameResolved.Value Then
+        Log.E "CommandSave_Click", "Resolved First"
+        Exit Sub
+    End If
+    
+    
+    
+    Dim sQuery As String
+    sQuery = "DeleteUnresolvedMatch"
+    App.Execute sQuery, "MatchID", Me.ID
+    
+    sQuery = "UpdateScoreByMatch"
+    App.Execute sQuery, "MatchID", Me.ID
+
+End Sub
+
+Private Sub CommandSelect_Click()
+    Dim sFilter As String
+    If Me.AuthorCode <> "" Then
+        sFilter = sFilter & "AuthorCode='" & Me.AuthorCode & "'"
+    End If
+    
+    If Me.AuthorFullName <> "" Then
+        sFilter = sFilter & " and FullName='" & Me.AuthorFullName & "'"
+    End If
+    
+    If Me.AuthorLastName <> "" Then
+        sFilter = sFilter & " and LastName='" & Me.AuthorLastName & "'"
+    End If
+
+    If Me.AuthorFirstName <> "" Then
+        sFilter = sFilter & " and FirstName='" & Me.AuthorFirstName & "'"
+    End If
+    
+    If Me.AuthorMiddleName <> "" Then
+        sFilter = sFilter & " and MiddleName='" & Me.AuthorMiddleName & "'"
+    End If
+    
+    If Me.AuthorFirstInitial <> "" Then
+        sFilter = sFilter & " and FirstInitial='" & Me.AuthorFirstInitial & "'"
+    End If
+    
+    If Me.AuthorMiddleInitial <> "" Then
+        sFilter = sFilter & " and MiddleInitial='" & Me.AuthorMiddleInitial & "'"
+    End If
+    
+     DoCmd.OpenForm "FormSelectAuthor", , , , , acDialog, sFilter
+End Sub
+
 Private Sub FrameMiddleInitialCheck_AfterUpdate()
 Debug.Print FrameMiddleInitialCheck.Value
 End Sub

@@ -1,0 +1,58 @@
+﻿Option Compare Database
+Option Explicit
+
+
+
+Private Sub CommandFilter_Click()
+    If Me.FilterOn Then
+        Me.FilterOn = False
+        Me.CommandFilter.Caption = "Show Filtered"
+    Else
+        Me.FilterOn = True
+        Me.CommandFilter.Caption = "Show All"
+    End If
+
+End Sub
+
+Private Sub CommandNew_Click()
+    DoCmd.OpenForm "NewAuthor"
+End Sub
+
+Private Sub CommandSelect_Click()
+
+    Dim sMatchID As String
+    Dim nMatchID As Variant
+
+    nMatchID = Forms!FormEditMatch!ID
+    App.Execute "UpdateMatchWithAuthor", _
+                "ParamAuthorID", Me.AuthorID, _
+                "ParamAuthorCode", Me.AuthorCode, _
+                "ParamAuthorFullName", Me.FullName, _
+                "ParamAuthorLastName", Me.LastName, _
+                "ParamAuthorFirstName", Me.FirstName, _
+                "ParamAuthorMiddleName", Me.MiddleName, _
+                "ParamAuthorFirstInitial", Me.FirstInitial, _
+                "ParamAuthorMiddleInitial", Me.MiddleInitial, _
+                "ParamJobID", Me.JobID, _
+                "ParamJobTitle", Me.JobTitle, _
+                "ParamJobDisplay", Me.JobDisplay, _
+                "ParamJobOrder", Me.JobOrder, _
+                "ParamIsStudent", Me.IsStudent, _
+                "ParamMatchID", nMatchID
+
+    Forms!FormEditMatch.Refresh
+    
+    DoCmd.Close ObjectType:=acForm, ObjectName:=Me.Name
+
+End Sub
+
+Private Sub Form_Open(Cancel As Integer)
+    Dim sFilter As Variant
+    sFilter = Me.OpenArgs()
+    If Not IsNull(sFilter) And sFilter <> "" Then
+        Me.Filter = sFilter
+        Me.FilterOn = True
+    End If
+End Sub
+
+

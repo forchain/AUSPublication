@@ -165,6 +165,15 @@ Public Function ImportAuthor(EmplType As Byte, ByVal Path As String) As Integer
 
     App.Execute sQuery, "FirstNameCheck", False, "MiddleNameCheck", False, "MiddleInitialCheck", False
     
+    
+    App.DeleteTable "ResolvedMatch"
+    sQuery = "MakeResolvedMatch"
+    App.Execute sQuery
+    
+    
+    sQuery = "UpdateScore"
+    App.Execute sQuery
+    
     'Log.i sFunc, "Imported", "iRows", iRows
     MsgBox iRows & " records imported", Title:="Import"
 
@@ -222,7 +231,7 @@ Public Function ImportPaper(ByVal Index As Integer, ByVal Path As String) As Int
 
         For i = 0 To UBound(vAuthors)
             sName = Trim(vAuthors(i))
-            App.Execute sQuery, "PaperID", rsPaper!ID, "WoSID", rsPaper!WoSID, "FullName", sName, "LastName", Paper.GetLastName(sName), "FirstName", Paper.GetFirstName(sName), "MiddleName", Paper.GetMiddleName(sName), "FirstInitial", Paper.GetFirstInitial(sName), "MiddleInitial", Paper.GetMiddleInitial(sName)
+            App.Execute sQuery, "PaperID", rsPaper!ID, "WoSID", rsPaper!WoSID, "Index", rsPaper![Index], "AuthorCount", UBound(vAuthors) + 1, "FullName", sName, "LastName", Paper.GetLastName(sName), "FirstName", Paper.GetFirstName(sName), "MiddleName", Paper.GetMiddleName(sName), "FirstInitial", Paper.GetFirstInitial(sName), "MiddleInitial", Paper.GetMiddleInitial(sName)
         Next i
         rsPaper.MoveNext
     Loop
@@ -230,12 +239,18 @@ Public Function ImportPaper(ByVal Index As Integer, ByVal Path As String) As Int
     sQuery = "InsertScore"
     App.Execute sQuery
 
-
     App.DeleteTable "ImportMatch"
     sQuery = "MakeImportMatchByPaper"
     App.Execute sQuery
     sQuery = "InsertMatch"
     App.Execute sQuery, "FirstNameCheck", False, "MiddleNameCheck", False, "MiddleInitialCheck", False
+    
+    App.DeleteTable "ResolvedMatch"
+    sQuery = "MakeResolvedMatch"
+    App.Execute sQuery
+    
+    sQuery = "UpdateScore"
+    App.Execute sQuery
     
     'Log.i sFunc, "Imported", "iRows", iRows
     MsgBox iRows & " records imported", Title:="Import"

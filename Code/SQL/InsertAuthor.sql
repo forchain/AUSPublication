@@ -1,8 +1,6 @@
-INSERT INTO Author ( Code, FullName, AuthorName, AbbrName, JobID, DepartmentID, LastName, FirstName, FirstInitial, MiddleName, MiddleInitial )
+INSERT INTO Author ( Code, FullName, JobID, DepartmentID, LastName, FirstName, FirstInitial, MiddleName, MiddleInitial )
 SELECT  DISTINCT Code 
        ,FullName 
-       ,AuthorName 
-       ,AbbrName 
        ,Job.ID 
        ,DepartmentID 
        ,GetAuthorLastName(FullName)      AS LastName 

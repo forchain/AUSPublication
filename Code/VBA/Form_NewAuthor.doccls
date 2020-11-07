@@ -10,17 +10,13 @@ End Sub
 
 Private Sub CommandSave_Click()
 
-    Dim sQuery, sAuthorName, sAbbrName As String
+    Dim sQuery As String
     Dim iRows As Integer
     sQuery = "NewAuthor"
-    sAuthorName = GetAuthorName(Me!TextName)
-    sAbbrName = GetAbbrName(sAuthorName)
     iRows = App.Execute( _
             sQuery, _
             "Code", Me!TextID, _
             "FullName", Me!TextName, _
-            "AuthorName", sAuthorName, _
-            "AbbrName", sAbbrName, _
             "JobID", Me!ComboJob, _
             "DepartmentID", Me!ComboDep)
             

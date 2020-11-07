@@ -202,9 +202,9 @@ Public Function FixNameWithIDs(Abbr As String, IDs As String) As String
         If a <> "" Then
             a = FixName(a)
             If (Mid(a, 2, 1) <> ".") And (Left(a, 1) = Left(Abbr, 1)) And (Left(a, 1) <> ",") Then
-                Dim lastName As String
-                lastName = Split(Abbr, " ")(1)
-                If InStr(a, lastName) <> 0 Then
+                Dim LastName As String
+                LastName = Split(Abbr, " ")(1)
+                If InStr(a, LastName) <> 0 Then
                     'Debug.Print "[Trace]FixNameWithIDs fixed; Abbr:" & Abbr & ", IDs:" & IDs
                     FixNameWithIDs = a
                     Exit Function
