@@ -23,7 +23,7 @@ Private Sub CommandSelect_Click()
     Dim sMatchID As String
     Dim nMatchID As Variant
 
-    nMatchID = Forms!FormEditMatch!ID
+    nMatchID = Forms!FormMatch!ID
     App.Execute "UpdateMatchWithAuthor", _
                 "ParamAuthorID", Me.AuthorID, _
                 "ParamAuthorCode", Me.AuthorCode, _
@@ -42,7 +42,7 @@ Private Sub CommandSelect_Click()
                 "ParamDepartmentName", Me.DepartmentName, _
                 "ParamMatchID", nMatchID
 
-    Forms!FormEditMatch.Refresh
+    Forms!FormMatch.Refresh
     
     DoCmd.Close ObjectType:=acForm, ObjectName:=Me.Name
 

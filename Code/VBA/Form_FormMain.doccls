@@ -32,6 +32,15 @@ Private Sub CommandJob_Click()
     DoCmd.OpenForm "FormJob", WindowMode:=acDialog
 End Sub
 
+Private Sub CommandResolved_Click()
+    DoCmd.OpenForm "FormResolvedMatch", WindowMode:=acDialog
+
+End Sub
+
+Private Sub CommandUnresolved_Click()
+    DoCmd.OpenForm "FormUnresolvedMatch", , , , , acDialog
+End Sub
+
 Private Sub Form_Load()
     Main.CreateTables
 End Sub

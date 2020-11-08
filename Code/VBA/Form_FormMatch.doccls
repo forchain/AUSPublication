@@ -1,0 +1,71 @@
+﻿Option Compare Database
+Option Explicit
+
+
+Private Sub CommandResolve_Click()
+    If Not FrameResolved.Value Then
+        Log.E "CommandResolve_Click", "Resolved Status must be true"
+        Exit Sub
+    End If
+    
+     If IsNull(AuthorID.Value) Then
+        Log.E "CommandResolve_Click", "Author doesn't exist"
+        Exit Sub
+    End If
+    
+    Dim sQuery As String
+    sQuery = "UpdateMatchAsResolved"
+    App.Execute sQuery, "MatchID", Me.ID
+    
+    sQuery = "DeleteUnresolvedMatch"
+    App.Execute sQuery, "ParamMatchID", Me.ID, "ParamScoreID", Me.ScoreID
+    
+    App.DeleteTable "ResolvedMatch"
+    App.Execute "MakeResolvedMatchByID", "MatchID", Me.ID
+    sQuery = "UpdateScore"
+    App.Execute sQuery
+    
+    Me.Requery
+    
+End Sub
+
+Private Sub CommandSelect_Click()
+    Dim sFilter As String
+    If Me.AuthorCode <> "" Then
+        sFilter = sFilter & "AuthorCode='" & Me.AuthorCode & "'"
+    End If
+    
+    If Me.AuthorFullName <> "" Then
+        sFilter = sFilter & " and FullName='" & Me.AuthorFullName & "'"
+    End If
+    
+    If Me.AuthorLastName <> "" Then
+        sFilter = sFilter & " and LastName='" & Me.AuthorLastName & "'"
+    End If
+
+    If Me.AuthorFirstName <> "" Then
+        sFilter = sFilter & " and FirstName='" & Me.AuthorFirstName & "'"
+    End If
+    
+    If Me.AuthorMiddleName <> "" Then
+        sFilter = sFilter & " and MiddleName='" & Me.AuthorMiddleName & "'"
+    End If
+    
+    If Me.AuthorFirstInitial <> "" Then
+        sFilter = sFilter & " and FirstInitial='" & Me.AuthorFirstInitial & "'"
+    End If
+    
+    If Me.AuthorMiddleInitial <> "" Then
+        sFilter = sFilter & " and MiddleInitial='" & Me.AuthorMiddleInitial & "'"
+    End If
+    
+     DoCmd.OpenForm "FormSelectAuthor", , , , , acDialog, sFilter
+End Sub
+
+
+Private Sub Form_Open(Cancel As Integer)
+    Dim sSource As Variant
+    sSource = Me.OpenArgs()
+    Me.RecordSource = sSource
+End Sub
+
