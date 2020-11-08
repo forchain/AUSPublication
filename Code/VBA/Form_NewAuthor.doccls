@@ -3,7 +3,7 @@ Option Explicit
 
 Private Sub UpdateCode()
     If Left(TextID.Value, 1) <> "@" Then
-        TextID.Value = "$" & ComboDep.Value & "-" & ComboJob.Value & "-" & TextName.Value
+        TextID.Value = Author.GetTempCode(ComboDep.Value, ComboJob.Value, TextName.Value)
     End If
 End Sub
 

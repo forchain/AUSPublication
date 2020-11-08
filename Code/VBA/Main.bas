@@ -123,14 +123,17 @@ Public Function ImportAuthor(EmplType As Byte, ByVal Path As String) As Integer
     Dim sQuery As String
     
     App.DeleteTable "ImportAuthor"
-    Dim sInFields, sOutFields As String
+    Dim sInFields, sOutFields, sStudentFields As String
     sInFields = "Type;Full Name;ID;Current Hire Date;Job Title;Department;Department Description"
     sOutFields = "Empl Type;Department;Name;ID;Current Hire Date;Termination Date;Title"
+    sStudentFields = "Last Name;ID;First Name;College/ School;Department;Enrollment Year;Graduation Year;Position"
     
     If App.CheckFields("LinkAuthor", sInFields) Then
         sQuery = "MakeImportAuthorIn"
     ElseIf App.CheckFields("LinkAuthor", sOutFields) Then
         sQuery = "MakeImportAuthorOut"
+    ElseIf App.CheckFields("LinkAuthor", sStudentFields) Then
+        sQuery = "MakeImportAuthorStudent"
     Else
         Log.E sFunc, "Invalid fields", "Path", Path
         Exit Function

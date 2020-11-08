@@ -189,3 +189,8 @@ Public Function FixTitle(Title As String) As String
 End Function
 
 
+Public Function GetTempCode(DepID, JobID, FullName As Variant) As String
+    GetTempCode = "$" & DepID & "-" & JobID & "-" & FullName
+End Function
+
+

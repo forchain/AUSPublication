@@ -47,8 +47,10 @@ Private Sub FrameImportAuthor_Click()
     
     If iType = 1 Then
         sType = "Faculty"
-    Else
+    ElseIf iType = 2 Then
         sType = "Staff"
+    Else
+        sType = "Student"
     End If
  
     Set fd = Application.FileDialog(msoFileDialogFilePicker)
