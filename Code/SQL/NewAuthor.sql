@@ -1,1 +1,1 @@
-INSERT INTO Author ( Code, FullName, JobID, DepartmentID ) Values ( Code, FullName, JobID, DepartmentID )
+INSERT INTO Author ( Code, FullName, JobID, DepartmentID , LastName, FirstName, FirstInitial, MiddleName, MiddleInitial) Values ( Code, FullName, JobID, DepartmentID, GetAuthorLastName(FullName) , GetAuthorFirstName(FullName), GetAuthorFirstInitial(FullName), GetAuthorMiddleName(FullName), GetAuthorMiddleInitial(FullName))

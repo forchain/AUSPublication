@@ -15,7 +15,7 @@ Private Sub CommandFilter_Click()
 End Sub
 
 Private Sub CommandNew_Click()
-    DoCmd.OpenForm "NewAuthor"
+    DoCmd.OpenForm "NewAuthor", WindowMode:=acDialog
 End Sub
 
 Private Sub CommandSelect_Click()

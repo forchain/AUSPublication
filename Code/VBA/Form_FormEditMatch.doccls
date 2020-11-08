@@ -4,13 +4,19 @@ Option Explicit
 
 Private Sub CommandResolve_Click()
     If Not FrameResolved.Value Then
-        Log.E "CommandSave_Click", "Resolved First"
+        Log.E "CommandSave_Click", "Resolved Status must be true"
         Exit Sub
     End If
     
-    
+     If Not AuthorID.Value Then
+        Log.E "CommandSave_Click", "Author doesn't exist"
+        Exit Sub
+    End If
     
     Dim sQuery As String
+    sQuery = "UpdateMatchAsResolved"
+    App.Execute sQuery, "MatchID", Me.ID
+    
     sQuery = "DeleteUnresolvedMatch"
     App.Execute sQuery, "ParamMatchID", Me.ID, "ParamScoreID", Me.ScoreID
     
@@ -56,6 +62,3 @@ Private Sub CommandSelect_Click()
      DoCmd.OpenForm "FormSelectAuthor", , , , , acDialog, sFilter
 End Sub
 
-Private Sub FrameMiddleInitialCheck_AfterUpdate()
-Debug.Print FrameMiddleInitialCheck.Value
-End Sub

@@ -1,8 +1,22 @@
 ﻿Option Compare Database
 Option Explicit
 
+Private Sub UpdateCode()
+    If Left(TextID.Value, 1) <> "@" Then
+        TextID.Value = "$" & ComboDep.Value & "-" & ComboJob.Value & "-" & TextName.Value
+    End If
+End Sub
+
+Private Sub ComboDep_Change()
+    UpdateCode
+End Sub
+
+Private Sub ComboJob_Change()
+    UpdateCode
+End Sub
+
 Private Sub CommandReset_Click()
-    Me.TextID.Value = "@"
+    Me.TextID.Value = "$"
     Me.TextName.Value = ""
     Me.ComboDep.Value = 0
     Me.ComboJob.Value = 0
@@ -24,7 +38,19 @@ Private Sub CommandSave_Click()
         MsgBox "Author added", vbYesNo, "Save"
     End If
                                                                             
-                                                                            
+    
+    
+     
+    Forms!FormSelectAuthor.Requery
+     
+    Forms!FormSelectAuthor.Filter = "AuthorCode='" & Me.TextID & "'"
+     
+    Forms!FormSelectAuthor.FilterOn = True
+    
+    DoCmd.Close ObjectType:=acForm, ObjectName:=Me.Name
 End Sub
 
+Private Sub TextName_AfterUpdate()
+    UpdateCode
+End Sub
 
