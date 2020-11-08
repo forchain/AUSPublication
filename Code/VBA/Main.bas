@@ -52,8 +52,8 @@ Public Sub CreateTables()
     dicUnknown.Add "Match", False
     dicUnknown.Add "Setting", False
     
-    'dicOther.Add "College", True
-    'dicOther.Add "Department", True
+    ' other for staffs
+    dicOther.Add "College", True
     dicDefault.Add "Setting", True
 
 
@@ -148,12 +148,19 @@ Public Function ImportAuthor(EmplType As Byte, ByVal Path As String) As Integer
         ImportAuthor = iRows
         Exit Function
     End If
-    
-    sQuery = "InsertCollege"
-    App.Execute sQuery
-    sQuery = "InsertDepartment"
-    App.Execute sQuery
-    
+
+    ' staff into OTHER college!!!!
+    '1 Faculty; 2 Staff
+    If EmplType = 2 Then
+        sQuery = "InsertOtherDepartment"
+        App.Execute sQuery
+    Else
+        sQuery = "InsertCollege"
+        App.Execute sQuery
+        sQuery = "InsertDepartment"
+        App.Execute sQuery
+    End If
+
     sQuery = "InsertJob"
     App.Execute sQuery
     
