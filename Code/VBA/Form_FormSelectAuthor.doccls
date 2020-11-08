@@ -38,6 +38,8 @@ Private Sub CommandSelect_Click()
                 "ParamJobDisplay", Me.JobDisplay, _
                 "ParamJobOrder", Me.JobOrder, _
                 "ParamIsStudent", Me.IsStudent, _
+                "ParamDepartmentID", Me.DepartmentID, _
+                "ParamDepartmentName", Me.DepartmentName, _
                 "ParamMatchID", nMatchID
 
     Forms!FormEditMatch.Refresh

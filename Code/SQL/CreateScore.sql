@@ -16,6 +16,14 @@ CREATE TABLE Score (
     AuthorCode VARCHAR,
     AuthorName VARCHAR,
 
+    DepartmentID int,
+    DepartmentName VARCHAR,
+
+    JobID int,
+    JobTitle VARCHAR,
+    JobDisplay VARCHAR,
+    JobOrder byte,
+
     AHCI float,
     BHCI float,
     BSCI float,

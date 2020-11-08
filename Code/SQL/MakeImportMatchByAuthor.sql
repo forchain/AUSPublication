@@ -10,6 +10,7 @@ SELECT  CLng(s.ID)      AS ScoreID
        ,CVar(a.ID)      AS AuthorID 
        ,a.Code          AS AuthorCode 
        ,a.JobID         AS JobID 
+       ,a.DepartmentID  AS DepartmentID 
        ,a.FullName      AS AuthorFullName 
        ,a.LastName      AS AuthorLastName 
        ,a.FirstName     AS AuthorFirstName 

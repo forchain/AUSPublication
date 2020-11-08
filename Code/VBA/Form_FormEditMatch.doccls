@@ -4,12 +4,12 @@ Option Explicit
 
 Private Sub CommandResolve_Click()
     If Not FrameResolved.Value Then
-        Log.E "CommandSave_Click", "Resolved Status must be true"
+        Log.E "CommandResolve_Click", "Resolved Status must be true"
         Exit Sub
     End If
     
-     If Not AuthorID.Value Then
-        Log.E "CommandSave_Click", "Author doesn't exist"
+     If IsNull(AuthorID.Value) Then
+        Log.E "CommandResolve_Click", "Author doesn't exist"
         Exit Sub
     End If
     

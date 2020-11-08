@@ -20,6 +20,8 @@ CREATE TABLE Match (
     AuthorFirstInitial VARCHAR, 
     AuthorMiddleInitial VARCHAR,
 
+    DepartmentID int,
+    DepartmentName VARCHAR,
     JobID int,
     JobTitle VARCHAR,
     JobDisplay VARCHAR,

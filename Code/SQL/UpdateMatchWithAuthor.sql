@@ -13,7 +13,8 @@ SET
     JobTitle = ParamJobTitle,
     JobDisplay = ParamJobDisplay,
     JobOrder = ParamJobOrder,
-    IsStudent = ParamIsStudent
+    IsStudent = ParamIsStudent,
+    DepartmentID = ParamDepartmentID,
+    DepartmentName = ParamDepartmentName
 WHERE
     ID = ParamMatchID
-
