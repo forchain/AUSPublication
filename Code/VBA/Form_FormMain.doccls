@@ -33,12 +33,16 @@ Private Sub CommandJob_Click()
 End Sub
 
 Private Sub CommandResolved_Click()
-    DoCmd.OpenForm "FormResolvedMatch", WindowMode:=acDialog
+    DoCmd.OpenForm "FormResolvedMatch"
 
 End Sub
 
+Private Sub CommandSetting_Click()
+ DoCmd.OpenForm "FormSetting", , , , , acDialog
+End Sub
+
 Private Sub CommandUnresolved_Click()
-    DoCmd.OpenForm "FormUnresolvedMatch", , , , , acDialog
+    DoCmd.OpenForm "FormUnresolvedMatch"
 End Sub
 
 Private Sub Form_Load()

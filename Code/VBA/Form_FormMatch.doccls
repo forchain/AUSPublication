@@ -63,9 +63,4 @@ Private Sub CommandSelect_Click()
 End Sub
 
 
-Private Sub Form_Open(Cancel As Integer)
-    Dim sSource As Variant
-    sSource = Me.OpenArgs()
-    Me.RecordSource = sSource
-End Sub
 

@@ -246,7 +246,18 @@ Public Function ImportPaper(ByVal Index As Integer, ByVal Path As String) As Int
 
         For i = 0 To UBound(vAuthors)
             sName = Trim(vAuthors(i))
-            App.Execute sQuery, "PaperID", rsPaper!ID, "WoSID", rsPaper!WoSID, "Index", rsPaper![Index], "AuthorCount", UBound(vAuthors) + 1, "FullName", sName, "LastName", Paper.GetLastName(sName), "FirstName", Paper.GetFirstName(sName), "MiddleName", Paper.GetMiddleName(sName), "FirstInitial", Paper.GetFirstInitial(sName), "MiddleInitial", Paper.GetMiddleInitial(sName)
+            App.Execute sQuery, _
+                        "PaperID", rsPaper!ID, _
+                        "WoSID", rsPaper!WoSID, _
+                        "Index", rsPaper![Index], _
+                        "AuthorCount", UBound(vAuthors) + 1, _
+                        "Year", rsPaper![Year], _
+                        "FullName", sName, _
+                        "LastName", Paper.GetLastName(sName), _
+                        "FirstName", Paper.GetFirstName(sName), _
+                        "MiddleName", Paper.GetMiddleName(sName), _
+                        "FirstInitial", Paper.GetFirstInitial(sName), _
+                        "MiddleInitial", Paper.GetMiddleInitial(sName)
         Next i
         rsPaper.MoveNext
     Loop

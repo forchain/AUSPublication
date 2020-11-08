@@ -4,6 +4,7 @@ CREATE TABLE ImportScore (
     WoSID VARCHAR,
     [Index] BYTE,
     AuthorCount BYTE,
+    [Year] int,
 
     FullName VARCHAR, 
     LastName VARCHAR, 

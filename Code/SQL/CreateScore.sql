@@ -4,6 +4,7 @@ CREATE TABLE Score (
     WoSID VARCHAR,
     [Index] byte,
     AuthorCount byte,
+    [Year] int,
 
     FullName VARCHAR, 
     LastName VARCHAR, 
