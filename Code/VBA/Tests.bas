@@ -3,6 +3,11 @@ Attribute VB_Name = "Tests"
 Option Compare Database
 Option Explicit
 
+Public Function TestTest(v As Variant) As Boolean
+    Debug.Print v.TypeName(v)
+    TestTest = TypeName(v)
+End Function
+
 Public Function TestLoadConfig()
 
 End Function

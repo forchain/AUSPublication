@@ -33,7 +33,7 @@ Private Sub CommandJob_Click()
 End Sub
 
 Private Sub CommandResolved_Click()
-    DoCmd.OpenForm "FormResolvedMatch"
+   DoCmd.OpenForm "FormMatch", OpenArgs:="SelectResolvedMatch"
 
 End Sub
 
@@ -42,7 +42,7 @@ Private Sub CommandSetting_Click()
 End Sub
 
 Private Sub CommandUnresolved_Click()
-    DoCmd.OpenForm "FormUnresolvedMatch"
+    DoCmd.OpenForm "FormMatch", OpenArgs:="SelectUnresolvedMatch"
 End Sub
 
 Private Sub Form_Load()

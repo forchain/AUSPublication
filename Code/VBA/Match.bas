@@ -17,7 +17,7 @@ Public Function IsFirstNameMatched(ByVal FirstNameCheck As Boolean, PaperFirstNa
     ' Must exist AuthorFirstName
     ' No need to check author first name since it cannot be empty
     If FirstNameCheck Then
-        If IsNull(PaperFirstName) Then
+        If IsNull(AuthorFirstName) Or IsNull(PaperFirstName) Then
             Exit Function
         End If
     End If

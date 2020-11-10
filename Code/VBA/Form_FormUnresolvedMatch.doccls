@@ -31,8 +31,9 @@ End Sub
 
 Private Sub CommandSelect_Click()
     Dim sFilter As String
+    sFilter = "True"
     If Me.AuthorCode <> "" Then
-        sFilter = sFilter & "AuthorCode='" & Me.AuthorCode & "'"
+        sFilter = sFilter & " and AuthorCode='" & Me.AuthorCode & "'"
     End If
     
     If Me.AuthorFullName <> "" Then
@@ -60,4 +61,8 @@ Private Sub CommandSelect_Click()
     End If
     
      DoCmd.OpenForm "FormSelectAuthor", , , , , acDialog, sFilter
+End Sub
+
+Private Sub Form_Open(Cancel As Integer)
+Debug.Print Me.OpenArgs()
 End Sub

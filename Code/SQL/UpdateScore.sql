@@ -5,6 +5,14 @@ ON   (s.ID = rm.ScoreID )
 SET s.AuthorID = rm.AuthorID
 , s.AuthorCode = rm.AuthorCode
 , s.AuthorName = rm.AuthorFullName
+
+, s.FullName = rm.PaperFullName
+, s.LastName = rm.PaperLastName
+, s.FirstName = rm.PaperFirstName
+, s.FirstInitial = rm.PaperFirstInitial
+, s.MiddleName = rm.PaperMiddleName
+, s.MiddleInitial = rm.PaperMiddleInitial
+
 , s.JobID = rm.JobID
 , s.JobTitle = rm.JobTitle
 , s.JobDisplay = rm.JobDisplay
@@ -19,4 +27,3 @@ SET s.AuthorID = rm.AuthorID
 , s.SSCI = CalcScore(IsStudent, [Index], 6, FacultyCount, AuthorCount )
 , s.Weighted = CalcScore(IsStudent, [Index], 0, FacultyCount, AuthorCount )
 , s.Abs = 1
-Where IsNull(s.AuthorID) 
